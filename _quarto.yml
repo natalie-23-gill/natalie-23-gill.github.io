@@ -1,0 +1,22 @@
+project:
+  type: website
+  output-dir: docs
+website:
+  title: "NatBytes"
+  navbar:
+    right:
+      - about.qmd
+      - index.qmd
+      - icon: github
+        href: https://github.com/natalie-23-gill
+      - text: "{{< fa brands bluesky >}}"
+        href: https://bsky.app/profile/natbytes.bsky.social
+format:
+  html:
+    theme:
+      light: flatly
+      dark: solar
+    css: styles.css
+
+
+

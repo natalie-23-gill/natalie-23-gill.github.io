@@ -1,0 +1,14 @@
+---
+title: "Welcome To My Blog"
+author: "Natalie Gill"
+date: "2025-6-07"
+categories: [news, bioinformatics]
+---
+
+Welcome! This is the first post in my new Quarto blog. I will be sharing bioinformatics content here, my goal is to the tutorials and content I share as approachable as possible with an emphasis on developing practical skills.
+
+![](cell_and_code.png){fig-alt="Image of cancer cells with code in the background."}
+
+
+      
+

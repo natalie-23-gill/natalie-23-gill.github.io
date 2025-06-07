@@ -1,0 +1,23 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Posts",
+    "section": "",
+    "text": "Welcome To My Blog\n\n\n\n\n\n\nnews\n\n\nbioinformatics\n\n\n\n\n\n\n\n\n\nJun 7, 2025\n\n\nNatalie Gill\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About Me",
+    "section": "",
+    "text": "Natalie Gill\n(she/her)\n🏳️‍🌈 🏳️‍⚧️\nHi! I’m bioinformatician with a passion for leveraging statistics, machine learning and computer science to analyze complex biological data."
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Welcome To My Blog",
+    "section": "",
+    "text": "Welcome! This is the first post in my new Quarto blog. I will be sharing bioinformatics content here, my goal is to the tutorials and content I share as approachable as possible with an emphasis on developing practical skills."
+  }
+]

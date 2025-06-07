@@ -1,0 +1,18 @@
+---
+title: "About Me"
+about:
+  template: jolla
+  links:
+    - icon: bluesky
+      text: "{{< fa brands bluesky >}}"
+      href: https://bsky.app/profile/natbytes.bsky.social
+    - icon: github
+      href: https://github.com/natalie-23-gill
+
+---
+
+# Natalie Gill
+*(she/her)*   
+🏳️‍🌈 🏳️‍⚧️
+
+Hi! I'm bioinformatician with a passion for leveraging statistics, machine learning and computer science to analyze complex biological data.
