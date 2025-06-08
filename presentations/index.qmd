@@ -1,0 +1,26 @@
+---
+title: "Presentations"
+subtitle: "Collection of talks and presentations"
+page-layout: full
+toc: false
+---
+
+Welcome to my collection of presentations and talks. Each presentation is built with Quarto and RevealJS.
+
+## Past Presentations
+
+### What is Bioinformatics?
+*June 10, 2025*
+
+A short talk to introduce the field of bioinformatics to an undergraduate audience.
+
+**Topics covered:**  
+
+-   Origins of Bioinformatics  
+-   NGS Revolution  
+-   Bioinformatics Subdisciplines  
+-   The Future of Bioinformatics  
+
+[View Presentation →](what_is_bioinformatics/){.btn .btn-primary}
+
+---

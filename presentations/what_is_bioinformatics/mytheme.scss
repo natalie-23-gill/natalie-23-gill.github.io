@@ -1,0 +1,89 @@
+/**
+ * A simple theme for reveal.js presentations, similar
+ * to the default theme. The accent color is darkblue.
+ *
+ * This theme is Copyright (C) 2012 Owen Versteeg, https://github.com/StereotypicalApps. It is MIT licensed.
+ * reveal.js is Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
+ *
+ * Adapted for Quarto by Posit, PBC
+ * Copyright (C) 2024 Posit, PBC
+ *
+ * Further adapted for personal use by Natalie Gill
+ * www.natbytes.com
+ */
+/*-- scss:defaults --*/
+// Custom colors
+$teal: #0A9396;
+$surfblue: #94D2BD;
+$yellow: #EE9B00;
+$orange: #BB3E03;
+
+// Include theme-specific fonts
+@import url(https://fonts.googleapis.com/css?family=News+Cycle:400,700);
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
+
+// Override theme settings
+$font-family-sans-serif: "Lato", sans-serif !default;
+$body-color: #141711 !default;
+$presentation-heading-font: "News Cycle", sans-serif !default;
+$presentation-heading-color: $body-color !default;
+$presentation-heading-text-shadow: none !default;
+$presentation-heading-text-transform: none !default;
+$body-bg: #FCF8E8 !default;
+$link-color: #00008b !default;
+$selection-bg: rgba(0, 0, 0, 0.99) !default;
+$presentation-list-bullet-color: $orange !default;
+
+$overlayElementBgColor: 0, 0, 0 !default;
+$overlayElementFgColor: 240, 240, 240 !default;
+
+// Change text colors against dark slide backgrounds
+$dark-bg-text-color: #fff !default;
+$input-panel-bg: rgba(233, 236, 239, 0.2) !default;
+/*-- scss:rules --*/
+// Define additional color effects
+:root {
+  --r-bold-color: #{$teal};
+  --r-italic-color: #{$teal};
+  --r-list-bullet-color: #{$presentation-list-bullet-color};
+}
+
+.reveal {
+  strong,
+  b {
+    &:not(.callout-title strong, .callout-title b) {
+      color: var(--r-bold-color);
+    }
+  }
+  
+  em,
+  i {
+    color: var(--r-italic-color);
+  }
+  
+  // Custom colored list bullets
+  ul,
+  ol {
+    li::marker {
+      color: var(--r-list-bullet-color);
+    }
+  }
+  
+}
+
+
+// Title slide adjustments - target by ID
+#title-slide {
+  // Shift all content up to make room for background image
+  .title,
+  .quarto-title-authors,
+  .date {
+    transform: translateY(-150px) !important;
+  }
+}
+
+// Alternative approach - adjust the entire content block
+#title-slide .quarto-title-block {
+  transform: translateY(-150px) !important;
+  padding-bottom: 300px !important; // Make space for background image
+}

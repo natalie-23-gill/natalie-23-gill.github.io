@@ -1,0 +1,22 @@
+---
+title: "What is Bioinformatics?"
+author: "Natalie Gill"
+date: "June 10, 2025"
+date-format: MMMM DD, YYYY
+title-slide-attributes:
+  data-background-image: images/dna_to_code.png
+format:
+  revealjs:
+    theme: mytheme.scss
+    preview-links: false
+    transition: fade
+    background-transition: fade
+---
+
+## Bioinformatics {.smaller}
+
+**Image of the different fields**
+
+## Origin Story
+- Bioinformatics began with protein analysis, not DNA
+
