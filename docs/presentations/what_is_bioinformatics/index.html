@@ -6,8 +6,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.6.39">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.31">
 
   <meta name="author" content="Natalie Gill">
   <meta name="dcterms.date" content="2025-06-10">
@@ -30,7 +30,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-30538106bebaea98f814c32e856b36d3.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-2f3b414e8dad021c26b55aa1af675011.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -135,7 +135,10 @@
 <div class="quarto-title-author-name">
 Natalie Gill 
 </div>
-</div>
+        <p class="quarto-title-affiliation">
+            Gladstone Bioinformatics Core
+          </p>
+    </div>
 </div>
 
   <p class="date">June 10, 2025</p>
@@ -143,7 +146,7 @@ Natalie Gill
 <section id="section" class="slide level2">
 <h2></h2>
 <p><br><br></p>
-<p><strong>Bioinformatics</strong>: An interdisciplinary field that develops computational methods and software tools to analyze and interpret large, complex biological datasets using biology, computer science, mathematics, and statistics.</p>
+<p><strong>Bioinformatics</strong>: An interdisciplinary field that develops computational methods and software tools to analyze and interpret, complex biological datasets using biology, computer science, mathematics, and statistics.</p>
 </section>
 <section class="slide level2">
 
@@ -167,51 +170,81 @@ Natalie Gill
 </colgroup>
 <tbody>
 <tr class="odd">
-<td><img data-src="images/fortran_punch_card.jpg" class="nostretch quarto-figure quarto-figure-center" style="width:50.0%" alt="A fortran punch card with a single line of code"></td>
+<td><img data-src="images/fortran_punch_card.jpg" class="nostretch quarto-figure quarto-figure-center" style="width:90.0%" data-fig.align="right" alt="A fortran punch card with a single line of code"></td>
 <td><img data-src="images/IBM_7090_mainframe.png" class="nostretch quarto-figure quarto-figure-right" style="width:80.0%" alt="Picture of the IBM 7090 mainframe"></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="dna-sequencing" class="slide level2">
-<h2>DNA Sequencing</h2>
+<section id="timeline" class="slide level2 smaller">
+<h2>Timeline</h2>
 <ul>
-<li><strong>1977</strong>: The first cost effective method of sequencing DNA is developed by <strong>Frederick Sanger</strong></li>
-<li>Allowed for ~450 bases of DNA to be sequenced</li>
 <li><strong>1976</strong>: The first fully seqeunced genome (Bacteriophage MS2)</li>
-<li><strong>1979</strong>: The first DNA bioinformatics software is developed by <strong>Roger Staden</strong></li>
-</ul>
-</section>
-<section id="s" class="slide level2">
-<h2>1980s</h2>
-<ul>
-<li>Parallel advances in biology and computer science</li>
-<li><strong>1983</strong>: PCR amplification is invented by <strong>Kary Mullis</strong></li>
-<li><strong>1984</strong>: the University of Wisconsin Genetics Computer Group published the ‘GCG’ software suite for DNA, RNA and protein analysis.</li>
-<li>Bioinformatic analysis was now possible on personal computers</li>
-<li><strong>1985</strong>: Computer Applications in the Biosciences (CABIOS), the first bioinformatics journal is established</li>
-</ul>
-</section>
-<section id="the-human-genome-project" class="slide level2">
-<h2>The Human Genome Project</h2>
-<ul>
-<li><strong>1990</strong>: Initiated by the U.S. National Institutes of Health</li>
-<li>Cost $2.7 billion in taxpayer money (in 1991 dollars)</li>
-<li>Completed in 2003</li>
-<li>Several pioneer software were developed in the mid to late 1990s to assemble the whole-genome sequencing reads</li>
-</ul>
-</section>
-<section id="next-generation-sequencing" class="slide level2 smaller">
-<h2>Next Generation Sequencing</h2>
-<ul>
-<li><strong>2003</strong>: ‘454’ pyrosequencing and sequencing by synthesis (SBS) technologies were invented, allowing for the sequencing of millions of DNA molecules in a single machine run</li>
+<li><strong>1977</strong>: First easy to use personal computers hit the market</li>
+<li><strong>1984</strong>: The University of Wisconsin Genetics Computer Group published the ‘GCG’ software suite for DNA, RNA and protein analysis.</li>
+<li><strong>1990</strong>: Human Genome Project initiated by the U.S. National Institutes of Health</li>
+<li><strong>2003</strong>: Human Genome Project completed, cost $2.7 billion (in 1991 dollars)</li>
 <li><strong>2014</strong>: Cost to sequence a human genome drops to $1000</li>
 </ul>
+</section>
+<section class="slide level2">
+
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="plots/SRA_growth.png" class="quarto-figure quarto-figure-center" style="width:40.0%" alt="A plot of the growth data in the NCBI SRA showing the exponential growth"></p>
+<p><img data-src="plots/SRA_growth.png" class="quarto-figure quarto-figure-center" style="width:65.0%" alt="A plot of the growth data in the NCBI SRA showing the exponential growth"></p>
 </figure>
 </div>
+</section>
+<section id="evolution-of-the-field" class="slide level2 smaller">
+<h2>Evolution of the Field</h2>
+<ul>
+<li>Genomics</li>
+<li>Transcriptomics</li>
+<li>Proteomics</li>
+<li>Epigenomics</li>
+<li>Gene network regulation</li>
+<li>Phylogenetics</li>
+<li>Systems biology</li>
+<li>Image analysis</li>
+<li>Machine learning</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<p><img data-src="images/50_largest_neurons_fly_brain.webp" class="quarto-figure quarto-figure-center" style="width:100.0%" alt="A fortran punch card with a single line of code"> <small style="color: gray;">Credit: Tyler Sloan and Amy Sterling for FlyWire, Princeton University</small></p>
+</section>
+<section id="the-future" class="slide level2">
+<h2>The Future</h2>
+<ul>
+<li>Multiomics of single cells</li>
+<li>Whole organism modeling</li>
+<li>Virtual cells</li>
+<li>Virtual organisms</li>
+<li>AI Scientists: Autonomous systems that can design, implement and analyze experiments independently</li>
+</ul>
+</section>
+<section id="skills-needed" class="slide level2">
+<h2>Skills Needed</h2>
+<ul>
+<li>Programming languages: R, Python and SQL</li>
+<li>Computer skills: UNIX command-line, git</li>
+<li>Domain knowledge: Understanding of molecular genetics</li>
+<li>Communication skills: Translating complex analyses into insights for researchers</li>
+</ul>
+</section>
+<section id="questions-i-help-answer" class="slide level2">
+<h2>Questions I Help Answer</h2>
+<ul>
+<li>What genes are differentially expressed between conditions or treatments?</li>
+<li>Which biological pathways are activated in disease versus healthy samples?</li>
+<li>Which cell types are present in my single-cell or spatial transcriptomics data?</li>
+</ul>
+</section>
+<section id="thank-you" class="slide level2">
+<h2>Thank you!</h2>
+<center>
+<strong>Questions?</strong>
+</center>
 
 
 </section>
@@ -431,190 +464,172 @@ Natalie Gill
       });
     </script>
     <script id="quarto-html-after-body" type="application/javascript">
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-      const toggleBodyColorMode = (bsSheetEl) => {
-        const mode = bsSheetEl.getAttribute("data-mode");
-        const bodyEl = window.document.querySelector("body");
-        if (mode === "dark") {
-          bodyEl.classList.add("quarto-dark");
-          bodyEl.classList.remove("quarto-light");
-        } else {
-          bodyEl.classList.add("quarto-light");
-          bodyEl.classList.remove("quarto-dark");
-        }
-      }
-      const toggleBodyColorPrimary = () => {
-        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-        if (bsSheetEl) {
-          toggleBodyColorMode(bsSheetEl);
-        }
-      }
-      toggleBodyColorPrimary();  
-      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-      tabsets.forEach(function(tabset) {
-        const tabby = new Tabby('#' + tabset.id);
-      });
-      const isCodeAnnotation = (el) => {
-        for (const clz of el.classList) {
-          if (clz.startsWith('code-annotation-')) {                     
-            return true;
-          }
-        }
-        return false;
-      }
-      const onCopySuccess = function(e) {
-        // button target
-        const button = e.trigger;
-        // don't keep focus
-        button.blur();
-        // flash "checked"
-        button.classList.add('code-copy-button-checked');
-        var currentTitle = button.getAttribute("title");
-        button.setAttribute("title", "Copied!");
-        let tooltip;
-        if (window.bootstrap) {
-          button.setAttribute("data-bs-toggle", "tooltip");
-          button.setAttribute("data-bs-placement", "left");
-          button.setAttribute("data-bs-title", "Copied!");
-          tooltip = new bootstrap.Tooltip(button, 
-            { trigger: "manual", 
-              customClass: "code-copy-button-tooltip",
-              offset: [0, -8]});
-          tooltip.show();    
-        }
-        setTimeout(function() {
-          if (tooltip) {
-            tooltip.hide();
-            button.removeAttribute("data-bs-title");
-            button.removeAttribute("data-bs-toggle");
-            button.removeAttribute("data-bs-placement");
-          }
-          button.setAttribute("title", currentTitle);
-          button.classList.remove('code-copy-button-checked');
-        }, 1000);
-        // clear code selection
-        e.clearSelection();
-      }
-      const getTextToCopy = function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
             }
           }
-          return codeEl.innerText;
-      }
-      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-        text: getTextToCopy
-      });
-      clipboard.on('success', onCopySuccess);
-      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-          text: getTextToCopy,
-          container: window.document.getElementById('quarto-embedded-source-code-modal')
-        });
-        clipboardModal.on('success', onCopySuccess);
-      }
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-        var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          return false;
         }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-            // undo the damage that might have been done by quarto-nav.js in the case of
-            // links that we want to consider external
-            if (link.dataset.originalHref !== undefined) {
-              link.href = link.dataset.originalHref;
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
             }
-          }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
         }
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-        const config = {
-          allowHTML: true,
-          maxWidth: 500,
-          delay: 100,
-          arrow: false,
-          appendTo: function(el) {
-              return el.closest('section.slide') || el.parentElement;
-          },
-          interactive: true,
-          interactiveBorder: 10,
-          theme: 'light-border',
-          placement: 'bottom-start',
-        };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
-          config['offset'] = [0,0];
-          config['maxWidth'] = 700;
-        window.tippy(el, config); 
-      }
-      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-      for (var i=0; i<noterefs.length; i++) {
-        const ref = noterefs[i];
-        tippyHover(ref, function() {
-          // use id or data attribute instead here
-          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-          try { href = new URL(href).hash; } catch {}
-          const id = href.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note) {
-            return note.innerHTML;
-          } else {
-            return "";
-          }
-        });
-      }
-      const findCites = (el) => {
-        const parentEl = el.parentElement;
-        if (parentEl) {
-          const cites = parentEl.dataset.cites;
-          if (cites) {
-            return {
-              el,
-              cites: cites.split(' ')
-            };
-          } else {
-            return findCites(el.parentElement)
-          }
-        } else {
-          return undefined;
-        }
-      };
-      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-      for (var i=0; i<bibliorefs.length; i++) {
-        const ref = bibliorefs[i];
-        const citeInfo = findCites(ref);
-        if (citeInfo) {
-          tippyHover(citeInfo.el, function() {
-            var popup = window.document.createElement('div');
-            citeInfo.cites.forEach(function(cite) {
-              var citeDiv = window.document.createElement('div');
-              citeDiv.classList.add('hanging-indent');
-              citeDiv.classList.add('csl-entry');
-              var biblioDiv = window.document.getElementById('ref-' + cite);
-              if (biblioDiv) {
-                citeDiv.innerHTML = biblioDiv.innerHTML;
+        const getTextToCopy = function(trigger) {
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
               }
-              popup.appendChild(citeDiv);
-            });
-            return popup.innerHTML;
+            }
+            return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
           });
         }
-      }
-    });
-    </script>
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
     
 
 </body></html>

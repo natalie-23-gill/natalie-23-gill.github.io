@@ -1,6 +1,7 @@
 ---
 title: "What is Bioinformatics?"
 author: "Natalie Gill"
+institute: "Gladstone Bioinformatics Core"
 date: "June 10, 2025"
 date-format: MMMM DD, YYYY
 title-slide-attributes:
@@ -17,7 +18,7 @@ format:
 
 <br></br>
 
-__Bioinformatics__: An interdisciplinary field that develops computational methods and software tools to analyze and interpret large, complex biological datasets using biology, computer science, mathematics, and statistics.
+__Bioinformatics__: An interdisciplinary field that develops computational methods and software tools to analyze and interpret, complex biological datasets using biology, computer science, mathematics, and statistics.
 
 
 ---
@@ -32,37 +33,66 @@ __Bioinformatics__: An interdisciplinary field that develops computational metho
 
 |             |            |
 | ---------------------- | ---------------------- |
-| ![](images/fortran_punch_card.jpg){fig-alt="A fortran punch card with a single line of code" .nostretch fig-align="center" width=50%} | ![](images/IBM_7090_mainframe.png){fig-alt="Picture of the IBM 7090 mainframe" .nostretch fig-align="right" width=80%} |
+| ![](images/fortran_punch_card.jpg){fig-alt="A fortran punch card with a single line of code" .nostretch fig-align="center" fig.align="right" width=90%} | ![](images/IBM_7090_mainframe.png){fig-alt="Picture of the IBM 7090 mainframe" .nostretch fig-align="right" width=80%} |
 
 
 
-## DNA Sequencing
--   __1977__: The first cost effective method of sequencing DNA is developed by __Frederick Sanger__
--   Allowed for ~450 bases of DNA to be sequenced 
+## Timeline {.smaller}
 -   __1976__: The first fully seqeunced genome (Bacteriophage MS2)
--   __1979__: The first DNA bioinformatics software is developed by __Roger Staden__
-
-
-## 1980s
-
--   Parallel advances in biology and computer science
--   __1983__: PCR amplification is invented by __Kary Mullis__
--  __1984__: the University of Wisconsin Genetics Computer Group published the ‘GCG’ software suite for DNA, RNA and protein analysis.
--   Bioinformatic analysis was now possible on personal computers
--   __1985__: Computer Applications in the Biosciences (CABIOS), the first bioinformatics journal is established
-
-
-## The Human Genome Project
-
--   __1990__:  Initiated by the U.S. National Institutes of Health
--   Cost $2.7 billion in taxpayer money (in 1991 dollars)
--   Completed in 2003
--   Several pioneer software were developed in the mid to late 1990s to assemble the whole-genome sequencing reads
-
-
-## Next Generation Sequencing {.smaller}
-
--   __2003__: '454' pyrosequencing and sequencing by synthesis (SBS) technologies were invented, allowing for the sequencing of millions of DNA molecules in a single machine run
+-  __1977__: First easy to use personal computers hit the market
+-  __1984__: The University of Wisconsin Genetics Computer Group published the ‘GCG’ software suite for DNA, RNA and protein analysis.
+-   __1990__:  Human Genome Project initiated by the U.S. National Institutes of Health
+-   __2003__: Human Genome Project completed, cost $2.7 billion (in 1991 dollars)
 -   __2014__: Cost to sequence a human genome drops to $1000
 
-![](plots/SRA_growth.png){fig-alt="A plot of the growth data in the NCBI SRA showing the exponential growth" .nostretch fig-align="center" width=40%}
+---
+
+
+![](plots/SRA_growth.png){fig-alt="A plot of the growth data in the NCBI SRA showing the exponential growth" .nostretch fig-align="center" width=65%}
+
+
+
+
+## Evolution of the Field {.smaller}
+
+-   Genomics
+-   Transcriptomics
+-   Proteomics
+-   Epigenomics
+-   Gene network regulation
+-   Phylogenetics
+-   Systems biology
+-   Image analysis
+-   Machine learning
+
+
+---
+
+![](images/50_largest_neurons_fly_brain.webp){fig-alt="A fortran punch card with a single line of code" .nostretch fig-align="center" width=100%}
+<small style="color: gray;">Credit: Tyler Sloan and Amy Sterling for FlyWire, Princeton University</small>
+
+## The Future
+
+-   Multiomics of single cells
+-   Whole organism modeling
+-   Virtual cells
+-   Virtual organisms
+-   AI Scientists: Autonomous systems that can design, implement and analyze experiments independently
+
+## Skills Needed
+
+-   Programming languages: R, Python and SQL
+-   Computer skills: UNIX command-line, git
+-   Domain knowledge: Understanding of molecular genetics
+-   Communication skills: Translating complex analyses into insights for researchers
+
+## Questions I Help Answer
+
+-   What genes are differentially expressed between conditions or treatments?
+-   Which biological pathways are activated in disease versus healthy samples?
+-   Which cell types are present in my single-cell or spatial transcriptomics data?
+
+
+## Thank you!
+
+<center>__Questions?__</center>

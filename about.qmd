@@ -15,5 +15,5 @@ about:
 *(she/her)*   
 🏳️‍🌈 🏳️‍⚧️
 
-Hi! I'm bioinformatician with a passion for leveraging statistics, machine learning and computer science to analyze complex biological data.
+Hi! I'm bioinformatician with a passion for leveraging statistics, machine learning and computer science to analyze complex biological data. 
 

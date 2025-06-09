@@ -1,17 +1,10 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Posts",
-    "section": "",
-    "text": "Welcome To My Blog\n\n\n\n\n\n\nnews\n\n\nbioinformatics\n\n\n\n\n\n\n\n\n\nJun 7, 2025\n\n\nNatalie Gill\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "presentations/what_is_bioinformatics/index.html#bioinformatics",
-    "href": "presentations/what_is_bioinformatics/index.html#bioinformatics",
+    "objectID": "presentations/what_is_bioinformatics/index.html#section",
+    "href": "presentations/what_is_bioinformatics/index.html#section",
     "title": "What is Bioinformatics?",
-    "section": "Bioinformatics",
-    "text": "Bioinformatics\nImage of the different fields"
+    "section": "",
+    "text": "Bioinformatics: An interdisciplinary field that develops computational methods and software tools to analyze and interpret, complex biological datasets using biology, computer science, mathematics, and statistics."
   },
   {
     "objectID": "presentations/what_is_bioinformatics/index.html#origin-story",
@@ -21,11 +14,67 @@
     "text": "Origin Story\n\n1960s: Over 10 years before the development of DNA sequencing\nThe Edman degradation method for protein sequencing could only sequence them in small fragments of 50-60 amino acids\nMargaret Dayhoff and Robert S. Ledley developed the first bioinformatics software, COMPROTEIN to assemble the fragments into the full structure of each protein"
   },
   {
+    "objectID": "presentations/what_is_bioinformatics/index.html#timeline",
+    "href": "presentations/what_is_bioinformatics/index.html#timeline",
+    "title": "What is Bioinformatics?",
+    "section": "Timeline",
+    "text": "Timeline\n\n1976: The first fully seqeunced genome (Bacteriophage MS2)\n1977: First easy to use personal computers hit the market\n1984: The University of Wisconsin Genetics Computer Group published the ‘GCG’ software suite for DNA, RNA and protein analysis.\n1990: Human Genome Project initiated by the U.S. National Institutes of Health\n2003: Human Genome Project completed, cost $2.7 billion (in 1991 dollars)\n2014: Cost to sequence a human genome drops to $1000"
+  },
+  {
+    "objectID": "presentations/what_is_bioinformatics/index.html#evolution-of-the-field",
+    "href": "presentations/what_is_bioinformatics/index.html#evolution-of-the-field",
+    "title": "What is Bioinformatics?",
+    "section": "Evolution of the Field",
+    "text": "Evolution of the Field\n\nGenomics\nTranscriptomics\nProteomics\nEpigenomics\nGene network regulation\nPhylogenetics\nSystems biology\nImage analysis\nMachine learning"
+  },
+  {
+    "objectID": "presentations/what_is_bioinformatics/index.html#the-future",
+    "href": "presentations/what_is_bioinformatics/index.html#the-future",
+    "title": "What is Bioinformatics?",
+    "section": "The Future",
+    "text": "The Future\n\nMultiomics of single cells\nWhole organism modeling\nVirtual cells\nVirtual organisms\nAI Scientists: Autonomous systems that can design, implement and analyze experiments independently"
+  },
+  {
+    "objectID": "presentations/what_is_bioinformatics/index.html#skills-needed",
+    "href": "presentations/what_is_bioinformatics/index.html#skills-needed",
+    "title": "What is Bioinformatics?",
+    "section": "Skills Needed",
+    "text": "Skills Needed\n\nProgramming languages: R, Python and SQL\nComputer skills: UNIX command-line, git\nDomain knowledge: Understanding of molecular genetics\nCommunication skills: Translating complex analyses into insights for researchers"
+  },
+  {
+    "objectID": "presentations/what_is_bioinformatics/index.html#questions-i-help-answer",
+    "href": "presentations/what_is_bioinformatics/index.html#questions-i-help-answer",
+    "title": "What is Bioinformatics?",
+    "section": "Questions I Help Answer",
+    "text": "Questions I Help Answer\n\nWhat genes are differentially expressed between conditions or treatments?\nWhich biological pathways are activated in disease versus healthy samples?\nWhich cell types are present in my single-cell or spatial transcriptomics data?"
+  },
+  {
+    "objectID": "presentations/what_is_bioinformatics/index.html#thank-you",
+    "href": "presentations/what_is_bioinformatics/index.html#thank-you",
+    "title": "What is Bioinformatics?",
+    "section": "Thank you!",
+    "text": "Thank you!\n\nQuestions?"
+  },
+  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About Me",
     "section": "",
     "text": "Natalie Gill\n(she/her)\n🏳️‍🌈 🏳️‍⚧️\nHi! I’m bioinformatician with a passion for leveraging statistics, machine learning and computer science to analyze complex biological data."
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Welcome To My Blog",
+    "section": "",
+    "text": "Welcome! This is the first post in my new Quarto blog. I will be sharing bioinformatics content here, my goal is to make the tutorials and content I share as approachable as possible with an emphasis on developing practical skills."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Posts",
+    "section": "",
+    "text": "Welcome To My Blog\n\n\n\nnews\n\nbioinformatics\n\n\n\n\n\n\n\n\n\nJun 7, 2025\n\n\nNatalie Gill\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "presentations/index.html",
@@ -40,47 +89,5 @@
     "title": "Presentations",
     "section": "Past Presentations",
     "text": "Past Presentations\n\nWhat is Bioinformatics?\nJune 10, 2025\nA short talk to introduce the field of bioinformatics to an undergraduate audience.\nTopics covered:\n\nOrigins of Bioinformatics\n\nNGS Revolution\n\nBioinformatics Subdisciplines\n\nThe Future of Bioinformatics\n\nView Presentation →"
-  },
-  {
-    "objectID": "posts/welcome/index.html",
-    "href": "posts/welcome/index.html",
-    "title": "Welcome To My Blog",
-    "section": "",
-    "text": "Welcome! This is the first post in my new Quarto blog. I will be sharing bioinformatics content here, my goal is to make the tutorials and content I share as approachable as possible with an emphasis on developing practical skills."
-  },
-  {
-    "objectID": "presentations/what_is_bioinformatics/index.html#section",
-    "href": "presentations/what_is_bioinformatics/index.html#section",
-    "title": "What is Bioinformatics?",
-    "section": "",
-    "text": "Bioinformatics: An interdisciplinary field that develops computational methods and software tools to analyze and interpret large, complex biological datasets using biology, computer science, mathematics, and statistics."
-  },
-  {
-    "objectID": "presentations/what_is_bioinformatics/index.html#dna-sequencing",
-    "href": "presentations/what_is_bioinformatics/index.html#dna-sequencing",
-    "title": "What is Bioinformatics?",
-    "section": "DNA Sequencing",
-    "text": "DNA Sequencing\n\n1977: The first cost effective method of sequencing DNA is developed by Frederick Sanger\nAllowed for ~450 bases of DNA to be sequenced\n1976: The first fully seqeunced genome (Bacteriophage MS2)\n1979: The first DNA bioinformatics software is developed by Roger Staden"
-  },
-  {
-    "objectID": "presentations/what_is_bioinformatics/index.html#s",
-    "href": "presentations/what_is_bioinformatics/index.html#s",
-    "title": "What is Bioinformatics?",
-    "section": "1980s",
-    "text": "1980s\n\nParallel advances in biology and computer science\n1983: PCR amplification is invented by Kary Mullis\n1984: the University of Wisconsin Genetics Computer Group published the ‘GCG’ software suite for DNA, RNA and protein analysis.\nBioinformatic analysis was now possible on personal computers\n1985: Computer Applications in the Biosciences (CABIOS), the first bioinformatics journal is established"
-  },
-  {
-    "objectID": "presentations/what_is_bioinformatics/index.html#the-human-genome-project",
-    "href": "presentations/what_is_bioinformatics/index.html#the-human-genome-project",
-    "title": "What is Bioinformatics?",
-    "section": "The Human Genome Project",
-    "text": "The Human Genome Project\n\n1990: Initiated by the U.S. National Institutes of Health\nCost $2.7 billion in taxpayer money (in 1991 dollars)\nCompleted in 2003\nSeveral pioneer software were developed in the mid to late 1990s to assemble the whole-genome sequencing reads"
-  },
-  {
-    "objectID": "presentations/what_is_bioinformatics/index.html#next-generation-sequencing",
-    "href": "presentations/what_is_bioinformatics/index.html#next-generation-sequencing",
-    "title": "What is Bioinformatics?",
-    "section": "Next Generation Sequencing",
-    "text": "Next Generation Sequencing\n\n2003: ‘454’ pyrosequencing and sequencing by synthesis (SBS) technologies were invented, allowing for the sequencing of millions of DNA molecules in a single machine run\n2014: Cost to sequence a human genome drops to $1000"
   }
 ]
