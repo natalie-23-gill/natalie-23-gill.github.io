@@ -13,10 +13,56 @@ format:
     background-transition: fade
 ---
 
-## Bioinformatics {.smaller}
+##
 
-**Image of the different fields**
+<br></br>
 
-## Origin Story
-- Bioinformatics began with protein analysis, not DNA
+__Bioinformatics__: An interdisciplinary field that develops computational methods and software tools to analyze and interpret large, complex biological datasets using biology, computer science, mathematics, and statistics.
 
+
+---
+
+![](images/bioinformatics_definition.png){fig-alt="A graph of the relationship of biology, data science and computer science to bioinformatics" .nostretch fig-align="center" width=80%}
+
+## Origin Story {.smaller}
+-   __1960s__: Over 10 years before the development of DNA sequencing
+-   The Edman degradation method for protein sequencing could only sequence them in small fragments of 50-60 amino acids
+-   __Margaret Dayhoff__ and __Robert S. Ledley__ developed the first bioinformatics software, COMPROTEIN to assemble the fragments into the full structure of each protein
+
+
+|             |            |
+| ---------------------- | ---------------------- |
+| ![](images/fortran_punch_card.jpg){fig-alt="A fortran punch card with a single line of code" .nostretch fig-align="center" width=50%} | ![](images/IBM_7090_mainframe.png){fig-alt="Picture of the IBM 7090 mainframe" .nostretch fig-align="right" width=80%} |
+
+
+
+## DNA Sequencing
+-   __1977__: The first cost effective method of sequencing DNA is developed by __Frederick Sanger__
+-   Allowed for ~450 bases of DNA to be sequenced 
+-   __1976__: The first fully seqeunced genome (Bacteriophage MS2)
+-   __1979__: The first DNA bioinformatics software is developed by __Roger Staden__
+
+
+## 1980s
+
+-   Parallel advances in biology and computer science
+-   __1983__: PCR amplification is invented by __Kary Mullis__
+-  __1984__: the University of Wisconsin Genetics Computer Group published the ‘GCG’ software suite for DNA, RNA and protein analysis.
+-   Bioinformatic analysis was now possible on personal computers
+-   __1985__: Computer Applications in the Biosciences (CABIOS), the first bioinformatics journal is established
+
+
+## The Human Genome Project
+
+-   __1990__:  Initiated by the U.S. National Institutes of Health
+-   Cost $2.7 billion in taxpayer money (in 1991 dollars)
+-   Completed in 2003
+-   Several pioneer software were developed in the mid to late 1990s to assemble the whole-genome sequencing reads
+
+
+## Next Generation Sequencing {.smaller}
+
+-   __2003__: '454' pyrosequencing and sequencing by synthesis (SBS) technologies were invented, allowing for the sequencing of millions of DNA molecules in a single machine run
+-   __2014__: Cost to sequence a human genome drops to $1000
+
+![](plots/SRA_growth.png){fig-alt="A plot of the growth data in the NCBI SRA showing the exponential growth" .nostretch fig-align="center" width=40%}

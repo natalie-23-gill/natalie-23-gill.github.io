@@ -68,7 +68,10 @@ $input-panel-bg: rgba(233, 236, 239, 0.2) !default;
       color: var(--r-list-bullet-color);
     }
   }
-  
+  // Progress bar styling
+  .progress {
+    color: $orange !important;
+  }
 }
 
 
