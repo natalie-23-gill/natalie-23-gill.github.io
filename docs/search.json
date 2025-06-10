@@ -1,12 +1,5 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Posts",
-    "section": "",
-    "text": "Welcome To My Blog\n\n\n\n\n\n\nnews\n\n\nbioinformatics\n\n\n\n\n\n\n\n\n\nJun 7, 2025\n\n\nNatalie Gill\n\n\n\n\n\n\nNo matching items"
-  },
-  {
     "objectID": "presentations/what_is_bioinformatics/index.html#section",
     "href": "presentations/what_is_bioinformatics/index.html#section",
     "title": "What is Bioinformatics?",
@@ -32,21 +25,21 @@
     "href": "presentations/what_is_bioinformatics/index.html#evolution-of-the-field",
     "title": "What is Bioinformatics?",
     "section": "Evolution of the Field",
-    "text": "Evolution of the Field\n\nGenomics\nTranscriptomics\nProteomics\nEpigenomics\nGene network regulation\nPhylogenetics\nSystems biology\nImage analysis\nMachine learning"
+    "text": "Evolution of the Field\n\nGenomics\nTranscriptomics\nProteomics\nEpigenomics\nPhylogenetics\nSystems biology\nImage analysis\nMachine learning"
   },
   {
     "objectID": "presentations/what_is_bioinformatics/index.html#the-future-of-bioinformatics",
     "href": "presentations/what_is_bioinformatics/index.html#the-future-of-bioinformatics",
     "title": "What is Bioinformatics?",
     "section": "The Future of Bioinformatics",
-    "text": "The Future of Bioinformatics\n\nComplete multiomics of single cells\nWhole organism modeling\nVirtual cells\nVirtual organisms\nAI Scientists: Autonomous systems that can design, implement and analyze experiments independently"
+    "text": "The Future of Bioinformatics\n\nComplete multiomics of single cells\nVirtual cells\nVirtual organisms\nAI Scientists: Autonomous systems that can design, implement and analyze experiments independently"
   },
   {
     "objectID": "presentations/what_is_bioinformatics/index.html#skills-needed",
     "href": "presentations/what_is_bioinformatics/index.html#skills-needed",
     "title": "What is Bioinformatics?",
     "section": "Skills Needed",
-    "text": "Skills Needed\n\nProgramming languages: R, Python and SQL\nComputer skills: UNIX command-line, git\nDomain knowledge: Understanding of molecular genetics\nQuantitative skills: Statistics, linear algebra, machine learning\nCommunication skills: Translating complex analyses into insights for researchers"
+    "text": "Skills Needed\n\nProgramming languages: R, Python and SQL\nComputer skills: UNIX command-line, git\nDomain knowledge: Understanding of molecular genetics, cell biology, evolutionary biology\nQuantitative skills: Statistics, linear algebra, machine learning\nCommunication skills: Translating complex analyses into insights for researchers"
   },
   {
     "objectID": "presentations/what_is_bioinformatics/index.html#questions-i-help-answer",
@@ -60,7 +53,7 @@
     "href": "presentations/what_is_bioinformatics/index.html#thank-you",
     "title": "What is Bioinformatics?",
     "section": "Thank you!",
-    "text": "Thank you!\n\nQuestions?"
+    "text": "Thank you!\n\nQuestions?\n\n     \n\nReferences: \nGauthier, J., Vincent, A. T., Charette, S., & Derôme, N. (2018). A brief history of bioinformatics. Briefings in Bioinformatics, 20(6), 1981–1996."
   },
   {
     "objectID": "about.html",
@@ -70,11 +63,25 @@
     "text": "Natalie Gill\n(she/her)\n🏳️‍🌈 🏳️‍⚧️\nHi! I’m bioinformatician with a passion for leveraging statistics, machine learning and computer science to analyze complex biological data."
   },
   {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Welcome To My Blog",
+    "section": "",
+    "text": "Welcome! This is the first post in my new Quarto blog. I will be sharing bioinformatics content here, my goal is to make the tutorials and content I share as approachable as possible with an emphasis on developing practical skills."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Posts",
+    "section": "",
+    "text": "Welcome To My Blog\n\n\n\nnews\n\nbioinformatics\n\n\n\n\n\n\n\n\n\nJun 7, 2025\n\n\nNatalie Gill\n\n\n\n\n\nNo matching items"
+  },
+  {
     "objectID": "presentations/index.html",
     "href": "presentations/index.html",
     "title": "Presentations",
     "section": "",
-    "text": "Welcome to my collection of presentations and talks. Each presentation is built with Quarto and RevealJS."
+    "text": "Welcome to my collection of presentations and talks."
   },
   {
     "objectID": "presentations/index.html#past-presentations",
@@ -82,12 +89,5 @@
     "title": "Presentations",
     "section": "Past Presentations",
     "text": "Past Presentations\n\nWhat is Bioinformatics?\nJune 10, 2025\nA short talk to introduce the field of bioinformatics to an undergraduate audience.\nTopics covered:\n\nOrigins of Bioinformatics\n\nNGS Revolution\n\nBioinformatics Subdisciplines\n\nThe Future of Bioinformatics\n\nView Presentation →"
-  },
-  {
-    "objectID": "posts/welcome/index.html",
-    "href": "posts/welcome/index.html",
-    "title": "Welcome To My Blog",
-    "section": "",
-    "text": "Welcome! This is the first post in my new Quarto blog. I will be sharing bioinformatics content here, my goal is to make the tutorials and content I share as approachable as possible with an emphasis on developing practical skills."
   }
 ]
