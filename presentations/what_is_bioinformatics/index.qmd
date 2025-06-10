@@ -38,7 +38,7 @@ __Bioinformatics__: An interdisciplinary field that develops computational metho
 
 
 ## Timeline {.smaller}
--   __1976__: The first fully seqeunced genome (Bacteriophage MS2)
+-   __1976__: The first fully sequenced genome (Bacteriophage MS2)
 -  __1977__: First easy to use personal computers hit the market
 -  __1984__: The University of Wisconsin Genetics Computer Group published the ‘GCG’ software suite for DNA, RNA and protein analysis.
 -   __1990__:  Human Genome Project initiated by the U.S. National Institutes of Health
@@ -49,6 +49,12 @@ __Bioinformatics__: An interdisciplinary field that develops computational metho
 
 
 ![](plots/SRA_growth.png){fig-alt="A plot of the growth data in the NCBI SRA showing the exponential growth" .nostretch fig-align="center" width=65%}
+
+
+---
+
+![](images/the_whole_game.png){fig-alt="A figure showing the different omics fields and how they are all related to gene network regulation inference" .nostretch fig-align="center" width=85%}
+
 
 
 
@@ -71,9 +77,9 @@ __Bioinformatics__: An interdisciplinary field that develops computational metho
 ![](images/50_largest_neurons_fly_brain.webp){fig-alt="A fortran punch card with a single line of code" .nostretch fig-align="center" width=100%}
 <small style="color: gray;">Credit: Tyler Sloan and Amy Sterling for FlyWire, Princeton University</small>
 
-## The Future
+## The Future of Bioinformatics
 
--   Multiomics of single cells
+-   Complete multiomics of single cells
 -   Whole organism modeling
 -   Virtual cells
 -   Virtual organisms

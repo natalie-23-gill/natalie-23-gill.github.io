@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Posts",
+    "section": "",
+    "text": "Welcome To My Blog\n\n\n\n\n\n\nnews\n\n\nbioinformatics\n\n\n\n\n\n\n\n\n\nJun 7, 2025\n\n\nNatalie Gill\n\n\n\n\n\n\nNo matching items"
+  },
+  {
     "objectID": "presentations/what_is_bioinformatics/index.html#section",
     "href": "presentations/what_is_bioinformatics/index.html#section",
     "title": "What is Bioinformatics?",
@@ -18,7 +25,7 @@
     "href": "presentations/what_is_bioinformatics/index.html#timeline",
     "title": "What is Bioinformatics?",
     "section": "Timeline",
-    "text": "Timeline\n\n1976: The first fully seqeunced genome (Bacteriophage MS2)\n1977: First easy to use personal computers hit the market\n1984: The University of Wisconsin Genetics Computer Group published the ‘GCG’ software suite for DNA, RNA and protein analysis.\n1990: Human Genome Project initiated by the U.S. National Institutes of Health\n2003: Human Genome Project completed, cost $2.7 billion (in 1991 dollars)\n2014: Cost to sequence a human genome drops to $1000"
+    "text": "Timeline\n\n1976: The first fully sequenced genome (Bacteriophage MS2)\n1977: First easy to use personal computers hit the market\n1984: The University of Wisconsin Genetics Computer Group published the ‘GCG’ software suite for DNA, RNA and protein analysis.\n1990: Human Genome Project initiated by the U.S. National Institutes of Health\n2003: Human Genome Project completed, cost $2.7 billion (in 1991 dollars)\n2014: Cost to sequence a human genome drops to $1000"
   },
   {
     "objectID": "presentations/what_is_bioinformatics/index.html#evolution-of-the-field",
@@ -28,11 +35,11 @@
     "text": "Evolution of the Field\n\nGenomics\nTranscriptomics\nProteomics\nEpigenomics\nGene network regulation\nPhylogenetics\nSystems biology\nImage analysis\nMachine learning"
   },
   {
-    "objectID": "presentations/what_is_bioinformatics/index.html#the-future",
-    "href": "presentations/what_is_bioinformatics/index.html#the-future",
+    "objectID": "presentations/what_is_bioinformatics/index.html#the-future-of-bioinformatics",
+    "href": "presentations/what_is_bioinformatics/index.html#the-future-of-bioinformatics",
     "title": "What is Bioinformatics?",
-    "section": "The Future",
-    "text": "The Future\n\nMultiomics of single cells\nWhole organism modeling\nVirtual cells\nVirtual organisms\nAI Scientists: Autonomous systems that can design, implement and analyze experiments independently"
+    "section": "The Future of Bioinformatics",
+    "text": "The Future of Bioinformatics\n\nComplete multiomics of single cells\nWhole organism modeling\nVirtual cells\nVirtual organisms\nAI Scientists: Autonomous systems that can design, implement and analyze experiments independently"
   },
   {
     "objectID": "presentations/what_is_bioinformatics/index.html#skills-needed",
@@ -63,20 +70,6 @@
     "text": "Natalie Gill\n(she/her)\n🏳️‍🌈 🏳️‍⚧️\nHi! I’m bioinformatician with a passion for leveraging statistics, machine learning and computer science to analyze complex biological data."
   },
   {
-    "objectID": "posts/welcome/index.html",
-    "href": "posts/welcome/index.html",
-    "title": "Welcome To My Blog",
-    "section": "",
-    "text": "Welcome! This is the first post in my new Quarto blog. I will be sharing bioinformatics content here, my goal is to make the tutorials and content I share as approachable as possible with an emphasis on developing practical skills."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Posts",
-    "section": "",
-    "text": "Welcome To My Blog\n\n\n\nnews\n\nbioinformatics\n\n\n\n\n\n\n\n\n\nJun 7, 2025\n\n\nNatalie Gill\n\n\n\n\n\nNo matching items"
-  },
-  {
     "objectID": "presentations/index.html",
     "href": "presentations/index.html",
     "title": "Presentations",
@@ -89,5 +82,12 @@
     "title": "Presentations",
     "section": "Past Presentations",
     "text": "Past Presentations\n\nWhat is Bioinformatics?\nJune 10, 2025\nA short talk to introduce the field of bioinformatics to an undergraduate audience.\nTopics covered:\n\nOrigins of Bioinformatics\n\nNGS Revolution\n\nBioinformatics Subdisciplines\n\nThe Future of Bioinformatics\n\nView Presentation →"
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Welcome To My Blog",
+    "section": "",
+    "text": "Welcome! This is the first post in my new Quarto blog. I will be sharing bioinformatics content here, my goal is to make the tutorials and content I share as approachable as possible with an emphasis on developing practical skills."
   }
 ]
