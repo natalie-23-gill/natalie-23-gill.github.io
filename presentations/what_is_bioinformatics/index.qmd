@@ -72,10 +72,6 @@ __Bioinformatics__: An interdisciplinary field that develops computational metho
 -   Machine learning
 
 
----
-
-![](images/50_largest_neurons_fly_brain.webp){fig-alt="A fortran punch card with a single line of code" .nostretch fig-align="center" width=100%}
-<small style="color: gray;">Credit: Tyler Sloan and Amy Sterling for FlyWire, Princeton University</small>
 
 ## The Future of Bioinformatics
 
@@ -85,11 +81,17 @@ __Bioinformatics__: An interdisciplinary field that develops computational metho
 -   Virtual organisms
 -   AI Scientists: Autonomous systems that can design, implement and analyze experiments independently
 
+---
+
+![](images/50_largest_neurons_fly_brain.webp){fig-alt="Image of 50 largest neurons in the drosophila brain showing the connections" .nostretch fig-align="center" width=100%}
+<small style="color: gray;">Credit: Tyler Sloan and Amy Sterling for FlyWire, Princeton University</small>
+
 ## Skills Needed
 
 -   Programming languages: R, Python and SQL
 -   Computer skills: UNIX command-line, git
 -   Domain knowledge: Understanding of molecular genetics
+-   Quantitative skills: Statistics, linear algebra, machine learning
 -   Communication skills: Translating complex analyses into insights for researchers
 
 ## Questions I Help Answer

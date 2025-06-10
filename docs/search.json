@@ -46,7 +46,7 @@
     "href": "presentations/what_is_bioinformatics/index.html#skills-needed",
     "title": "What is Bioinformatics?",
     "section": "Skills Needed",
-    "text": "Skills Needed\n\nProgramming languages: R, Python and SQL\nComputer skills: UNIX command-line, git\nDomain knowledge: Understanding of molecular genetics\nCommunication skills: Translating complex analyses into insights for researchers"
+    "text": "Skills Needed\n\nProgramming languages: R, Python and SQL\nComputer skills: UNIX command-line, git\nDomain knowledge: Understanding of molecular genetics\nQuantitative skills: Statistics, linear algebra, machine learning\nCommunication skills: Translating complex analyses into insights for researchers"
   },
   {
     "objectID": "presentations/what_is_bioinformatics/index.html#questions-i-help-answer",
