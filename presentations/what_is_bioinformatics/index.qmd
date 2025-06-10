@@ -5,7 +5,7 @@ institute: "Gladstone Bioinformatics Core"
 date: "June 10, 2025"
 date-format: MMMM DD, YYYY
 title-slide-attributes:
-  data-background-image: images/dna_to_code.png
+  data-background-image: images/dna_to_code2.png
 format:
   revealjs:
     theme: mytheme.scss
@@ -23,7 +23,7 @@ __Bioinformatics__: An interdisciplinary field that develops computational metho
 
 ---
 
-![](images/bioinformatics_definition.png){fig-alt="A graph of the relationship of biology, data science and computer science to bioinformatics" .nostretch fig-align="center" width=80%}
+![](images/bioinformatics_definition2.png){fig-alt="A graph of the relationship of biology, data science and computer science to bioinformatics" .nostretch fig-align="center" width=80%}
 
 ## Origin Story {.smaller}
 -   __1960s__: Over 10 years before the development of DNA sequencing
