@@ -7,6 +7,7 @@ website:
     right:
       - about.qmd
       - index.qmd
+      - presentations/index.qmd
       - icon: github
         href: https://github.com/natalie-23-gill
       - text: "{{< fa brands bluesky >}}"
