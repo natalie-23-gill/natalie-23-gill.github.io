@@ -89,5 +89,75 @@
     "title": "Welcome To My Blog",
     "section": "",
     "text": "Welcome! This is the first post in my new Quarto blog. I will be sharing bioinformatics content here, my goal is to make the tutorials and content I share as approachable as possible with an emphasis on developing practical skills."
+  },
+  {
+    "objectID": "CLAUDE.html",
+    "href": "CLAUDE.html",
+    "title": "CLAUDE.md",
+    "section": "",
+    "text": "This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.\n\n\nThis is a personal website built with Quarto, featuring blog posts and RevealJS presentations about bioinformatics. The site is hosted on GitHub Pages and uses the “NatBytes” branding.\n\n\n\nThis project uses Quarto for building the website. Quarto must be installed on the system separately.\n\n\n\nQuarto uses bootstrap: https://getbootstrap.com/docs/5.3/customize/sass/\n\n\nRender the entire website:\nquarto render\nPreview the website locally with live reload:\nquarto preview\nRender a specific file:\nquarto render path/to/file.qmd\nRender a specific presentation:\nquarto render presentations/what_is_bioinformatics/index.qmd\n\n\n\nThe website builds to the docs/ directory (configured in _quarto.yml with output-dir: docs), which is the standard directory for GitHub Pages deployment from the main branch.\n\n\n\n\nThe project uses renv for R package management:\n\nR Version: 4.3.3\nPython Version: 3.12.2 (virtualenv in ./renv/python/virtualenvs/)\nLockfile: renv.lock contains all package dependencies\n\nThe .Rprofile file automatically activates the renv environment when R starts.\n\n\n\n.\n├── _quarto.yml           # Main Quarto configuration\n├── index.qmd             # Home page (blog posts listing)\n├── about.qmd             # About page\n├── posts/                # Blog posts directory\n│   ├── _metadata.yml     # Shared metadata for posts\n│   └── welcome/          # Individual post directories\n├── presentations/        # Presentations directory\n│   ├── index.qmd         # Presentations listing page\n│   └── what_is_bioinformatics/\n│       ├── index.qmd     # Presentation slides\n│       ├── mytheme.scss  # Custom RevealJS theme\n│       ├── images/       # Presentation images\n│       └── plots/        # Presentation plots\n├── docs/                 # Build output (published to GitHub Pages)\n├── renv/                 # R package library\n└── styles.css            # Global site styles\n\n\n\n\n\n\nPosts live in posts/ with each post in its own subdirectory\nEach post is a .qmd file with YAML frontmatter\nThe home page (index.qmd) uses Quarto’s listing feature to automatically display posts sorted by date\nPosts can have categories and are rendered with default listing layout\n\n\n\n\n\nPresentations use Quarto’s RevealJS format\nEach presentation lives in its own subdirectory under presentations/\nPresentations can have custom SCSS themes (see below)\nImages and plots are stored in subdirectories within each presentation folder\nThe presentations index page manually lists presentations with descriptions and links\n\n\n\n\nThe _quarto.yml file controls: - Project type: website with output to docs/ - Theme: Dual theme setup (light: flatly, dark: solar) - Navigation: Right-aligned navbar with About, Posts (index), GitHub, and Bluesky links - Custom CSS: styles.css for additional styling\n\n\n\n\nPresentations use SCSS for theming, structured in two sections within a .scss file:\n\n\nDefaults section (/*-- scss:defaults --*/): - Define variables starting with $ to control colors, fonts, and spacing - Common variables include $body-bg, $body-color, $presentation-heading-font, $link-color, $presentation-list-bullet-color - Variables marked with !default can be overridden - Import custom fonts using @import url() statements - All custom themes inherit from Quarto’s default theme\nRules section (/*-- scss:rules --*/): - Define custom CSS rules that override default styles - Target elements within .reveal class for presentation-specific styling - Use CSS custom properties (e.g., --r-bold-color) for reusable values - Can style specific slide elements like title slides using IDs (e.g., #title-slide)\n\n\n\nIn the presentation’s YAML frontmatter:\nformat:\n  revealjs:\n    theme: mytheme.scss\nOr layer with built-in themes:\nformat:\n  revealjs:\n    theme: [default, mytheme.scss]\n\n\n\nThe existing theme demonstrates: - Custom color palette variables ($teal, $surfblue, $yellow, $orange) - Google Fonts imports (News Cycle, Lato) - Overriding presentation variables ($presentation-heading-font, $body-bg, etc.) - Custom styling for bold/italic text, list bullets, and progress bars - Title slide positioning adjustments using transforms\n\n\n\n\n\n\n\nCreate a new directory in posts/ (e.g., posts/my-post/)\nCreate index.qmd with YAML frontmatter including title, date, and categories\nWrite content using Quarto markdown\nRun quarto render to build\n\n\n\n\n\nCreate a new directory in presentations/ (e.g., presentations/my-talk/)\nCreate index.qmd with RevealJS format in YAML frontmatter\nUse --- to separate slides\nCreate images/ and plots/ subdirectories as needed\nOptionally create a custom .scss theme file (see theming section above)\nUpdate presentations/index.qmd to add the new presentation to the listing\nRun quarto render to build\n\n\n\n\n\nThe site is deployed to GitHub Pages from the docs/ directory on the main branch. After rendering, commit changes to both source files and the docs/ directory, then push to GitHub.\nThe CNAME file contains the custom domain configuration, and .nojekyll prevents GitHub from processing the site with Jekyll."
+  },
+  {
+    "objectID": "CLAUDE.html#project-overview",
+    "href": "CLAUDE.html#project-overview",
+    "title": "CLAUDE.md",
+    "section": "",
+    "text": "This is a personal website built with Quarto, featuring blog posts and RevealJS presentations about bioinformatics. The site is hosted on GitHub Pages and uses the “NatBytes” branding."
+  },
+  {
+    "objectID": "CLAUDE.html#build-system",
+    "href": "CLAUDE.html#build-system",
+    "title": "CLAUDE.md",
+    "section": "",
+    "text": "This project uses Quarto for building the website. Quarto must be installed on the system separately."
+  },
+  {
+    "objectID": "CLAUDE.html#theming",
+    "href": "CLAUDE.html#theming",
+    "title": "CLAUDE.md",
+    "section": "",
+    "text": "Quarto uses bootstrap: https://getbootstrap.com/docs/5.3/customize/sass/\n\n\nRender the entire website:\nquarto render\nPreview the website locally with live reload:\nquarto preview\nRender a specific file:\nquarto render path/to/file.qmd\nRender a specific presentation:\nquarto render presentations/what_is_bioinformatics/index.qmd\n\n\n\nThe website builds to the docs/ directory (configured in _quarto.yml with output-dir: docs), which is the standard directory for GitHub Pages deployment from the main branch."
+  },
+  {
+    "objectID": "CLAUDE.html#r-environment",
+    "href": "CLAUDE.html#r-environment",
+    "title": "CLAUDE.md",
+    "section": "",
+    "text": "The project uses renv for R package management:\n\nR Version: 4.3.3\nPython Version: 3.12.2 (virtualenv in ./renv/python/virtualenvs/)\nLockfile: renv.lock contains all package dependencies\n\nThe .Rprofile file automatically activates the renv environment when R starts."
+  },
+  {
+    "objectID": "CLAUDE.html#project-structure",
+    "href": "CLAUDE.html#project-structure",
+    "title": "CLAUDE.md",
+    "section": "",
+    "text": ".\n├── _quarto.yml           # Main Quarto configuration\n├── index.qmd             # Home page (blog posts listing)\n├── about.qmd             # About page\n├── posts/                # Blog posts directory\n│   ├── _metadata.yml     # Shared metadata for posts\n│   └── welcome/          # Individual post directories\n├── presentations/        # Presentations directory\n│   ├── index.qmd         # Presentations listing page\n│   └── what_is_bioinformatics/\n│       ├── index.qmd     # Presentation slides\n│       ├── mytheme.scss  # Custom RevealJS theme\n│       ├── images/       # Presentation images\n│       └── plots/        # Presentation plots\n├── docs/                 # Build output (published to GitHub Pages)\n├── renv/                 # R package library\n└── styles.css            # Global site styles"
+  },
+  {
+    "objectID": "CLAUDE.html#content-architecture",
+    "href": "CLAUDE.html#content-architecture",
+    "title": "CLAUDE.md",
+    "section": "",
+    "text": "Posts live in posts/ with each post in its own subdirectory\nEach post is a .qmd file with YAML frontmatter\nThe home page (index.qmd) uses Quarto’s listing feature to automatically display posts sorted by date\nPosts can have categories and are rendered with default listing layout\n\n\n\n\n\nPresentations use Quarto’s RevealJS format\nEach presentation lives in its own subdirectory under presentations/\nPresentations can have custom SCSS themes (see below)\nImages and plots are stored in subdirectories within each presentation folder\nThe presentations index page manually lists presentations with descriptions and links\n\n\n\n\nThe _quarto.yml file controls: - Project type: website with output to docs/ - Theme: Dual theme setup (light: flatly, dark: solar) - Navigation: Right-aligned navbar with About, Posts (index), GitHub, and Bluesky links - Custom CSS: styles.css for additional styling"
+  },
+  {
+    "objectID": "CLAUDE.html#revealjs-presentation-theming",
+    "href": "CLAUDE.html#revealjs-presentation-theming",
+    "title": "CLAUDE.md",
+    "section": "",
+    "text": "Presentations use SCSS for theming, structured in two sections within a .scss file:\n\n\nDefaults section (/*-- scss:defaults --*/): - Define variables starting with $ to control colors, fonts, and spacing - Common variables include $body-bg, $body-color, $presentation-heading-font, $link-color, $presentation-list-bullet-color - Variables marked with !default can be overridden - Import custom fonts using @import url() statements - All custom themes inherit from Quarto’s default theme\nRules section (/*-- scss:rules --*/): - Define custom CSS rules that override default styles - Target elements within .reveal class for presentation-specific styling - Use CSS custom properties (e.g., --r-bold-color) for reusable values - Can style specific slide elements like title slides using IDs (e.g., #title-slide)\n\n\n\nIn the presentation’s YAML frontmatter:\nformat:\n  revealjs:\n    theme: mytheme.scss\nOr layer with built-in themes:\nformat:\n  revealjs:\n    theme: [default, mytheme.scss]\n\n\n\nThe existing theme demonstrates: - Custom color palette variables ($teal, $surfblue, $yellow, $orange) - Google Fonts imports (News Cycle, Lato) - Overriding presentation variables ($presentation-heading-font, $body-bg, etc.) - Custom styling for bold/italic text, list bullets, and progress bars - Title slide positioning adjustments using transforms"
+  },
+  {
+    "objectID": "CLAUDE.html#creating-new-content",
+    "href": "CLAUDE.html#creating-new-content",
+    "title": "CLAUDE.md",
+    "section": "",
+    "text": "Create a new directory in posts/ (e.g., posts/my-post/)\nCreate index.qmd with YAML frontmatter including title, date, and categories\nWrite content using Quarto markdown\nRun quarto render to build\n\n\n\n\n\nCreate a new directory in presentations/ (e.g., presentations/my-talk/)\nCreate index.qmd with RevealJS format in YAML frontmatter\nUse --- to separate slides\nCreate images/ and plots/ subdirectories as needed\nOptionally create a custom .scss theme file (see theming section above)\nUpdate presentations/index.qmd to add the new presentation to the listing\nRun quarto render to build"
+  },
+  {
+    "objectID": "CLAUDE.html#deployment",
+    "href": "CLAUDE.html#deployment",
+    "title": "CLAUDE.md",
+    "section": "",
+    "text": "The site is deployed to GitHub Pages from the docs/ directory on the main branch. After rendering, commit changes to both source files and the docs/ directory, then push to GitHub.\nThe CNAME file contains the custom domain configuration, and .nojekyll prevents GitHub from processing the site with Jekyll."
   }
 ]

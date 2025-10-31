@@ -1,1 +1,14 @@
 /* css styles */
+
+/* Import Roboto font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+/* Apply Roboto to entire website (overrides Bootstrap theme fonts) */
+body {
+  font-family: 'Roboto', sans-serif !important;
+}
+
+/* Ensure headings also use Roboto */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto', sans-serif !important;
+}
