@@ -5,7 +5,7 @@ page-layout: full
 toc: false
 ---
 
-Welcome to my collection of presentations and talks. Each presentation is built with Quarto and RevealJS.
+Welcome to my collection of presentations and talks.
 
 ## Past Presentations
 

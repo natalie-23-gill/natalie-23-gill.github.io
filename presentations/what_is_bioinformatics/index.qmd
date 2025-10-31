@@ -65,7 +65,6 @@ __Bioinformatics__: An interdisciplinary field that develops computational metho
 -   Transcriptomics
 -   Proteomics
 -   Epigenomics
--   Gene network regulation
 -   Phylogenetics
 -   Systems biology
 -   Image analysis
@@ -76,7 +75,6 @@ __Bioinformatics__: An interdisciplinary field that develops computational metho
 ## The Future of Bioinformatics
 
 -   Complete multiomics of single cells
--   Whole organism modeling
 -   Virtual cells
 -   Virtual organisms
 -   AI Scientists: Autonomous systems that can design, implement and analyze experiments independently
@@ -90,7 +88,7 @@ __Bioinformatics__: An interdisciplinary field that develops computational metho
 
 -   Programming languages: R, Python and SQL
 -   Computer skills: UNIX command-line, git
--   Domain knowledge: Understanding of molecular genetics
+-   Domain knowledge: Understanding of molecular genetics, cell biology, evolutionary biology
 -   Quantitative skills: Statistics, linear algebra, machine learning
 -   Communication skills: Translating complex analyses into insights for researchers
 
@@ -104,3 +102,15 @@ __Bioinformatics__: An interdisciplinary field that develops computational metho
 ## Thank you!
 
 <center>__Questions?__</center>
+
+
+<br> </br>
+<br> </br>
+<br> </br>
+
+
+::: {style="line-height: .1; color: grey;"}
+<font size="3">References: </font>
+
+<font size="3">Gauthier, J., Vincent, A. T., Charette, S., & Derôme, N. (2018). A brief history of bioinformatics. Briefings in Bioinformatics, 20(6), 1981–1996.</font>
+:::
