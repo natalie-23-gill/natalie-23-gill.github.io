@@ -20,6 +20,7 @@ format:
       light: flatly
       dark: solar
     css: styles.css
+    include-in-header: conway-header.html
 
 
 
