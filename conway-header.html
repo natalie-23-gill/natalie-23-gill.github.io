@@ -20,6 +20,13 @@
         flex-shrink: 0 !important;
     }
 
+    /* Search container positioning */
+    #quarto-search {
+        order: 999 !important;
+        flex-shrink: 0 !important;
+        flex-grow: 0 !important;
+    }
+
     /* Hide empty search container */
     #quarto-search:empty {
         display: none !important;
@@ -29,6 +36,7 @@
     #navbarCollapse {
         order: 3 !important;
         flex-shrink: 0 !important;
+        flex-grow: 0 !important;
     }
 
 
@@ -44,9 +52,13 @@
         width: 100% !important;
         height: 100% !important;
         -webkit-mask-image:
-            linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+            linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%),
+            linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+        -webkit-mask-composite: source-in;
         mask-image:
-            linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+            linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%),
+            linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+        mask-composite: intersect;
     }
 
     /* Hide on mobile (Bootstrap lg breakpoint) */
@@ -110,7 +122,7 @@
 
         myCanvas = createCanvas(canvasWidth, canvasHeight);
         myCanvas.parent('conway-canvas-container');
-        frameRate(12);
+        frameRate(10);
 
         getThemeColors();
         initializeGrids();
@@ -161,7 +173,7 @@
     function randomizeGrid() {
         for (let i = 0; i < cols; i++) {
             for (let j = 0; j < rows; j++) {
-                grid[i][j] = random() < 0.25 ? 1 : 0;
+                grid[i][j] = random() < 0.12 ? 1 : 0;
                 fadeGrid[i][j] = grid[i][j];
             }
         }

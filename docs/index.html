@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.39">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -37,12 +37,12 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d166b450ba5a8e9f7a0ab969bf6592c1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-2e4d6e7014f47b6c1cbb5187013610cd.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-f29e7ec5e27e25d1d959049f014c1b3a.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -113,30 +113,55 @@ ul.task-list li input[type="checkbox"] {
         align-items: center;
         justify-content: center;
         margin: 0 1rem;
-        order: 2;  /* Force visual order: after brand, before nav */
+        order: 2;
     }
 
     /* Ensure brand stays first in flex order */
     .navbar-brand-container {
         order: 1 !important;
-        margin-right: 0 !important;
-        margin-left: 0 !important;
+        margin: 0 !important;
         flex-shrink: 0 !important;
     }
 
-    /* Make nav collapse not use ms-auto so animation can fill the gap */
+    /* Search container positioning */
+    #quarto-search {
+        order: 999 !important;
+        flex-shrink: 0 !important;
+        flex-grow: 0 !important;
+    }
+
+    /* Hide empty search container */
+    #quarto-search:empty {
+        display: none !important;
+    }
+
+    /* Nav collapse comes after animation */
     #navbarCollapse {
         order: 3 !important;
-        margin-left: auto !important;
+        flex-shrink: 0 !important;
+        flex-grow: 0 !important;
+    }
+
+
+    /* Theme toggle stays at the end */
+    .quarto-navbar-tools {
+        order: 4 !important;
+        flex-shrink: 0 !important;
     }
 
     #conway-canvas-container canvas {
         display: block;
         touch-action: none;
+        width: 100% !important;
+        height: 100% !important;
         -webkit-mask-image:
-            linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+            linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%),
+            linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+        -webkit-mask-composite: source-in;
         mask-image:
-            linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+            linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%),
+            linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+        mask-composite: intersect;
     }
 
     /* Hide on mobile (Bootstrap lg breakpoint) */
@@ -200,7 +225,7 @@ ul.task-list li input[type="checkbox"] {
 
         myCanvas = createCanvas(canvasWidth, canvasHeight);
         myCanvas.parent('conway-canvas-container');
-        frameRate(12);
+        frameRate(10);
 
         getThemeColors();
         initializeGrids();
@@ -251,7 +276,7 @@ ul.task-list li input[type="checkbox"] {
     function randomizeGrid() {
         for (let i = 0; i < cols; i++) {
             for (let j = 0; j < rows; j++) {
-                grid[i][j] = random() < 0.25 ? 1 : 0;
+                grid[i][j] = random() < 0.12 ? 1 : 0;
                 fadeGrid[i][j] = grid[i][j];
             }
         }
@@ -373,11 +398,11 @@ ul.task-list li input[type="checkbox"] {
             }
 
             // Now initialize the canvas after it's in the right place
-            // Small delay to let layout settle
+            // Delay to let flexbox layout settle before measuring width
             setTimeout(() => {
                 initCanvas();
                 loop(); // Start the animation
-            }, 50);
+            }, 100);
         }
     });
 </script>
@@ -483,7 +508,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YmlvaW5mb3JtYXRpY3M=">bioinformatics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bmV3cw==">news <span class="quarto-category-count">(1)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bioinformatics">bioinformatics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="news">news <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
@@ -497,7 +522,7 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="bmV3cyUyQ2Jpb2luZm9ybWF0aWNz" data-listing-date-sort="1749279600000" data-listing-file-modified-sort="1761890938111" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="54">
+<div class="quarto-post image-right" data-index="0" data-categories="news,bioinformatics" data-listing-date-sort="1749279600000" data-listing-file-modified-sort="1761890938111" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="54">
 <div class="thumbnail">
 <p><a href="./posts/welcome/index.html" class="no-external"></a></p><a href="./posts/welcome/index.html" class="no-external">
 <p class="card-img-top"><img src="posts/welcome/cell_and_code.png" alt="Image of cancer cells with code in the background."  class="thumbnail-image card-img"/></p>
@@ -511,10 +536,10 @@ window.Quarto = {
 <a href="./posts/welcome/index.html" class="no-external"></a>
 </div>
 <div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('bmV3cw=='); return false;">
+<div class="listing-category" onclick="window.quartoListingCategory('news'); return false;">
 news
 </div>
-<div class="listing-category" onclick="window.quartoListingCategory('YmlvaW5mb3JtYXRpY3M='); return false;">
+<div class="listing-category" onclick="window.quartoListingCategory('bioinformatics'); return false;">
 bioinformatics
 </div>
 </div>
@@ -764,6 +789,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -874,6 +901,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
+      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
