@@ -70,213 +70,216 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
 <style>
     #conway-canvas-container {
-        position: relative;
-        width: 100%;
-        height: 120px;
+        flex: 1;
+        height: 56px;
         overflow: hidden;
-        margin-bottom: 0;
-        background-color: #222;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
-    body.quarto-dark #conway-canvas-container {
-        background-color: #073642;
-    }
-
-    #conway-canvas {
+    #conway-canvas-container canvas {
         display: block;
-        width: 100%;
-        margin: 0;
-        filter: blur(0px);
+        touch-action: none;
         -webkit-mask-image:
-            linear-gradient(to right, transparent 0%, black 2%, black 98%, transparent 100%),
-            linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
-        -webkit-mask-composite: source-in;
+            linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
         mask-image:
-            linear-gradient(to right, transparent 0%, black 2%, black 98%, transparent 100%),
-            linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
-        mask-composite: intersect;
+            linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+    }
+
+    /* Hide on mobile (Bootstrap lg breakpoint) */
+    @media (max-width: 991.98px) {
+        #conway-canvas-container {
+            display: none !important;
+        }
     }
 </style>
 
 </head><body class="nav-fixed"><div id="conway-canvas-container"></div>
 
 <script>
-    let grid;
-    let colorGrid;
-    let cols;
-    let rows;
-    let resolution = 4;
-    let canvasWidth;
-    let canvasHeight = 120;
+    let cols, rows;
+    const cellSize = 2;
+    let grid, nextGrid, fadeGrid;
+    let canvasWidth, canvasHeight;
+    let isPaused = false;
+    let myCanvas;
 
-    // Theme colors - will be updated based on current theme
+    // Theme colors
     let bgColor;
-    let aliveColors = [];
-
-    // Get canvas width dynamically
-    function getCanvasWidth() {
-        const container = document.getElementById('conway-canvas-container');
-        return container ? container.clientWidth : window.innerWidth;
-    }
+    let cellColor;
 
     function getThemeColors() {
-        // Get the actual background color from the navbar header element
         const navbar = document.querySelector('#quarto-header .navbar');
         const container = document.getElementById('conway-canvas-container');
 
         if (navbar) {
             const navbarBg = window.getComputedStyle(navbar).backgroundColor;
-
-            // Parse RGB values from the computed style
             const rgbMatch = navbarBg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
             if (rgbMatch) {
                 bgColor = color(parseInt(rgbMatch[1]), parseInt(rgbMatch[2]), parseInt(rgbMatch[3]));
-
-                // Update container background to match navbar
                 if (container) {
                     container.style.backgroundColor = navbarBg;
                 }
             }
         } else {
-            // Fallback if navbar not found yet
-            bgColor = color(33, 37, 41); // Default dark navbar color
+            bgColor = color(33, 37, 41);
         }
 
-        // Detect if dark mode is active
         const isDark = document.body.classList.contains('quarto-dark');
-
         if (isDark) {
-            // Dark mode colors
-            aliveColors = [
-                color(42, 161, 152),    // teal #2aa198
-                color(181, 137, 0),     // gold #b58900
-                color(203, 75, 22),     // orange #cb4b16
-                color(220, 50, 47),     // red #dc322f
-                color(108, 113, 196),   // violet #6c71c4
-                color(38, 139, 210),    // blue #268bd2
-                color(133, 153, 0),     // green #859900
-            ];
+            cellColor = color(42, 161, 152); // teal #2aa198
         } else {
-            // Light mode colors
-            aliveColors = [
-                color(24, 188, 156),    // teal #18bc9c
-                color(44, 62, 80),      // dark blue-gray #2c3e50
-                color(52, 152, 219),    // bright blue
-                color(155, 89, 182),    // purple
-                color(241, 196, 15),    // yellow
-                color(230, 126, 34),    // orange
-                color(231, 76, 60),     // red
-            ];
-        }
-    }
-
-    function initializeGrid() {
-        cols = floor(width / resolution);
-        rows = floor(height / resolution);
-
-        grid = [];
-        colorGrid = [];
-
-        // Initialize arrays
-        for (let i = 0; i < cols; i++) {
-            grid[i] = [];
-            colorGrid[i] = [];
-            for (let j = 0; j < rows; j++) {
-                grid[i][j] = 0;
-                colorGrid[i][j] = floor(random(aliveColors.length));
-            }
-        }
-
-        // Add initial cells - spread across the canvas
-        let initialCells = floor((cols * rows) / 8); // Proportional to canvas size
-        for (let i = 0; i < initialCells; i++) {
-            let randX = floor(random(cols));
-            let randY = floor(random(rows));
-            grid[randX][randY] = 1;
+            cellColor = color(24, 188, 156); // teal #18bc9c
         }
     }
 
     function setup() {
         getThemeColors();
 
-        canvasWidth = getCanvasWidth();
-        let canvas = createCanvas(canvasWidth, canvasHeight);
-        canvas.parent('conway-canvas-container');
-        canvas.id('conway-canvas');
+        let container = document.getElementById('conway-canvas-container');
+        canvasWidth = container.offsetWidth;
+        canvasHeight = container.offsetHeight;
 
-        initializeGrid();
+        myCanvas = createCanvas(canvasWidth, canvasHeight);
+        myCanvas.parent('conway-canvas-container');
         frameRate(12);
+
+        initializeGrids();
+        randomizeGrid();
+
+        // Click to toggle pause
+        myCanvas.mousePressed(() => {
+            isPaused = !isPaused;
+            if (isPaused) {
+                noLoop();
+            } else {
+                loop();
+            }
+        });
     }
 
     function windowResized() {
-        canvasWidth = getCanvasWidth();
+        let container = document.getElementById('conway-canvas-container');
+        if (!container) return;
+
+        let newWidth = container.offsetWidth;
+        let newHeight = container.offsetHeight;
+
+        if (newWidth === canvasWidth && newHeight === canvasHeight) return;
+        if (newWidth === 0 || newHeight === 0) return;
+
+        canvasWidth = newWidth;
+        canvasHeight = newHeight;
         resizeCanvas(canvasWidth, canvasHeight);
-        initializeGrid();
+        initializeGrids();
+        randomizeGrid();
+    }
+
+    function initializeGrids() {
+        cols = floor(width / cellSize);
+        rows = floor(height / cellSize);
+
+        grid = Array(cols).fill(null).map(() => Array(rows).fill(0));
+        nextGrid = Array(cols).fill(null).map(() => Array(rows).fill(0));
+        fadeGrid = Array(cols).fill(null).map(() => Array(rows).fill(0));
+    }
+
+    function randomizeGrid() {
+        for (let i = 0; i < cols; i++) {
+            for (let j = 0; j < rows; j++) {
+                grid[i][j] = random() < 0.25 ? 1 : 0;
+                fadeGrid[i][j] = grid[i][j];
+            }
+        }
+    }
+
+    function countNeighbors(x, y) {
+        let count = 0;
+        for (let i = -1; i <= 1; i++) {
+            for (let j = -1; j <= 1; j++) {
+                if (i === 0 && j === 0) continue;
+                let col = (x + i + cols) % cols;
+                let row = (y + j + rows) % rows;
+                count += grid[col][row];
+            }
+        }
+        return count;
+    }
+
+    function updateGrid() {
+        for (let i = 0; i < cols; i++) {
+            for (let j = 0; j < rows; j++) {
+                let neighbors = countNeighbors(i, j);
+                let state = grid[i][j];
+
+                if (state === 0 && neighbors === 3) {
+                    nextGrid[i][j] = 1;
+                } else if (state === 1 && (neighbors < 2 || neighbors > 3)) {
+                    nextGrid[i][j] = 0;
+                } else {
+                    nextGrid[i][j] = state;
+                }
+            }
+        }
+
+        let temp = grid;
+        grid = nextGrid;
+        nextGrid = temp;
+
+        // Add some random cells to keep it alive
+        let aliveCount = 0;
+        for (let i = 0; i < cols; i++) {
+            for (let j = 0; j < rows; j++) {
+                if (grid[i][j] === 1) aliveCount++;
+            }
+        }
+
+        if (aliveCount < cols * rows * 0.05) {
+            for (let k = 0; k < 20; k++) {
+                let x = floor(random(cols));
+                let y = floor(random(rows));
+                grid[x][y] = 1;
+                fadeGrid[x][y] = 1.0;
+            }
+        }
+    }
+
+    function updateFadeGrid() {
+        for (let i = 0; i < cols; i++) {
+            for (let j = 0; j < rows; j++) {
+                if (grid[i][j] === 1) {
+                    fadeGrid[i][j] = 1.0;
+                } else {
+                    fadeGrid[i][j] *= 0.7;
+                    if (fadeGrid[i][j] < 0.01) {
+                        fadeGrid[i][j] = 0;
+                    }
+                }
+            }
+        }
     }
 
     function draw() {
         background(bgColor);
 
-        let aliveCount = 0;
-
-        // Draw only alive cells
         noStroke();
         for (let i = 0; i < cols; i++) {
             for (let j = 0; j < rows; j++) {
-                if (grid[i][j] == 1) {
-                    aliveCount++;
-                    let x = i * resolution;
-                    let y = j * resolution;
-                    fill(aliveColors[colorGrid[i][j]]);
-                    rect(x, y, resolution - 1, resolution - 1);
+                if (fadeGrid[i][j] > 0) {
+                    let alpha = fadeGrid[i][j] * 255;
+                    fill(red(cellColor), green(cellColor), blue(cellColor), alpha);
+                    rect(i * cellSize, j * cellSize, cellSize, cellSize);
                 }
             }
         }
 
-        // Add cells if animation slows down
-        if (aliveCount < 80) {
-            for (let n = 0; n < 15; n++) {
-                let randX = floor(random(cols));
-                let randY = floor(random(rows));
-                grid[randX][randY] = 1;
-            }
-        }
-
-        // Compute next generation
-        let next = [];
-        for (let i = 0; i < cols; i++) {
-            next[i] = [];
-            for (let j = 0; j < rows; j++) {
-                let state = grid[i][j];
-                let neighbors = countNeighbors(i, j);
-
-                if (state == 0 && neighbors == 3) {
-                    next[i][j] = 1;
-                } else if (state == 1 && (neighbors < 2 || neighbors > 3)) {
-                    next[i][j] = 0;
-                } else {
-                    next[i][j] = state;
-                }
-            }
-        }
-
-        grid = next;
-    }
-
-    function countNeighbors(x, y) {
-        let sum = 0;
-        for (let i = -1; i <= 1; i++) {
-            for (let j = -1; j <= 1; j++) {
-                let col = (x + i + cols) % cols;
-                let row = (y + j + rows) % rows;
-                sum += grid[col][row];
-            }
-        }
-        sum -= grid[x][y];
-        return sum;
+        updateGrid();
+        updateFadeGrid();
     }
 
     // Watch for theme changes
@@ -288,10 +291,20 @@ ul.task-list li input[type="checkbox"] {
         });
     });
 
-    // Start observing theme changes
     if (document.body) {
         observer.observe(document.body, { attributes: true });
     }
+
+    // Move container into navbar after DOM loads
+    document.addEventListener('DOMContentLoaded', () => {
+        const navbar = document.querySelector('.navbar-container');
+        const navCollapse = document.querySelector('#navbarCollapse');
+        const container = document.getElementById('conway-canvas-container');
+
+        if (navbar && navCollapse && container) {
+            navbar.insertBefore(container, navCollapse);
+        }
+    });
 </script>
 
 
