@@ -339,8 +339,8 @@ ul.task-list li input[type="checkbox"] {
                 if (grid[i][j] === 1) {
                     fadeGrid[i][j] = 1.0;
                 } else {
-                    fadeGrid[i][j] *= 0.7;
-                    if (fadeGrid[i][j] < 0.01) {
+                    fadeGrid[i][j] *= 0.5;
+                    if (fadeGrid[i][j] < 0.05) {
                         fadeGrid[i][j] = 0;
                     }
                 }
