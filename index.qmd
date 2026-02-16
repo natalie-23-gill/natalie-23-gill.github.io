@@ -1,14 +1,19 @@
 ---
-title: "Posts"
-listing:
-  contents: posts
-  sort: "date desc"
-  type: default
-  categories: true
-  sort-ui: false
-  filter-ui: false
-page-layout: full
-title-block-banner: true
+title: "About Me"
+about:
+  template: jolla
+  image: images/profile.JPG
+  links:
+    - icon: bluesky
+      text: "{{< fa brands bluesky >}}"
+      href: https://bsky.app/profile/natbytes.bsky.social
+    - icon: github
+      href: https://github.com/natalie-23-gill
+
 ---
 
+Natalie Gill
+*(she/her)*
+🏳️‍🌈 🏳️‍⚧️
 
+Hi! I'm a Bioinformatician who analyzes high-dimensional biological data and builds open-source tools for research across a wide array of omics assays and biological conditions.

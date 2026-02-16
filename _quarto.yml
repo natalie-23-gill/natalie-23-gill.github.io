@@ -8,8 +8,8 @@ website:
   title: "NatBytes"
   navbar:
     right:
-      - about.qmd
       - index.qmd
+      - about.qmd
       - projects/index.qmd
       - presentations/index.qmd
       - icon: github
