@@ -9,9 +9,9 @@ website:
   navbar:
     right:
       - index.qmd
-      - about.qmd
       - projects/index.qmd
       - presentations/index.qmd
+      - about.qmd
       - icon: github
         href: https://github.com/natalie-23-gill
       - text: "{{< fa brands bluesky >}}"

@@ -9,17 +9,27 @@ Here are some of the projects I've been working on.
 
 ## Featured Projects
 
-### Project Title
-*Brief tagline or date*
+### [clustOpt](https://github.com/gladstone-institutes/clustOpt)
+*Presented at ISMB/ECCB 2025*
 
-Description of the project — what it does, why it matters, and your role.
+R package for optimizing Seurat clustering resolution via cross-validation and random forests.
 
-**Highlights:**
+[View Project →](https://github.com/gladstone-institutes/clustOpt){.btn .btn-primary}
 
--   Key feature or contribution
--   Another highlight
--   Technology or method used
+---
 
-[View Project →](#){.btn .btn-primary}
+### [supremo_lite](https://github.com/gladstone-institutes/supremo_lite)
+
+Lightweight, model-agnostic Python tool for analyzing genetic variant effects on DNA sequences.
+
+[View Project →](https://github.com/gladstone-institutes/supremo_lite){.btn .btn-primary}
+
+---
+
+### [GeneSet_Translator](https://github.com/gladstone-institutes/GeneSet_Translator)
+
+Interactive knowledge graph explorer for discovering DE gene and disease relationships via NCATS Translator APIs, with network visualization and AI-assisted interpretation.
+
+[View Project →](https://github.com/gladstone-institutes/GeneSet_Translator){.btn .btn-primary}
 
 ---

@@ -102,6 +102,6 @@
     "href": "projects/index.html#featured-projects",
     "title": "Projects",
     "section": "Featured Projects",
-    "text": "Featured Projects\n\nProject Title\nBrief tagline or date\nDescription of the project — what it does, why it matters, and your role.\nHighlights:\n\nKey feature or contribution\nAnother highlight\nTechnology or method used\n\nView Project →"
+    "text": "Featured Projects\n\nclustOpt\nPresented at ISMB/ECCB 2025\nR package for optimizing Seurat clustering resolution via cross-validation and random forests.\nView Project →\n\n\n\nsupremo_lite\nLightweight, model-agnostic Python tool for analyzing genetic variant effects on DNA sequences.\nView Project →\n\n\n\nGeneSet_Translator\nInteractive knowledge graph explorer for discovering DE gene and disease relationships via NCATS Translator APIs, with network visualization and AI-assisted interpretation.\nView Project →"
   }
 ]
