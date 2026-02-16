@@ -1,0 +1,25 @@
+---
+title: "Projects"
+subtitle: "A selection of projects I've worked on"
+page-layout: full
+toc: false
+---
+
+Here are some of the projects I've been working on.
+
+## Featured Projects
+
+### Project Title
+*Brief tagline or date*
+
+Description of the project — what it does, why it matters, and your role.
+
+**Highlights:**
+
+-   Key feature or contribution
+-   Another highlight
+-   Technology or method used
+
+[View Project →](#){.btn .btn-primary}
+
+---

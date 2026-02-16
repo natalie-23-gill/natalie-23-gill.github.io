@@ -109,8 +109,8 @@
         }
     }
 
-    // Don't auto-run setup - we'll call it manually after DOM is ready
     p5.disableFriendlyErrors = true;
+    let p5Ready = false;
 
     function initCanvas() {
         let container = document.getElementById('conway-canvas-container');
@@ -118,7 +118,7 @@
         canvasHeight = container.offsetHeight;
 
         // Skip if container has no size yet
-        if (canvasWidth === 0 || canvasHeight === 0) return;
+        if (canvasWidth === 0 || canvasHeight === 0) return false;
 
         myCanvas = createCanvas(canvasWidth, canvasHeight);
         myCanvas.parent('conway-canvas-container');
@@ -137,11 +137,12 @@
                 loop();
             }
         });
+        return true;
     }
 
-    // Empty setup - we initialize manually
     function setup() {
-        noLoop(); // Don't start drawing until we're ready
+        noLoop();
+        p5Ready = true;
     }
 
     function windowResized() {
@@ -263,6 +264,36 @@
         updateFadeGrid();
     }
 
+    // Move container into navbar after DOM loads
+    document.addEventListener('DOMContentLoaded', () => {
+        const navbarContainer = document.querySelector('.navbar-container');
+        const brandContainer = document.querySelector('.navbar-brand-container');
+        const quartoSearch = document.querySelector('#quarto-search');
+        const container = document.getElementById('conway-canvas-container');
+
+        if (navbarContainer && brandContainer && container) {
+            brandContainer.classList.remove('mx-auto');
+
+            if (quartoSearch) {
+                navbarContainer.insertBefore(container, quartoSearch);
+            } else {
+                brandContainer.after(container);
+            }
+
+            // Poll until p5 is initialized and container has layout dimensions
+            function tryInit() {
+                if (p5Ready && container.offsetWidth > 0 && container.offsetHeight > 0) {
+                    if (initCanvas()) {
+                        loop();
+                    }
+                } else {
+                    requestAnimationFrame(tryInit);
+                }
+            }
+            requestAnimationFrame(tryInit);
+        }
+    });
+
     // Watch for theme changes
     const observer = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
@@ -276,30 +307,4 @@
         observer.observe(document.body, { attributes: true });
     }
 
-    // Move container into navbar after DOM loads
-    document.addEventListener('DOMContentLoaded', () => {
-        const navbarContainer = document.querySelector('.navbar-container');
-        const brandContainer = document.querySelector('.navbar-brand-container');
-        const quartoSearch = document.querySelector('#quarto-search');
-        const container = document.getElementById('conway-canvas-container');
-
-        if (navbarContainer && brandContainer && container) {
-            // Remove mx-auto from brand so it stays left
-            brandContainer.classList.remove('mx-auto');
-
-            // Insert into navbar (before search element if it exists)
-            if (quartoSearch) {
-                navbarContainer.insertBefore(container, quartoSearch);
-            } else {
-                brandContainer.after(container);
-            }
-
-            // Now initialize the canvas after it's in the right place
-            // Delay to let flexbox layout settle before measuring width
-            setTimeout(() => {
-                initCanvas();
-                loop(); // Start the animation
-            }, 100);
-        }
-    });
 </script>
