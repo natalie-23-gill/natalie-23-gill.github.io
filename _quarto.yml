@@ -5,7 +5,7 @@ project:
     - "*.qmd"
     - "!CLAUDE.md"
 website:
-  title: "NatBytes"
+  title: "Natalie Gill"
   navbar:
     right:
       - index.qmd

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Presentations – NatBytes</title>
+<title>Presentations – Natalie Gill</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -73,22 +73,64 @@ ul.task-list li input[type="checkbox"] {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
 <style>
     #conway-canvas-container {
-        flex: 1;
+        flex: 1 1 auto;
+        min-width: 0;
         height: 56px;
         overflow: hidden;
         cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
+        margin: 0 1rem;
+        order: 2;
+    }
+
+    /* Ensure brand stays first in flex order */
+    .navbar-brand-container {
+        order: 1 !important;
+        margin: 0 !important;
+        flex-shrink: 0 !important;
+    }
+
+    /* Search container positioning */
+    #quarto-search {
+        order: 999 !important;
+        flex-shrink: 0 !important;
+        flex-grow: 0 !important;
+    }
+
+    /* Hide empty search container */
+    #quarto-search:empty {
+        display: none !important;
+    }
+
+    /* Nav collapse comes after animation */
+    #navbarCollapse {
+        order: 3 !important;
+        flex-shrink: 0 !important;
+        flex-grow: 0 !important;
+    }
+
+
+    /* Theme toggle stays at the end */
+    .quarto-navbar-tools {
+        order: 4 !important;
+        flex-shrink: 0 !important;
     }
 
     #conway-canvas-container canvas {
         display: block;
         touch-action: none;
+        width: 100% !important;
+        height: 100% !important;
         -webkit-mask-image:
-            linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+            linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%),
+            linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+        -webkit-mask-composite: source-in;
         mask-image:
-            linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+            linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%),
+            linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+        mask-composite: intersect;
     }
 
     /* Hide on mobile (Bootstrap lg breakpoint) */
@@ -108,6 +150,7 @@ ul.task-list li input[type="checkbox"] {
     let canvasWidth, canvasHeight;
     let isPaused = false;
     let myCanvas;
+    let p5Instance;
 
     // Theme colors
     let bgColor;
@@ -138,17 +181,22 @@ ul.task-list li input[type="checkbox"] {
         }
     }
 
-    function setup() {
-        getThemeColors();
+    p5.disableFriendlyErrors = true;
+    let p5Ready = false;
 
+    function initCanvas() {
         let container = document.getElementById('conway-canvas-container');
         canvasWidth = container.offsetWidth;
         canvasHeight = container.offsetHeight;
 
+        // Skip if container has no size yet
+        if (canvasWidth === 0 || canvasHeight === 0) return false;
+
         myCanvas = createCanvas(canvasWidth, canvasHeight);
         myCanvas.parent('conway-canvas-container');
-        frameRate(12);
+        frameRate(10);
 
+        getThemeColors();
         initializeGrids();
         randomizeGrid();
 
@@ -161,6 +209,12 @@ ul.task-list li input[type="checkbox"] {
                 loop();
             }
         });
+        return true;
+    }
+
+    function setup() {
+        noLoop();
+        p5Ready = true;
     }
 
     function windowResized() {
@@ -192,7 +246,7 @@ ul.task-list li input[type="checkbox"] {
     function randomizeGrid() {
         for (let i = 0; i < cols; i++) {
             for (let j = 0; j < rows; j++) {
-                grid[i][j] = random() < 0.25 ? 1 : 0;
+                grid[i][j] = random() < 0.12 ? 1 : 0;
                 fadeGrid[i][j] = grid[i][j];
             }
         }
@@ -255,8 +309,8 @@ ul.task-list li input[type="checkbox"] {
                 if (grid[i][j] === 1) {
                     fadeGrid[i][j] = 1.0;
                 } else {
-                    fadeGrid[i][j] *= 0.7;
-                    if (fadeGrid[i][j] < 0.01) {
+                    fadeGrid[i][j] *= 0.5;
+                    if (fadeGrid[i][j] < 0.05) {
                         fadeGrid[i][j] = 0;
                     }
                 }
@@ -282,6 +336,36 @@ ul.task-list li input[type="checkbox"] {
         updateFadeGrid();
     }
 
+    // Move container into navbar after DOM loads
+    document.addEventListener('DOMContentLoaded', () => {
+        const navbarContainer = document.querySelector('.navbar-container');
+        const brandContainer = document.querySelector('.navbar-brand-container');
+        const quartoSearch = document.querySelector('#quarto-search');
+        const container = document.getElementById('conway-canvas-container');
+
+        if (navbarContainer && brandContainer && container) {
+            brandContainer.classList.remove('mx-auto');
+
+            if (quartoSearch) {
+                navbarContainer.insertBefore(container, quartoSearch);
+            } else {
+                brandContainer.after(container);
+            }
+
+            // Poll until p5 is initialized and container has layout dimensions
+            function tryInit() {
+                if (p5Ready && container.offsetWidth > 0 && container.offsetHeight > 0) {
+                    if (initCanvas()) {
+                        loop();
+                    }
+                } else {
+                    requestAnimationFrame(tryInit);
+                }
+            }
+            requestAnimationFrame(tryInit);
+        }
+    });
+
     // Watch for theme changes
     const observer = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
@@ -295,16 +379,6 @@ ul.task-list li input[type="checkbox"] {
         observer.observe(document.body, { attributes: true });
     }
 
-    // Move container into navbar after DOM loads
-    document.addEventListener('DOMContentLoaded', () => {
-        const navbar = document.querySelector('.navbar-container');
-        const navCollapse = document.querySelector('#navbarCollapse');
-        const container = document.getElementById('conway-canvas-container');
-
-        if (navbar && navCollapse && container) {
-            navbar.insertBefore(container, navCollapse);
-        }
-    });
 </script>
 
 
@@ -319,7 +393,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">NatBytes</span>
+    <span class="navbar-title">Natalie Gill</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -329,16 +403,20 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">About Me</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
-<span class="menu-text">Posts</span></a>
+    <a class="nav-link" href="../projects/index.html"> 
+<span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="../presentations/index.html" aria-current="page"> 
 <span class="menu-text">Presentations</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">Posts</span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/natalie-23-gill"> <i class="bi bi-github" role="img">
