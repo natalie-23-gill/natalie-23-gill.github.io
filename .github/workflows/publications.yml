@@ -1,0 +1,69 @@
+# Every three months: regenerate publications/ from Google Scholar, commit any change to main,
+# then start the Publish workflow (a push made with GITHUB_TOKEN does not trigger `on: push`,
+# but a workflow_dispatch does).
+#
+# Google Scholar has no API and sometimes blocks GitHub's runners with a CAPTCHA. tools/scholar.py
+# then exits 1 without touching the files, this run fails (GitHub emails you), and the site keeps
+# the last good list. Fix: run `python tools/scholar.py` locally, commit, push. Or rerun later
+# from Actions > Update publications > Run workflow.
+#
+# GitHub disables scheduled workflows after 60 days without repository activity, which is less
+# than the gap between runs; the last step re-enables this workflow so the schedule keeps firing.
+name: Update publications
+
+on:
+  schedule:
+    - cron: "17 6 1 1,4,7,10 *"     # 06:17 UTC on Jan 1, Apr 1, Jul 1, Oct 1
+  workflow_dispatch:
+
+permissions:
+  contents: write                    # commit publications/
+  actions: write                     # start Publish, re-enable this workflow
+
+concurrency:
+  group: publications
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch publications from Google Scholar
+        run: python tools/scholar.py
+
+      - name: Commit changes
+        id: commit
+        run: |
+          if git diff --quiet -- publications/; then
+            echo "No change in publications."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add publications/
+            git commit -m "Update publications from Google Scholar"
+            git push origin HEAD:main
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Publish the site
+        if: steps.commit.outputs.changed == 'true'
+        run: gh workflow run publish.yml --ref main
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Keep the schedule enabled
+        if: always()
+        run: gh api -X PUT "repos/${{ github.repository }}/actions/workflows/publications.yml/enable"
+        env:
+          GH_TOKEN: ${{ github.token }}
