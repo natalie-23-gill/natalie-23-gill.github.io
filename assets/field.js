@@ -100,14 +100,21 @@
     var raf = 0, timer = 0, lastT = 0, onScreen = true, ro = null, io = null, mo = null;
     var paused = readPaused(), btn = null;
 
+    /* data-max-width="none": simulate the full width instead of tiling (a still frame with a shape in it).
+       data-hook="name": after the warm-up, NGFieldHooks[name](engine, {el, cell, rand}) may reshape a still frame. */
+    var capW = el.getAttribute("data-max-width") === "none" ? Infinity : Math.floor(FIELD.maxWidth / cell);
+    var hook = (root.NGFieldHooks || {})[el.getAttribute("data-hook")];
     function build(w, h) {
-      var W = Math.max(1, Math.min(Math.ceil(w / cell), Math.floor(FIELD.maxWidth / cell))), H = Math.max(1, Math.ceil(h / cell));
+      var W = Math.max(1, Math.min(Math.ceil(w / cell), capW)), H = Math.max(1, Math.ceil(h / cell));
       if (E && E.W === W && E.H === H) return;
       var old = E;
       E = new Engine(W, H, rng(seed)); E.seed(FIELD.density);
       if (old && live) { /* keep the running picture where the grids overlap (phone toolbars resize the hero) */
         for (var y = 0; y < Math.min(H, old.H); y++) for (var x = 0; x < Math.min(W, old.W); x++) E.cells[y * W + x] = old.cells[y * old.W + x];
-      } else for (var g = 0; g < FIELD.generations; g++) E.step();
+      } else {
+        for (var g = 0; g < FIELD.generations; g++) E.step();
+        if (hook) hook(E, { el: el, cell: cell, rand: rng(seed ^ 0x9e3779b9) });
+      }
       E.countAlive(); disp = new Float32Array(W * H);
       for (var i = 0; i < W * H; i++) disp[i] = E.counts[i];
       off.width = W; off.height = H; img = octx.createImageData(W, H);

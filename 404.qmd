@@ -5,9 +5,8 @@ description: "Nothing lives here."
 ---
 
 ```{=html}
-<div class="ng-field site-hero site-hero--still" data-field="still"><canvas aria-hidden="true"></canvas><div class="ng-field__panel"><h1 class="ng-field__name">Natalie Gill</h1><p class="ng-field__tag">404</p></div></div>
+<script src="/assets/field-404.js"></script>
+<div class="ng-field site-hero site-hero--404 site-hero--center" data-field="still" data-max-width="none" data-hook="void"><canvas aria-hidden="true"></canvas><div class="ng-field__panel"><p class="ng-field__tag">404</p><h1 class="ng-field__name">Nothing lives here.</h1><p class="site-hero__note t-caption">This page doesn't exist, or it has moved.</p></div></div>
 ```
-
-Nothing lives here.
 
 [Go to the home page](/)
