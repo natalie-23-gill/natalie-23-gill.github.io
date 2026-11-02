@@ -1,19 +1,37 @@
 ---
-title: "About Me"
-about:
-  template: jolla
-  image: images/profile.JPG
-  links:
-    - icon: bluesky
-      text: "{{< fa brands bluesky >}}"
-      href: https://bsky.app/profile/natbytes.bsky.social
-    - icon: github
-      href: https://github.com/natalie-23-gill
-
+pagetitle: "Natalie Gill"
+hide-title: true
+aliases:
+  - /about.html
+description: "Bioinformatician who analyzes high-dimensional biological data and builds open-source tools for research."
+listing:
+  id: latest
+  contents: "writing/*/index.qmd"
+  sort: "date desc"
+  max-items: 3
+  template: _templates/listing.ejs
+  categories: false
+  sort-ui: false
+  filter-ui: false
 ---
 
-Natalie Gill
-*(she/her)*
-🏳️‍🌈 🏳️‍⚧️
+```{=html}
+<div class="ng-field site-hero" data-field="live"><canvas aria-hidden="true"></canvas><div class="ng-field__panel"><h1 class="ng-field__name">Natalie Gill</h1><p class="site-hero__pronouns t-caption">(she/her)</p><p class="ng-field__tag">Bioinformatics · AI engineering · Machine learning for biology</p></div></div>
+```
 
-Hi! I'm a Bioinformatician who analyzes high-dimensional biological data and builds open-source tools for research across a wide array of omics assays and biological conditions.
+::: {.t-lead}
+I'm a bioinformatician who analyzes high-dimensional biological data and builds open-source tools for research across a wide array of omics assays and biological conditions. My other fields of interest currently include: AI engineering, data engineering and machine learning for biology research. 
+:::
+
+## Latest writing
+
+::: {#latest}
+:::
+
+```{=html}
+<div class="site-buttons">
+  <a class="ng-button ng-button--ghost" href="writing/">Writing</a>
+  <a class="ng-button ng-button--ghost" href="projects/">Projects</a>
+  <a class="ng-button ng-button--ghost" href="presentations/">Presentations</a>
+</div>
+```

@@ -1,0 +1,44 @@
+# Render the site from _freeze/ (no R or Python in CI) and push _site/ to gh-pages.
+# Pages settings: source = gh-pages branch, root. CNAME is copied into _site/ by project.resources.
+#
+# ONE-TIME SETUP before the first push to main: the gh-pages branch must already exist on the
+# remote. quarto-actions/publish runs `quarto publish gh-pages` without prompts, and Quarto 1.6
+# refuses to create the branch in that mode ("the remote origin does not have a branch named
+# gh-pages"). Create it once, from a clean checkout, either with
+#   quarto publish gh-pages            # renders, creates the branch, pushes _site/
+# or with an empty orphan branch:
+#   git checkout --orphan gh-pages && git rm -rf . && git commit --allow-empty -m "init gh-pages" \
+#     && git push origin gh-pages && git checkout main
+# then set Settings > Pages > Source to the gh-pages branch, root.
+name: Publish
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: 1.6.39            # keep in step with the local install
+
+      - name: Render and publish to gh-pages
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages           # renders first (render defaults to true), then pushes _site/
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

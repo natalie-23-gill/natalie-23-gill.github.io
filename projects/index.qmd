@@ -1,35 +1,44 @@
 ---
 title: "Projects"
-subtitle: "A selection of projects I've worked on"
-page-layout: full
-toc: false
+description: "A selection of projects I've worked on."
 ---
 
-Here are some of the projects I've been working on.
 
-## Featured Projects
+<!-- Link buttons open in a new tab: keep target="_blank" rel="noopener" and the hidden "(opens in a new tab)". -->
 
-### [clustOpt](https://github.com/gladstone-institutes/clustOpt)
-*Presented at ISMB/ECCB 2025*
+## Featured projects
 
-R package for optimizing Seurat clustering resolution via cross-validation and random forests.
-
-[View Project →](https://github.com/gladstone-institutes/clustOpt){.btn .btn-primary}
-
----
-
-### [supremo_lite](https://github.com/gladstone-institutes/supremo_lite)
-
-Lightweight, model-agnostic Python tool for analyzing genetic variant effects on DNA sequences.
-
-[View Project →](https://github.com/gladstone-institutes/supremo_lite){.btn .btn-primary}
-
----
-
-### [GeneSet_Translator](https://github.com/gladstone-institutes/GeneSet_Translator)
-
-Interactive knowledge graph explorer for discovering DE gene and disease relationships via NCATS Translator APIs, with network visualization and AI-assisted interpretation.
-
-[View Project →](https://github.com/gladstone-institutes/GeneSet_Translator){.btn .btn-primary}
-
----
+```{=html}
+<div class="site-cards">
+  <article class="ng-card">
+    <p class="ng-card__eyebrow">R package · ISMB/ECCB 2025</p>
+    <h3 class="ng-card__title">clustOpt</h3>
+    <p class="ng-card__body">R package for optimizing Seurat clustering resolution via cross-validation and random forests.</p>
+    <div class="ng-card__footer">
+      <span class="ng-tag">R</span>
+      <span class="ng-tag">Seurat</span>
+      <a class="ng-button ng-button--ghost ng-button--small" href="https://github.com/gladstone-institutes/clustOpt" target="_blank" rel="noopener">View on GitHub →<span class="visually-hidden"> (opens in a new tab)</span></a>
+    </div>
+  </article>
+  <article class="ng-card">
+    <p class="ng-card__eyebrow">Python package</p>
+    <h3 class="ng-card__title">supremo_lite</h3>
+    <p class="ng-card__body">Lightweight, model-agnostic Python tool for analyzing genetic variant effects on DNA sequences.</p>
+    <div class="ng-card__footer">
+      <span class="ng-tag">Python</span>
+      <span class="ng-tag">Variants</span>
+      <a class="ng-button ng-button--ghost ng-button--small" href="https://github.com/gladstone-institutes/supremo_lite" target="_blank" rel="noopener">View on GitHub →<span class="visually-hidden"> (opens in a new tab)</span></a>
+    </div>
+  </article>
+  <article class="ng-card">
+    <p class="ng-card__eyebrow">Web app</p>
+    <h3 class="ng-card__title">GeneSet_Translator</h3>
+    <p class="ng-card__body">Interactive knowledge graph explorer for discovering DE gene and disease relationships via NCATS Translator APIs, with network visualization and AI-assisted interpretation.</p>
+    <div class="ng-card__footer">
+      <span class="ng-tag">Knowledge graph</span>
+      <span class="ng-tag">Translator</span>
+      <a class="ng-button ng-button--ghost ng-button--small" href="https://github.com/gladstone-institutes/GeneSet_Translator" target="_blank" rel="noopener">View on GitHub →<span class="visually-hidden"> (opens in a new tab)</span></a>
+    </div>
+  </article>
+</div>
+```

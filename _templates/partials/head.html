@@ -1,0 +1,46 @@
+<!-- Natalie Gill site head. Included on every page through
+     format.html.include-in-header in _quarto.yml (a raw file include: no pandoc
+     template syntax here). Paths are absolute from the site root because the site
+     is served at https://www.nataliegill.io/. -->
+<link rel="preload" href="/assets/fonts/FiraMono-Medium.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/FiraMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/FiraSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/logo/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/assets/logo/favicon-180.png">
+<link rel="alternate" type="application/rss+xml" title="Natalie Gill · Writing" href="/writing/index.xml">
+<script>
+(function () {
+  var root = document.documentElement;
+  var media = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+  function stored() {
+    try { var v = localStorage.getItem("theme"); return v === "dark" || v === "light" ? v : null; }
+    catch (e) { return null; }
+  }
+  function system() { return media && media.matches ? "dark" : "light"; }
+  /* The toggle shows the theme it switches to; its accessible name says the same word. */
+  function label() {
+    var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    var bs = document.querySelectorAll("[data-theme-toggle]");
+    for (var i = 0; i < bs.length; i++) { bs[i].setAttribute("aria-label", "Switch to " + next + " theme"); bs[i].setAttribute("title", "Switch to " + next + " theme"); }
+  }
+  function apply(mode) { root.setAttribute("data-theme", mode === "dark" ? "dark" : "light"); label(); }
+  window.ngSetTheme = function (mode) {
+    apply(mode);
+    try { localStorage.setItem("theme", root.getAttribute("data-theme")); } catch (e) {}
+  };
+  apply(stored() || system());
+  if (media) {
+    var follow = function () { if (!stored()) apply(system()); };
+    if (media.addEventListener) media.addEventListener("change", follow);
+    else if (media.addListener) media.addListener(follow);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", label);
+  document.addEventListener("click", function (e) {
+    var t = e.target && e.target.closest ? e.target.closest("[data-theme-toggle]") : null;
+    if (t) window.ngSetTheme(root.getAttribute("data-theme") === "dark" ? "light" : "dark");
+  });
+})();
+</script>
+<script src="/assets/field-config.js" defer></script>
+<script src="/assets/field.js" defer></script>

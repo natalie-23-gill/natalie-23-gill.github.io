@@ -1,0 +1,24 @@
+<!-- Template partial (pandoc syntax): a literal dollar sign must be written $$$$.
+     Quarto rewrites the root-absolute hrefs below to relative ones per page, so the
+     active-link script compares resolved a.pathname values, not href text. -->
+<header class="site-header">
+<div class="site-header__inner">
+<a class="site-name" href="/"><svg class="site-mark" viewBox="0 0 18 8" aria-hidden="true" focusable="false"><path d="M12,5.5 A0.5,0.5 0 0 0 12.5,6 L16,6 L16,4 L18,4 L18,8 L12,8 L12,6.5 A0.5,0.5 0 0 0 11.5,6 L10,6 L10,2 L11.5,2 A0.5,0.5 0 0 0 12,1.5 L12,0 L16,0 L16,2 L12.5,2 A0.5,0.5 0 0 0 12,2.5 Z M0,5 L0,0 L6,0 L6,1.5 A0.5,0.5 0 0 0 6.5,2 L8,2 L8,8 L6,8 L6,2.5 A0.5,0.5 0 0 0 5.5,2 L2,2 L2,8 L0,8 Z" fill="currentColor"/></svg><span class="visually-hidden">Natalie Gill</span></a>
+<nav class="site-nav" aria-label="Main">
+<a href="/writing/">Writing</a>
+<a href="/projects/">Projects</a>
+<a href="/presentations/">Presentations</a>
+</nav>
+<button type="button" class="site-theme-toggle" data-theme-toggle aria-label="Switch color theme" title="Switch color theme"><span aria-hidden="true">◐</span><span class="site-theme-toggle__dark" aria-hidden="true">Dark</span><span class="site-theme-toggle__light" aria-hidden="true">Light</span></button>
+</div>
+</header>
+<script>
+(function () {
+  var p = location.pathname.replace(/index\.html$$/, "");
+  var links = document.querySelectorAll(".site-nav a");
+  for (var i = 0; i < links.length; i++) {
+    var h = links[i].pathname.replace(/\.html$$/, "");
+    if (p.indexOf(h) === 0) links[i].setAttribute("aria-current", "page");
+  }
+})();
+</script>

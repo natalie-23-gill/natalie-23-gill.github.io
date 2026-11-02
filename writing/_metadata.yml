@@ -1,0 +1,10 @@
+# Options shared by every post in writing/.
+# Freezing (freeze: auto) and the page template come from _quarto.yml.
+author: "Natalie Gill"
+# Social card: the site card unless a post sets its own `image:` (e.g. an ng_figure PNG).
+# Without this Quarto would pick the first image in the post.
+image: /assets/social.png
+# Reading time in the title block, previous / next links at the end of the post.
+# (The filter skips writing/index.qmd, which also inherits this file.)
+filters:
+  - ../tools/post-meta.lua

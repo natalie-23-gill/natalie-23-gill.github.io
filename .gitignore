@@ -4,3 +4,11 @@
 .claude
 CLAUDE.md
 .playwright-mcp
+**/*.quarto_ipynb
+__pycache__/
+
+# R session and editor leftovers, and Quarto's standalone-render support folder
+.RData
+.Rhistory
+*.swp
+/about_files/

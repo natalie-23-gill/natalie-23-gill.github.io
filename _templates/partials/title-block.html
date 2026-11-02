@@ -1,0 +1,18 @@
+<header id="title-block-header" class="quarto-title-block site-title-block">
+$if(title)$
+<h1 class="title site-title">$title$</h1>
+$endif$
+$if(subtitle)$
+<p class="site-subtitle">$subtitle$</p>
+$endif$
+$if(date)$
+<p class="site-meta"><time$if(date-meta)$ datetime="$date-meta$"$endif$>$date$</time>$if(site-reading-time)$ · <span class="site-reading-time">$site-reading-time$</span>$endif$</p>
+$endif$
+$if(categories)$
+<p class="site-tags">$for(categories)$<span class="ng-tag">$categories$</span>$sep$ $endfor$</p>
+$endif$
+$if(hide-description)$
+$elseif(description)$
+<div class="site-description">$description$</div>
+$endif$
+</header>

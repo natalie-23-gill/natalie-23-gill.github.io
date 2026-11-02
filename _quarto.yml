@@ -1,28 +1,44 @@
 project:
   type: website
-  output-dir: docs
+  output-dir: _site
   render:
     - "*.qmd"
     - "!CLAUDE.md"
+    - "!README.md"
+  resources:
+    - /assets/
+    - /CNAME                            # GitHub Pages custom domain; must land at _site/CNAME
+
 website:
   title: "Natalie Gill"
-  navbar:
-    right:
-      - index.qmd
-      - projects/index.qmd
-      - presentations/index.qmd
-      - about.qmd
-      - icon: github
-        href: https://github.com/natalie-23-gill
-      - text: "{{< fa brands bluesky >}}"
-        href: https://bsky.app/profile/natbytes.bsky.social
+  description: "Bioinformatician who analyzes high-dimensional biological data and builds open-source tools for research."
+  site-url: https://www.nataliegill.io
+  image: assets/social.png             # default social image; a post may set its own
+  open-graph: true
+  twitter-card: true
+  navbar: false                        # the header partial draws the nav
+  page-navigation: false
+
 format:
-  html:
-    theme:
-      light: flatly
-      dark: solar
-    css: styles.css
-    include-in-header: conway-header.html
+  html:                                # html only: the RevealJS decks keep their own format
+    theme: none                        # no Bootstrap, no Quarto CSS
+    minimal: true                      # no Quarto JS features (search, tooltips, anchors)
+    template: _templates/template.html
+    template-partials:
+      - _templates/partials/title-block.html
+      - _templates/partials/header.html
+      - _templates/partials/footer.html
+    css: [assets/tokens.css, assets/bundle.css, assets/site.css]
+    include-in-header: _templates/partials/head.html   # font preloads, theme.js, favicon, RSS link
+    highlight-style: assets/ng-highlight.theme
+    date-format: "MMM D, YYYY"
+    toc: false
+    code-copy: false
+    anchor-sections: false
+    fig-responsive: true
+    lang: en
 
-
-
+execute:
+  freeze: auto                         # re-run a post only when its source changes
+  echo: false                          # code hidden by default; a post opts in per chunk
+  warning: false

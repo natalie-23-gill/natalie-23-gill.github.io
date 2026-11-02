@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!-- Page skeleton (pandoc template). header.html, footer.html and title-block.html
+     are template partials listed in format.html.template-partials; Quarto stages
+     them beside this file. head.html comes in through include-in-header.
+     data-theme is set by the inline theme script before paint; it is left off
+     here so that without JS the prefers-color-scheme rules in tokens.css apply.
+     Quarto injects its dependencies at the htmldependencies comment; its listing,
+     feed and title post-processors look for #quarto-content > main.content,
+     #title-block-header and h1.title. -->
+<html lang="$lang$"$if(dir)$ dir="$dir$"$endif$>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="quarto$if(quarto-version)$-$quarto-version$$endif$">
+$for(author-meta)$
+<meta name="author" content="$author-meta$">
+$endfor$
+$if(date-meta)$
+<meta name="dcterms.date" content="$date-meta$">
+$endif$
+$if(description-meta)$
+<meta name="description" content="$description-meta$">
+$endif$
+<title>$pagetitle$$if(title-prefix)$ · $title-prefix$$endif$</title>
+<!-- htmldependencies:E3FAD763 -->
+$for(header-includes)$
+$header-includes$
+$endfor$
+$if(highlighting-css)$
+<style>
+$highlighting-css$
+</style>
+$endif$
+$for(css)$
+<link rel="stylesheet" href="$css$">
+$endfor$
+$if(math)$$math$$endif$
+</head>
+<body>
+$for(include-before)$
+$include-before$
+$endfor$
+$header.html()$
+<div id="quarto-content" class="site-content">
+<main class="site-main content" id="quarto-document-content">
+$if(hide-title)$
+<header id="title-block-header" class="quarto-title-block" hidden></header>
+$elseif(title)$
+$title-block.html()$
+$else$
+<header id="title-block-header" class="quarto-title-block" hidden></header>
+$endif$
+$body$
+</main>
+</div>
+$footer.html()$
+$for(include-after)$
+$include-after$
+$endfor$
+</body>
+</html>

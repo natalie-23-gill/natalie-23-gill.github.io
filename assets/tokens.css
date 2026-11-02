@@ -1,0 +1,346 @@
+/* Natalie Gill — generated from tokens.json by tools/gen_tokens.py; do not edit */
+
+@font-face {
+  font-family: "Fira Mono";
+  src: url("fonts/FiraMono-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fira Mono";
+  src: url("fonts/FiraMono-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fira Mono";
+  src: url("fonts/FiraMono-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fira Sans";
+  src: url("fonts/FiraSans-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fira Sans";
+  src: url("fonts/FiraSans-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fira Sans";
+  src: url("fonts/FiraSans-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fira Sans";
+  src: url("fonts/FiraSans-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: light;
+  --step-0: #eef1ff;
+  --step-1: #cfd1f7;
+  --step-2: #b7afed;
+  --step-3: #a58cdc;
+  --step-4: #946cc0;
+  --step-5: #7f5298;
+  --step-6: #643e6d;
+  --step-7: #5c2a64;
+  --step-8: #2a1d27;
+  --surface: var(--step-0);
+  --surface-raised: var(--step-1);
+  --surface-hover: var(--step-2);
+  --surface-selected: var(--step-3);
+  --line: var(--step-2);
+  --line-strong: var(--step-4);
+  --ink: var(--step-8);
+  --ink-muted: #5d545f;
+  --link: var(--step-7);
+  --primary: var(--step-8);
+  --on-primary: var(--step-0);
+  --chart-1: var(--step-8);
+  --chart-2: #014f8a;
+  --chart-3: #9e5701;
+  --chart-4: #9978cf;
+  --chart-5: #02837a;
+  --chart-6: #c4780b;
+  --chart-7: #72294c;
+  --chart-8: #7f5bb6;
+  --div-neg-6: #1a895c;
+  --div-neg-5: #2c9f6a;
+  --div-neg-4: #5ab280;
+  --div-neg-3: #89c19c;
+  --div-neg-2: #b2cfba;
+  --div-neg-1: #d4e0d6;
+  --div-0: var(--step-0);
+  --div-pos-1: #d6d2e3;
+  --div-pos-2: #c0b0d4;
+  --div-pos-3: #b08ac7;
+  --div-pos-4: #a462b4;
+  --div-pos-5: #943d94;
+  --div-pos-6: #7a246c;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --radius-0: 0px;
+  --radius-1: 2px;
+  --field-rule: B3678/S34678;
+  --field-rain-every: 3;
+  --field-rain-size: 14;
+  --field-speed: 3;
+  --field-ease: 350ms;
+  --field-cell: 8px;
+  --field-density: 0.5;
+  --font-mono: "Fira Mono", ui-monospace, Menlo, Consolas, monospace;
+  --font-sans: "Fira Sans", system-ui, Helvetica, Arial, sans-serif;
+  --t-display-size: 44px;
+  --t-display-line: 48px;
+  --t-display-weight: 500;
+  --t-display-tracking: -0.01em;
+  --t-heading-1-size: 32px;
+  --t-heading-1-line: 38px;
+  --t-heading-1-weight: 500;
+  --t-heading-1-tracking: -0.01em;
+  --t-heading-2-size: 22px;
+  --t-heading-2-line: 28px;
+  --t-heading-2-weight: 500;
+  --t-heading-2-tracking: normal;
+  --t-heading-3-size: 17px;
+  --t-heading-3-line: 24px;
+  --t-heading-3-weight: 500;
+  --t-heading-3-tracking: normal;
+  --t-lead-size: 19px;
+  --t-lead-line: 28px;
+  --t-lead-weight: 400;
+  --t-lead-tracking: normal;
+  --t-body-size: 16px;
+  --t-body-line: 26px;
+  --t-body-weight: 400;
+  --t-body-tracking: normal;
+  --t-body-small-size: 14px;
+  --t-body-small-line: 22px;
+  --t-body-small-weight: 400;
+  --t-body-small-tracking: normal;
+  --t-label-size: 12px;
+  --t-label-line: 16px;
+  --t-label-weight: 500;
+  --t-label-tracking: 0.06em;
+  --t-caption-size: 12px;
+  --t-caption-line: 16px;
+  --t-caption-weight: 400;
+  --t-caption-tracking: normal;
+  --t-code-size: 13px;
+  --t-code-line: 20px;
+  --t-code-weight: 400;
+  --t-code-tracking: normal;
+  --t-numeral-size: 28px;
+  --t-numeral-line: 32px;
+  --t-numeral-weight: 500;
+  --t-numeral-tracking: normal;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --step-0: #171216;
+  --step-1: #322531;
+  --step-2: #4f3854;
+  --step-3: #6c4c7e;
+  --step-4: #8563ab;
+  --step-5: #9a81d2;
+  --step-6: #aea3ec;
+  --step-7: #c5c7fc;
+  --step-8: #e5eafe;
+  --surface: var(--step-0);
+  --surface-raised: var(--step-1);
+  --surface-hover: var(--step-2);
+  --surface-selected: var(--step-3);
+  --line: var(--step-2);
+  --line-strong: var(--step-4);
+  --ink: var(--step-8);
+  --ink-muted: #a7a9b8;
+  --link: var(--step-7);
+  --primary: var(--step-8);
+  --on-primary: var(--step-0);
+  --chart-1: var(--step-8);
+  --chart-2: #e0ae57;
+  --chart-3: #00a9cd;
+  --chart-4: #825eb9;
+  --chart-5: #b4561a;
+  --chart-6: #b3c5fc;
+  --chart-7: #3f8d7f;
+  --chart-8: #c78b09;
+  --div-neg-6: #80e2b0;
+  --div-neg-5: #53c088;
+  --div-neg-4: #419969;
+  --div-neg-3: #3c7251;
+  --div-neg-2: #334d3b;
+  --div-neg-1: #222c25;
+  --div-0: var(--step-0);
+  --div-pos-1: #26212d;
+  --div-pos-2: #43314e;
+  --div-pos-3: #673e74;
+  --div-pos-4: #8f4a97;
+  --div-pos-5: #b65bb2;
+  --div-pos-6: #d579c2;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --step-0: #171216;
+    --step-1: #322531;
+    --step-2: #4f3854;
+    --step-3: #6c4c7e;
+    --step-4: #8563ab;
+    --step-5: #9a81d2;
+    --step-6: #aea3ec;
+    --step-7: #c5c7fc;
+    --step-8: #e5eafe;
+    --surface: var(--step-0);
+    --surface-raised: var(--step-1);
+    --surface-hover: var(--step-2);
+    --surface-selected: var(--step-3);
+    --line: var(--step-2);
+    --line-strong: var(--step-4);
+    --ink: var(--step-8);
+    --ink-muted: #a7a9b8;
+    --link: var(--step-7);
+    --primary: var(--step-8);
+    --on-primary: var(--step-0);
+    --chart-1: var(--step-8);
+    --chart-2: #e0ae57;
+    --chart-3: #00a9cd;
+    --chart-4: #825eb9;
+    --chart-5: #b4561a;
+    --chart-6: #b3c5fc;
+    --chart-7: #3f8d7f;
+    --chart-8: #c78b09;
+    --div-neg-6: #80e2b0;
+    --div-neg-5: #53c088;
+    --div-neg-4: #419969;
+    --div-neg-3: #3c7251;
+    --div-neg-2: #334d3b;
+    --div-neg-1: #222c25;
+    --div-0: var(--step-0);
+    --div-pos-1: #26212d;
+    --div-pos-2: #43314e;
+    --div-pos-3: #673e74;
+    --div-pos-4: #8f4a97;
+    --div-pos-5: #b65bb2;
+    --div-pos-6: #d579c2;
+  }
+}
+
+.t-display {
+  font-family: var(--font-mono);
+  font-size: var(--t-display-size);
+  line-height: var(--t-display-line);
+  font-weight: var(--t-display-weight);
+  letter-spacing: var(--t-display-tracking);
+}
+
+.t-heading-1 {
+  font-family: var(--font-mono);
+  font-size: var(--t-heading-1-size);
+  line-height: var(--t-heading-1-line);
+  font-weight: var(--t-heading-1-weight);
+  letter-spacing: var(--t-heading-1-tracking);
+}
+
+.t-heading-2 {
+  font-family: var(--font-mono);
+  font-size: var(--t-heading-2-size);
+  line-height: var(--t-heading-2-line);
+  font-weight: var(--t-heading-2-weight);
+  letter-spacing: var(--t-heading-2-tracking);
+}
+
+.t-heading-3 {
+  font-family: var(--font-mono);
+  font-size: var(--t-heading-3-size);
+  line-height: var(--t-heading-3-line);
+  font-weight: var(--t-heading-3-weight);
+  letter-spacing: var(--t-heading-3-tracking);
+}
+
+.t-lead {
+  font-family: var(--font-sans);
+  font-size: var(--t-lead-size);
+  line-height: var(--t-lead-line);
+  font-weight: var(--t-lead-weight);
+  letter-spacing: var(--t-lead-tracking);
+}
+
+.t-body {
+  font-family: var(--font-sans);
+  font-size: var(--t-body-size);
+  line-height: var(--t-body-line);
+  font-weight: var(--t-body-weight);
+  letter-spacing: var(--t-body-tracking);
+}
+
+.t-body-small {
+  font-family: var(--font-sans);
+  font-size: var(--t-body-small-size);
+  line-height: var(--t-body-small-line);
+  font-weight: var(--t-body-small-weight);
+  letter-spacing: var(--t-body-small-tracking);
+}
+
+.t-label {
+  font-family: var(--font-mono);
+  font-size: var(--t-label-size);
+  line-height: var(--t-label-line);
+  font-weight: var(--t-label-weight);
+  letter-spacing: var(--t-label-tracking);
+  text-transform: uppercase;
+}
+
+.t-caption {
+  font-family: var(--font-mono);
+  font-size: var(--t-caption-size);
+  line-height: var(--t-caption-line);
+  font-weight: var(--t-caption-weight);
+  letter-spacing: var(--t-caption-tracking);
+}
+
+.t-code {
+  font-family: var(--font-mono);
+  font-size: var(--t-code-size);
+  line-height: var(--t-code-line);
+  font-weight: var(--t-code-weight);
+  letter-spacing: var(--t-code-tracking);
+}
+
+.t-numeral {
+  font-family: var(--font-mono);
+  font-size: var(--t-numeral-size);
+  line-height: var(--t-numeral-line);
+  font-weight: var(--t-numeral-weight);
+  letter-spacing: var(--t-numeral-tracking);
+}

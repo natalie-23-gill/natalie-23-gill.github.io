@@ -1,0 +1,13 @@
+---
+pagetitle: "Not found"
+hide-title: true
+description: "Nothing lives here."
+---
+
+```{=html}
+<div class="ng-field site-hero site-hero--still" data-field="still"><canvas aria-hidden="true"></canvas><div class="ng-field__panel"><h1 class="ng-field__name">Natalie Gill</h1><p class="ng-field__tag">404</p></div></div>
+```
+
+Nothing lives here.
+
+[Go to the home page](/)

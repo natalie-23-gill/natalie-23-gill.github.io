@@ -1,0 +1,13 @@
+<footer class="site-footer">
+<div class="site-footer__inner">
+<span>Natalie Gill · <span data-year>2026</span></span>
+<a href="/writing/index.xml">RSS</a>
+</div>
+<div class="site-strip" aria-hidden="true"></div>
+</footer>
+<script>
+(function () {
+  var y = document.querySelector(".site-footer [data-year]");
+  if (y) y.textContent = String(new Date().getFullYear());
+})();
+</script>

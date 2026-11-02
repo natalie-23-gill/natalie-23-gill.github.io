@@ -1,0 +1,11 @@
+---
+title: "Writing"
+listing:
+  contents: "*/index.qmd"
+  sort: "date desc"
+  template: ../_templates/listing.ejs
+  feed: true                           # RSS at /writing/index.xml
+  categories: false
+  sort-ui: false
+  filter-ui: false
+---

@@ -1,26 +1,28 @@
 ---
 title: "Presentations"
-subtitle: "Collection of talks and presentations"
-page-layout: full
-toc: false
+description: "Collection of talks and presentations."
 ---
 
-Welcome to my collection of presentations and talks.
 
-## Past Presentations
+## Past presentations
 
-### What is Bioinformatics?
-*June 10, 2025*
+<!-- Hand-maintained: when you add a deck under presentations/<talk-name>/,
+     add a Card for it here (newest first). The decks keep their own revealjs format.
+     Link buttons open in a new tab: keep target="_blank" rel="noopener" and the hidden "(opens in a new tab)". -->
 
-A short talk to introduce the field of bioinformatics to an undergraduate audience.
-
-**Topics covered:**  
-
--   Origins of Bioinformatics  
--   NGS Revolution  
--   Bioinformatics Subdisciplines  
--   The Future of Bioinformatics  
-
-[View Presentation →](what_is_bioinformatics/){.btn .btn-primary}
-
----
+```{=html}
+<div class="site-cards">
+  <article class="ng-card">
+    <p class="ng-card__eyebrow">Talk · June 10, 2025</p>
+    <h3 class="ng-card__title">What is Bioinformatics?</h3>
+    <p class="ng-card__body">A short talk to introduce the field of bioinformatics to an undergraduate audience.</p>
+    <div class="ng-card__footer">
+      <span class="ng-tag">Origins of Bioinformatics</span>
+      <span class="ng-tag">NGS Revolution</span>
+      <span class="ng-tag">Bioinformatics Subdisciplines</span>
+      <span class="ng-tag">The Future of Bioinformatics</span>
+      <a class="ng-button ng-button--ghost ng-button--small" href="what_is_bioinformatics/" target="_blank" rel="noopener">View slides →<span class="visually-hidden"> (opens in a new tab)</span></a>
+    </div>
+  </article>
+</div>
+```

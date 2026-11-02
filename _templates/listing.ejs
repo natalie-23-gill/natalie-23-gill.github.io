@@ -1,0 +1,12 @@
+```{=html}
+<div class="site-cards site-cards--list">
+<% for (const item of items) { %>
+<article class="ng-card site-card" <%= metadataAttrs(item) %>>
+<% if (item.date) { %><p class="t-caption site-card__date"><time><%= item.date %></time></p><% } %>
+<h2 class="ng-card__title"><a href="<%- item.path %>"><%= item.title %></a></h2>
+<% if (item.description) { %><p class="ng-card__body"><%= item.description %></p><% } %>
+<% if (item.categories && item.categories.length) { %><div class="ng-card__footer"><% for (const category of item.categories.slice(0, 5)) { %><span class="ng-tag"><%= category %></span><% } %></div><% } %>
+</article>
+<% } %>
+</div>
+```
