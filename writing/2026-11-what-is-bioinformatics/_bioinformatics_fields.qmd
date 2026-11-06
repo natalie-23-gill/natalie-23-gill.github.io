@@ -1,0 +1,84 @@
+<!-- Inline SVG so it follows the theme through the tokens; styles are .site-diagram in assets/site.css.
+     Two drawings of the same diagram: a change to one belongs in the other, and in both aria-labels. -->
+```{=html}
+<figure class="ng-fig">
+<svg class="site-diagram site-diagram--wide" viewBox="0 0 720 304" role="img" aria-label="Diagram of three fields connecting to a single box labelled bioinformatics. Data science: data visualization, machine learning, statistics, linear algebra, graph theory; Computer science: algorithms, data structures, information theory, distributed computing; Biology: molecular biology, transcriptomics, proteomics, epigenomics, systems biology, genomics." fill="currentColor">
+  <line class="site-diagram__stem site-diagram__series-1" x1="115.333" y1="211" x2="115.333" y2="235" stroke="currentColor"/>
+  <line class="site-diagram__stem site-diagram__series-2" x1="360" y1="211" x2="360" y2="235" stroke="currentColor"/>
+  <line class="site-diagram__stem site-diagram__series-3" x1="604.667" y1="211" x2="604.667" y2="235" stroke="currentColor"/>
+  <line class="site-diagram__link" x1="115.333" y1="235" x2="604.667" y2="235" stroke="currentColor"/>
+  <line class="site-diagram__link" x1="360" y1="235" x2="360" y2="259" stroke="currentColor"/>
+  <g class="site-diagram__series-1">
+    <rect class="site-diagram__panel" x="1" y="1" width="228.667" height="210" fill="none" stroke="currentColor"/>
+    <rect class="site-diagram__band" x="1" y="1" width="228.667" height="8"/>
+    <text class="site-diagram__name" x="15" y="34">Data science</text>
+    <text x="15" y="63">Data visualization</text>
+    <text x="15" y="89">Machine learning</text>
+    <text x="15" y="115">Statistics</text>
+    <text x="15" y="141">Linear algebra</text>
+    <text x="15" y="167">Graph theory</text>
+  </g>
+  <g class="site-diagram__series-2">
+    <rect class="site-diagram__panel" x="245.667" y="1" width="228.667" height="210" fill="none" stroke="currentColor"/>
+    <rect class="site-diagram__band" x="245.667" y="1" width="228.667" height="8"/>
+    <text class="site-diagram__name" x="259.667" y="34">Computer science</text>
+    <text x="259.667" y="63">Algorithms</text>
+    <text x="259.667" y="89">Data structures</text>
+    <text x="259.667" y="115">Information theory</text>
+    <text x="259.667" y="141">Distributed computing</text>
+  </g>
+  <g class="site-diagram__series-3">
+    <rect class="site-diagram__panel" x="490.333" y="1" width="228.667" height="210" fill="none" stroke="currentColor"/>
+    <rect class="site-diagram__band" x="490.333" y="1" width="228.667" height="8"/>
+    <text class="site-diagram__name" x="504.333" y="34">Biology</text>
+    <text x="504.333" y="63">Molecular biology</text>
+    <text x="504.333" y="89">Transcriptomics</text>
+    <text x="504.333" y="115">Proteomics</text>
+    <text x="504.333" y="141">Epigenomics</text>
+    <text x="504.333" y="167">Systems biology</text>
+    <text x="504.333" y="193">Genomics</text>
+  </g>
+  <rect class="site-diagram__hub" x="240" y="259" width="240" height="44" fill="none" stroke="currentColor"/>
+  <text class="site-diagram__hub-label" x="360" y="287" text-anchor="middle">Bioinformatics</text>
+</svg>
+<svg class="site-diagram site-diagram--narrow" viewBox="0 0 360 646" role="img" aria-label="Diagram of three fields connecting to a single box labelled bioinformatics. Data science: data visualization, machine learning, statistics, linear algebra, graph theory; Computer science: algorithms, data structures, information theory, distributed computing; Biology: molecular biology, transcriptomics, proteomics, epigenomics, systems biology, genomics." fill="currentColor">
+  <line class="site-diagram__stem site-diagram__series-1" x1="9" y1="27" x2="28" y2="27" stroke="currentColor"/>
+  <line class="site-diagram__stem site-diagram__series-2" x1="9" y1="225" x2="28" y2="225" stroke="currentColor"/>
+  <line class="site-diagram__stem site-diagram__series-3" x1="9" y1="397" x2="28" y2="397" stroke="currentColor"/>
+  <line class="site-diagram__link" x1="9" y1="27" x2="9" y2="601" stroke="currentColor"/>
+  <g class="site-diagram__series-1">
+    <rect class="site-diagram__panel" x="28" y="1" width="331" height="184" fill="none" stroke="currentColor"/>
+    <rect class="site-diagram__band" x="28" y="1" width="331" height="8"/>
+    <text class="site-diagram__name" x="42" y="34">Data science</text>
+    <text x="42" y="63">Data visualization</text>
+    <text x="42" y="89">Machine learning</text>
+    <text x="42" y="115">Statistics</text>
+    <text x="42" y="141">Linear algebra</text>
+    <text x="42" y="167">Graph theory</text>
+  </g>
+  <g class="site-diagram__series-2">
+    <rect class="site-diagram__panel" x="28" y="199" width="331" height="158" fill="none" stroke="currentColor"/>
+    <rect class="site-diagram__band" x="28" y="199" width="331" height="8"/>
+    <text class="site-diagram__name" x="42" y="232">Computer science</text>
+    <text x="42" y="261">Algorithms</text>
+    <text x="42" y="287">Data structures</text>
+    <text x="42" y="313">Information theory</text>
+    <text x="42" y="339">Distributed computing</text>
+  </g>
+  <g class="site-diagram__series-3">
+    <rect class="site-diagram__panel" x="28" y="371" width="331" height="210" fill="none" stroke="currentColor"/>
+    <rect class="site-diagram__band" x="28" y="371" width="331" height="8"/>
+    <text class="site-diagram__name" x="42" y="404">Biology</text>
+    <text x="42" y="433">Molecular biology</text>
+    <text x="42" y="459">Transcriptomics</text>
+    <text x="42" y="485">Proteomics</text>
+    <text x="42" y="511">Epigenomics</text>
+    <text x="42" y="537">Systems biology</text>
+    <text x="42" y="563">Genomics</text>
+  </g>
+  <rect class="site-diagram__hub" x="1" y="601" width="358" height="44" fill="none" stroke="currentColor"/>
+  <text class="site-diagram__hub-label" x="180" y="629" text-anchor="middle">Bioinformatics</text>
+</svg>
+  <figcaption>The relationship of biology, data science and computer science to bioinformatics.</figcaption>
+</figure>
+```

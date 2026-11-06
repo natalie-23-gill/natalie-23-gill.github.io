@@ -12,7 +12,7 @@ Deps: plotnine (and so matplotlib); IPython for display (present in any Jupyter 
 `plot` is either a function of mode ("light" or "dark") that builds the whole plot, so scales match the
 theme, or a finished plotnine ggplot, to which theme_ng(mode) is added (its scales then stay as built;
 pass a function whenever the plot uses scale_*_ng()). Writes <name>-light.png and <name>-dark.png
-(6.4 x 3.6 in at 200 dpi) into `dir` (default: the notebook's folder, the kernel's working directory).
+(6.4 x 3.6 in at 300 dpi) into `dir` (default: the notebook's folder, the kernel's working directory).
 
 Output: the returned object displays as text/html, the <figure class="ng-fig"> block, so make it the
 last expression of the cell and no chunk option is needed. Alternatively print() it in a cell with
@@ -48,7 +48,7 @@ class NgFigure:
 
 
 def ng_figure(plot, name: str, alt: str | None = None, caption: str | None = None, *, dir: str = ".",
-              size: str = "wide", dpi: int = 200, fonts_dir: str | os.PathLike | None = None) -> NgFigure:
+              size: str = "wide", dpi: int = 300, fonts_dir: str | os.PathLike | None = None) -> NgFigure:
     global _fonts_done
     if not alt or not alt.strip():
         raise ValueError("ng_figure(): `alt` text is required")

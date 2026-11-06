@@ -13,7 +13,6 @@
 :root {
   --site-gutter: var(--space-4);
   --site-measure: 720px;
-  --site-wide: 960px;
   --site-main-top: var(--space-8);
 }
 @media (min-width: 768px) {
@@ -231,6 +230,15 @@ body {
 }
 :where(.site-main) :where(blockquote p:last-child) { margin-bottom: 0; }
 
+/* References (Pandoc citeproc): body-small with a hanging indent. */
+:where(.site-main) :where(.csl-entry) {
+  font-size: var(--t-body-small-size); line-height: var(--t-body-small-line); font-weight: var(--t-body-small-weight); letter-spacing: var(--t-body-small-tracking);
+  margin: 0 0 var(--space-3);
+  padding-left: var(--space-6);
+  text-indent: calc(-1 * var(--space-6));
+  overflow-wrap: anywhere;
+}
+
 /* ---------- Code: the CodeBlock look ---------- */
 
 :where(code, kbd, samp) {
@@ -316,24 +324,9 @@ body {
   margin-top: var(--space-2);
   text-align: left;
 }
-/* Figures break out of the text column to 960px on wide screens. */
-@media (min-width: 768px) {
-  .site-main .quarto-figure,
-  .site-main figure.ng-fig {
-    --site-fig-w: min(var(--site-wide), calc(100vw - 2 * var(--site-gutter)));
-    width: var(--site-fig-w);
-    max-width: none;
-    margin-left: calc((100% - var(--site-fig-w)) / 2);
-    margin-right: calc((100% - var(--site-fig-w)) / 2);
-  }
-  .site-main .quarto-figure figure.ng-fig,
-  .site-main .quarto-figure .quarto-figure,
-  .site-main .site-card figure.ng-fig {
-    width: auto;
-    margin-left: 0;
-    margin-right: 0;
-  }
-}
+/* Figures sit in the text column, so their labels stay smaller than the body text, with a section's space around them. */
+.site-main > figure.ng-fig,
+.site-main > .quarto-figure { margin-block: var(--space-12); }
 
 /* Dual-theme figures (ng_figure) and the footer strip: show the image that
    matches the active theme, including the no-JS prefers-color-scheme case. */
@@ -344,6 +337,27 @@ body {
   :root:not([data-theme="light"]) .ng-fig-light { display: none; }
   :root:not([data-theme="light"]) .ng-fig-dark { display: block; }
 }
+
+/* Inline SVG diagrams: colours and type come from tokens, so they follow the theme with no second image.
+   Each diagram has a wide and a narrow (stacked) drawing; only one is ever displayed. */
+.site-diagram { display: block; width: 100%; height: auto; font-family: var(--font-mono); }
+.site-diagram--wide { display: none; }
+.site-diagram--narrow { max-width: 480px; margin-inline: auto; }
+@media (min-width: 768px) {
+  .site-diagram--wide { display: block; }
+  .site-diagram--narrow { display: none; }
+}
+.site-diagram text { fill: var(--ink); font-size: var(--t-code-size); font-weight: var(--t-code-weight); }
+.site-diagram .site-diagram__name { font-size: var(--t-heading-3-size); font-weight: var(--t-heading-3-weight); }
+.site-diagram .site-diagram__hub-label { fill: var(--surface); font-size: var(--t-heading-3-size); font-weight: var(--t-heading-3-weight); }
+.site-diagram__panel { fill: var(--surface-raised); stroke: var(--line); }
+.site-diagram__hub { fill: var(--ink); }
+.site-diagram__band { fill: var(--series); }
+.site-diagram__stem { stroke: var(--series); stroke-width: 2; stroke-linecap: square; }
+.site-diagram__link { stroke: var(--ink); stroke-width: 2; stroke-linecap: square; }
+.site-diagram__series-1 { --series: var(--chart-2); }
+.site-diagram__series-2 { --series: var(--chart-3); }
+.site-diagram__series-3 { --series: var(--chart-4); }
 
 /* ---------- Tables ---------- */
 

@@ -10,7 +10,7 @@
 # `plot` is either a function of mode ("light" or "dark") that builds the whole plot, so scales match
 # the theme, or a finished ggplot, to which theme_ng(mode) is added (its scales then stay as built;
 # pass a function whenever the plot uses scale_*_ng()). Writes <name>-light.png and <name>-dark.png
-# (6.4 x 3.6 in at 200 dpi) into `dir` (default: the document's folder, knitr's working directory)
+# (6.4 x 3.6 in at 300 dpi) into `dir` (default: the document's folder, knitr's working directory)
 # and returns the <figure class="ng-fig"> block as raw HTML. No chunk option is needed: the result is
 # knitr::asis_output, so it is emitted as-is (results: asis is implied); keep the default echo: false.
 #
@@ -46,7 +46,7 @@ ng_html_escape <- function(x) {
 
 .ng_fonts_done <- new.env()
 
-ng_figure <- function(plot, name, alt, caption, dir = ".", size = "wide", dpi = 200,
+ng_figure <- function(plot, name, alt, caption, dir = ".", size = "wide", dpi = 300,
                       fonts_dir = ng_fonts_dir()) {
   if (missing(alt) || !nzchar(trimws(alt))) stop("ng_figure(): `alt` text is required")
   if (missing(caption) || !nzchar(trimws(caption))) stop("ng_figure(): `caption` is required (n, dataset, date)")
