@@ -1,0 +1,76 @@
+---
+title: "What is bioinformatics?"
+description: "TODO: one sentence, in Natalie's words (card, RSS and social preview)."
+date: 2026-11-03            # TODO: set to the publish date (and rename the folder if the month changes)
+categories: [bioinformatics] # TODO: add more if wanted (e.g. history)
+# image: TODO               # social card: to decide with the narrative (sra_growth-light.png is a candidate)
+draft: true                 # outline only: keeps it out of the listing, RSS and prev/next
+---
+
+<!--
+OUTLINE ONLY. Natalie writes the post; nothing below is final text.
+Sources:
+  [slides]  presentations/what_is_bioinformatics/index.qmd (Gladstone Bioinformatics Core, June 10, 2025)
+  [paper]   Gauthier J, Vincent AT, Charette SJ, Derome N. A brief history of bioinformatics.
+            Briefings in Bioinformatics 2019;20(6):1981–1996. doi:10.1093/bib/bby063
+            (page numbers below are the journal's)
+Each section: the point it makes, the material available, then TODOs / open questions.
+Wording in quotes is copied from the source; everything else is a summary to write from.
+-->
+
+# TLDR
+
+<!-- fill in
+-->
+
+# Bioinformatics is...
+
+Often when I am asked what I do for a living I reach for multiple descriptions that are more familiar to people outside of the sciences: "Computational Biology", "Biology Research", "Data Science". In the current age of AI it has become even harder to give a lay explanation for what I do day to day. Bioinformatics has always been a highly interdisciplinary field and as it is due to our position at the intersections of those disciplines that communicating what we do is difficult. This post is my attempt at a comprehensive explanation that may be helpful to those new to the field or considering a career in Bioinformatics.
+
+
+# Was Biology Late to the Computation Party?
+
+<!-- Add a timeline image here for anyone interested in the other milestones (50s-80s)
+-->
+
+Mathematics and Physics were the first fields to adopt computation and perhaps that is why those fields do not have a distinct separation between researchers who use computer programming and those that do not, which would imply that eventually there will be no such separation in the biological sciences. Another factor is that our understanding of biological systems lagged behind the development of computers. ENIAC (1945) was the first general purpose electronic computer and was created to perform physics calculations for the U.S. military, it would be another 7 years before DNA was shown to be the genetic material (Hersey and Chase), and another 13 years before the first bioinformatics software was written.
+
+Margaret Dayhoff and Robert Ledley wrote COMPROTEIN in 1958 to solve a specific problem with our ability to measure the full sequence of proteins. Edman peptide sequencing could read out the sequence of 50-60 amino acid pieces of a protein and solving the full sequence required overlapping those pieces essentially by hand. Dayhoff and Ledley both saw the promise of computational approaches in biochemistry and created the first *de novo* sequence assembly algorithm in FORTRAN. The protein sequences themselves could now be the subject of research questions and this resulted in an entirely new discipline (Paleogenetics) dedicated to understanding the temporal and species divergence of these sequences. Paleogenetics itself then required the development of more algorithms and software to handle the unique challenges imposed by the size and diversity of protein, and later on DNA, sequences.
+
+
+So was Biology late to the party? Perhaps a little, but it is more accurate to say that our ability to measure biological systems in the same systematic way that we measured physical systems did not keep pace with the developments in computer technology and that as we developed new ways of measuring biology we required an increasing number of researchers dedicated to computational analysis of those measurements. Computational analysis after all requires a firm understanding of the data generation process and the data generation process of biology is the most complex one humanity has ever observed.
+
+# The Sequence Data Explosion
+
+In the 1990s the Human Genome Project spent $2.7 billion (in 1991 dollars) to sequence the entire human genome. To date it is the largest sum dedicated to a single biological research project, driven by the promise of genomic medicine. In 2001 it was completed (kind of [add a link here to the telomere to telomere assembly]) and just 13 years later the cost to sequence a human genome dropped to $1000 [source this and add the specific technology] which quickly led to an exponential increase in the amount of sequencing data. 
+
+
+```{=html}
+<figure class="ng-fig">
+  <img class="ng-fig-light" src="sra_growth-light.png" alt="Line chart of data stored in the NCBI Sequence Read Archive from 2007 to 2024. Both lines stay near zero until about 2013, then rise steeply: all data reaches 31.4 petabytes and publicly available data 21.8 petabytes by February 2024, passing the 21 petabyte Library of Congress digital collection. A point marks January 2014, when whole genome sequencing fell below $1,000.">
+  <img class="ng-fig-dark" src="sra_growth-dark.png" alt="Line chart of data stored in the NCBI Sequence Read Archive from 2007 to 2024. Both lines stay near zero until about 2013, then rise steeply: all data reaches 31.4 petabytes and publicly available data 21.8 petabytes by February 2024, passing the 21 petabyte Library of Congress digital collection. A point marks January 2014, when whole genome sequencing fell below $1,000.">
+  <figcaption>NCBI Sequence Read Archive storage, n = 5,520 snapshots, Jun 2007 to Feb 2024.</figcaption>
+</figure>
+```
+
+This increase in just sequencing data alone required the development of new analysis methods, new computational infrastructure, and new statistical methods. It was not technically feasible for biologists to develop the molecular biology needed to produce and contextualize this massive amount of data in addition to the algorithms, software and statistical methods needed to analyze the data. {We need a line here on systems and network biology since there is levels to the analysis that require bioinformaticians themselves to specialize}. The diversity of the biological data and research questions required a corresponding diversity of bioinformatics focus areas, which is another big reason it is difficult to use more precise language when trying to define the whole field of Bioinformatics.
+
+# Single Cell Omics
+
+<!--I want something brief here that addresses the dimensionality of sequencing data increasing
+-->
+
+
+# Strange New Worlds
+
+<!-- As the multimodality of data increases many bioinformaticians are asked to draw on an increasingly large array of mathematical and statistical methods: (CNNs, Transformers, Diffusion and Flow models, in silico models, image data, network data like KGs etc.) and bridge them with the biological context about the data generation process needed to make valid claims about the data.
+-->
+
+# Is this the End?
+
+The most common question I am asked by people interested in studying bioinformatics is whether LLMs are making the field of bioinformatics obsolete. It is worth noting that it was once thought that the field of biology would integrate computational analysis so heavily that the fields of biology and bioinformatics would no longer have a meaningful separation, bioinformatics would become obsolete {Insert the Titus Brown quote here and reference the conclusion of Hallam Stevens’s Life Out of Sequence: A Data-Driven History of Bioinformatics (2013) }. Running standardized bioinformatics pipelines is certainly something many biologists already routinely do, but bioinformatics has never been just about running routine computational pipelines. The complexity of experimental designs and our ability to perform multimodal high dimensional measurements on biological systems is increasing at such a pace that many newer assays do not have standardized pipelines and those that do still require analytical judgement that requires formal education in quantitative research that many pure biology degree programs still lack [we need a source and maybe a plot here].
+
+# The Future
+
+It bears repeating that biology is the most complex data generation process humanity has ever encountered and as the advancements in AI speed up the volume of bioinformatics code generation, the code is a means to an end that can only be assured through expertise. Unlike mathematical objects, claims about data require assumptions about the data generation process and analytical judgment to quantify the confidence for those claims. Developing, expanding, and sustaining the expertise needed for sound judgement in this highly interdisciplinary field is the central challenge of bioinformaticians in the age of AI. At the same time AI coding assistants have removed a lot of the barriers to the development and maintenance of high quality bioinformatics software that incorporates software engineering best practices, this will ultimately lead to much less time spent debugging and much more time spent developing methods for making rigorous, reproducible claims about the onslaught of multimodal biological data. 
+

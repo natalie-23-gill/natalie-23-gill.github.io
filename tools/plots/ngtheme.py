@@ -27,7 +27,7 @@ TOKENS = {
                       "#26212d", "#43314e", "#673e74", "#8f4a97", "#b65bb2", "#d579c2"]}
 }
 SHAPES = ["o", "s", "^", "D", "v", "P", "X", "*"]   # circle, square, triangle, diamond, then down-triangle, plus, cross, star: series order
-MONO, SANS = "Fira Mono", "Fira Sans"
+MONO, SANS = "Fira Mono", "Fira Sans"   # plots are set entirely in SANS; MONO is kept for code annotations only
 
 
 def ng_fonts(fonts_dir: str | pathlib.Path) -> None:
@@ -50,30 +50,30 @@ def theme_ng(mode: str = "light", base_size: float = 10, grid: str = "y"):
         # grid: hairlines in step-1, no minor grid, no dashes
         panel_grid_major_x=gx, panel_grid_major_y=gy,
         panel_grid_minor=element_blank(),
-        # axes: bottom spine only, no tick marks, mono tick labels in muted ink
+        # axes: bottom spine only, no tick marks, tick labels in muted ink
         axis_line_x=element_line(color=t["raised"], size=0.5),
         axis_line_y=element_blank(),
         axis_ticks=element_blank(),
         axis_ticks_length=0,
-        axis_text=element_text(family=MONO, size=base_size - 1, color=t["muted"]),
+        axis_text=element_text(family=SANS, size=base_size - 1, color=t["muted"]),
         axis_text_x=element_text(margin={"t": 6}),
         axis_text_y=element_text(margin={"r": 6}),
         axis_title=element_text(family=SANS, size=base_size, color=t["muted"]),
         axis_title_x=element_text(margin={"t": 8}),
         axis_title_y=element_text(margin={"r": 8}, angle=90),
-        # frame: mono title, caption subtitle, caption source
-        plot_title=element_text(family=MONO, size=base_size + 3, weight="medium", color=t["ink"], ha="left", margin={"b": 4}),
-        plot_subtitle=element_text(family=MONO, size=base_size - 1, color=t["muted"], ha="left", margin={"b": 12}),
-        plot_caption=element_text(family=MONO, size=base_size - 1.5, color=t["muted"], ha="left", margin={"t": 12}),
+        # frame: title, subtitle, source line; all text in the plot is Fira Sans
+        plot_title=element_text(family=SANS, size=base_size + 3, weight="medium", color=t["ink"], ha="left", margin={"b": 4}),
+        plot_subtitle=element_text(family=SANS, size=base_size - 1, color=t["muted"], ha="left", margin={"b": 12}),
+        plot_caption=element_text(family=SANS, size=base_size - 1.5, color=t["muted"], ha="left", margin={"t": 12}),
         # legend: no box, below the plot, ink text
         legend_position="bottom", legend_direction="horizontal",
         legend_background=element_blank(), legend_key=element_blank(),
         legend_title=element_blank(),
         legend_text=element_text(family=SANS, size=base_size, color=t["ink"]),
         legend_key_size=12, legend_margin=0, legend_box_spacing=0.02,  # figure units, despite the docstring
-        # facets: label in mono, no strip box
+        # facets: medium-weight label, no strip box
         strip_background=element_blank(),
-        strip_text=element_text(family=MONO, size=base_size - 1, weight="medium", color=t["ink"], ha="left", margin={"b": 6}),
+        strip_text=element_text(family=SANS, size=base_size - 1, weight="medium", color=t["ink"], ha="left", margin={"b": 6}),
         panel_spacing=0.03,
         # everything else
         text=element_text(family=SANS, size=base_size, color=t["ink"]),

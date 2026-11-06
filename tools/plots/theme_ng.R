@@ -21,13 +21,14 @@ ng_tokens <- list(
               "#26212d", "#43314e", "#673e74", "#8f4a97", "#b65bb2", "#d579c2"))
 )
 ng_shapes <- c(16, 15, 17, 18, 25, 3, 4, 8)   # circle, square, triangle, diamond, then down-triangle, plus, cross, star: series order
-ng_mono <- "Fira Mono"; ng_sans <- "Fira Sans"
+ng_mono <- "Fira Mono"; ng_sans <- "Fira Sans"   # plots are set entirely in ng_sans; ng_mono is kept for code annotations only
 
 ng_fonts <- function(fonts_dir) {
   stopifnot(requireNamespace("systemfonts", quietly = TRUE))
   f <- function(name) file.path(fonts_dir, name)
   systemfonts::register_font(ng_mono, plain = f("FiraMono-Regular.ttf"), bold = f("FiraMono-Bold.ttf"))
   systemfonts::register_font(paste(ng_mono, "Medium"), plain = f("FiraMono-Medium.ttf"))
+  systemfonts::register_font(paste(ng_sans, "Medium"), plain = f("FiraSans-Medium.ttf"))
   systemfonts::register_font(ng_sans, plain = f("FiraSans-Regular.ttf"), italic = f("FiraSans-Italic.ttf"),
                              bold = f("FiraSans-SemiBold.ttf"))
   invisible(TRUE)
@@ -47,23 +48,23 @@ theme_ng <- function(mode = "light", base_size = 10, grid = "y") {
     # grid: hairlines in step-1, no minor grid, no dashes
     panel.grid.major.x = gx, panel.grid.major.y = gy,
     panel.grid.minor   = ggplot2::element_blank(),
-    # axes: bottom spine only, no tick marks, mono tick labels in muted ink
+    # axes: bottom spine only, no tick marks, tick labels in muted ink
     axis.line.x  = hair,
     axis.line.y  = ggplot2::element_blank(),
     axis.ticks   = ggplot2::element_blank(),
     axis.ticks.length = grid::unit(0, "pt"),
-    axis.text    = ggplot2::element_text(family = ng_mono, size = base_size - 1, colour = t$muted),
+    axis.text    = ggplot2::element_text(family = ng_sans, size = base_size - 1, colour = t$muted),
     axis.text.x  = ggplot2::element_text(margin = ggplot2::margin(t = 6)),
     axis.text.y  = ggplot2::element_text(margin = ggplot2::margin(r = 6)),
     axis.title   = ggplot2::element_text(family = ng_sans, size = base_size, colour = t$muted),
     axis.title.x = ggplot2::element_text(margin = ggplot2::margin(t = 8)),
     axis.title.y = ggplot2::element_text(margin = ggplot2::margin(r = 8), angle = 90),
-    # frame: mono title, caption subtitle, caption source
-    plot.title    = ggplot2::element_text(family = paste(ng_mono, "Medium"), size = base_size + 3, colour = t$ink, hjust = 0,
+    # frame: title, subtitle, source line; all text in the plot is Fira Sans
+    plot.title    = ggplot2::element_text(family = paste(ng_sans, "Medium"), size = base_size + 3, colour = t$ink, hjust = 0,
                                           margin = ggplot2::margin(b = 4)),
-    plot.subtitle = ggplot2::element_text(family = ng_mono, size = base_size - 1, colour = t$muted, hjust = 0,
+    plot.subtitle = ggplot2::element_text(family = ng_sans, size = base_size - 1, colour = t$muted, hjust = 0,
                                           margin = ggplot2::margin(b = 12)),
-    plot.caption  = ggplot2::element_text(family = ng_mono, size = base_size - 1.5, colour = t$muted, hjust = 0,
+    plot.caption  = ggplot2::element_text(family = ng_sans, size = base_size - 1.5, colour = t$muted, hjust = 0,
                                           margin = ggplot2::margin(t = 12)),
     plot.title.position = "plot", plot.caption.position = "plot",
     # legend: no box, below the plot, ink text
@@ -73,9 +74,9 @@ theme_ng <- function(mode = "light", base_size = 10, grid = "y") {
     legend.text  = ggplot2::element_text(family = ng_sans, size = base_size, colour = t$ink),
     legend.key.size = grid::unit(12, "pt"), legend.margin = ggplot2::margin(0, 0, 0, 0),
     legend.box.spacing = grid::unit(10, "pt"),
-    # facets: label in mono, no strip box
+    # facets: medium-weight label, no strip box
     strip.background = ggplot2::element_blank(),
-    strip.text = ggplot2::element_text(family = paste(ng_mono, "Medium"), size = base_size - 1, colour = t$ink, hjust = 0,
+    strip.text = ggplot2::element_text(family = paste(ng_sans, "Medium"), size = base_size - 1, colour = t$ink, hjust = 0,
                                        margin = ggplot2::margin(b = 6)),
     panel.spacing = grid::unit(12, "pt"),
     # everything else

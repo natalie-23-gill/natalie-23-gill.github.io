@@ -1,17 +1,18 @@
 ```{=html}
 <%
+  // Quarto EJS is lodash-style: the dash tag escapes, the equals tag is raw (used only for authors(), which escapes itself).
   // Author names to emphasise, exactly as Google Scholar abbreviates them ("N Gill").
-  const me = ["N Gill"];
+  const me = ["N Gill", "N Elphick"];
   const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   const authors = (s) => String(s).split(", ").map((a) => me.includes(a) ? "<strong>" + esc(a) + "</strong>" : esc(a)).join(", ");
 %>
 <div class="site-cards site-cards--list">
 <% for (const item of items) { %>
 <article class="ng-card site-card" <%= metadataAttrs(item) %>>
-<p class="ng-card__eyebrow"><%= [item.year, item.venue].filter(Boolean).join(" · ") %></p>
-<h2 class="ng-card__title"><a href="<%- item.path %>" target="_blank" rel="noopener"><%= item.title %><span class="visually-hidden"> (opens in a new tab)</span></a></h2>
-<% if (item.authors) { %><p class="ng-card__body"><%- authors(item.authors) %></p><% } %>
-<% if (item.citations) { %><p class="t-caption site-card__date">Cited by <%= item.citations %></p><% } %>
+<p class="ng-card__eyebrow"><%- [item.year, item.venue].filter(Boolean).join(" · ") %></p>
+<h2 class="ng-card__title"><a href="<%- item.path %>" target="_blank" rel="noopener"><%- item.title %><span class="visually-hidden"> (opens in a new tab)</span></a></h2>
+<% if (item.authors) { %><p class="ng-card__body"><%= authors(item.authors) %></p><% } %>
+<% if (item.citations) { %><p class="t-caption site-card__date">Cited by <%- item.citations %></p><% } %>
 </article>
 <% } %>
 </div>
