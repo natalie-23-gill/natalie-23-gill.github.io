@@ -26,7 +26,7 @@ from ngtheme import (theme_ng, scale_color_ng, scale_fill_ng, scale_shape_ng,   
 
 PB = 1e15
 LOC_PB = 21                                  # Library of Congress digital collection, as on the slide
-GENOME_1000 = pd.Timestamp("2014-01-15")     # "Whole genome sequencing < $1,000", as on the slide
+GENOME_1000 = pd.Timestamp("2019-02-28")     # NHGRI cost per genome first below $1,000 ($993), and stays below
 LABEL_SIZE = 9                               # direct labels match the tick labels (9pt)
 
 raw = pd.read_csv(HERE / "sra_stat.csv")
@@ -44,9 +44,9 @@ def nearest(when):
     return raw.iloc[(raw["date"] - when).abs().argsort().iloc[0]]["date"]
 
 
-# Sparse markers give each series a shape as well as a colour (circle, then square); the first
+# Sparse markers give each series a shape as well as a colour (circle, then square); the extra
 # all-data marker is the $1,000 genome. The line ends carry a marker and a direct label.
-mark_dates = [nearest(pd.Timestamp(d)) for d in ("2018-01-01", "2021-01-01")] + [end]
+mark_dates = [nearest(pd.Timestamp(d)) for d in ("2017-07-01", "2021-01-01")] + [end]
 marks = pd.concat([
     long[long["date"].isin(mark_dates)],
     long[(long["date"] == at_1000["date"]) & (long["access"] == "All data")],
@@ -66,7 +66,7 @@ def plot(mode):
         + geom_line(size=LINE)
         + geom_point(aes(shape="access", fill="access"), data=marks, color=t["surface"],
                      size=POINT, stroke=RING)
-        + annotate("text", x=at_1000["date"], y=at_1000["bytes"] / PB + 2.2, ha="center", va="bottom",
+        + annotate("text", x=at_1000["date"] - pd.Timedelta(days=60), y=at_1000["bytes"] / PB + 1.2, ha="right", va="bottom",
                    label="Whole genome\nsequencing < $1,000", family=SANS, size=LABEL_SIZE, color=t["ink"])
         # every line ends in a direct label in ink, so no legend is needed
         + annotate("text", x=label_x, y=last["All data"], ha="left", va="center",
@@ -80,7 +80,7 @@ def plot(mode):
         + scale_y_continuous(breaks=[0, 10, 20, 30], limits=(0, 34), expand=(0, 0))
         + labs(x="", y="Data stored (PB)", title="Growth of the NCBI Sequence Read Archive",
                subtitle=f"Total data stored, {start:%B %Y} to {end:%B %Y}, n = {len(raw):,} snapshots",
-               caption="Source: NCBI SRA growth statistics, downloaded 2026-11-03")
+               caption="Sources: NCBI SRA growth statistics and NHGRI sequencing costs, downloaded November 2026")
         + theme_ng(mode)
         + theme(legend_position="none")
     )
@@ -93,6 +93,6 @@ if __name__ == "__main__":
              f"Both lines stay near zero until about 2013, then rise steeply: all data reaches "
              f"{last['All data']:.1f} petabytes and publicly available data {last['Publicly available']:.1f} "
              f"petabytes by February 2024, passing the {LOC_PB} petabyte Library of Congress digital "
-             f"collection. A point marks January 2014, when whole genome sequencing fell below $1,000."),
+             f"collection. A point marks February 2019, when whole genome sequencing fell below $1,000."),
         caption=f"NCBI Sequence Read Archive storage, n = {len(raw):,} snapshots, {start:%b %Y} to {end:%b %Y}.")
     print(fig.html.replace(str(HERE) + "/", ""))
