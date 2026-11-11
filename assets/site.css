@@ -206,12 +206,12 @@ body {
   font-size: var(--t-lead-size); line-height: var(--t-lead-line); font-weight: var(--t-lead-weight); letter-spacing: var(--t-lead-tracking);
 }
 
-/* Sections: a line rule and space-12, never a background change. Every `##` section
-   of a page (a top-level h2 of the main column) opens with one, except directly under
+/* Sections: space-12 above, no rule and never a background change. Every `##` section
+   of a page (a top-level h2 of the main column) opens with it, except directly under
    the title block, which already ends in a rule. */
 .site-section,
-:where(.site-main > h2) { border-top: 1px solid var(--line); margin-top: var(--space-12); padding-top: var(--space-12); }
-:where(.site-main > .site-title-block + h2) { border-top: 0; margin-top: 0; padding-top: 0; }
+:where(.site-main > h2) { margin-top: var(--space-12); }
+:where(.site-main > .site-title-block + h2) { margin-top: 0; }
 :where(.site-main) :where(hr) {
   border: 0;
   border-top: 1px solid var(--line);
@@ -338,6 +338,21 @@ body {
   :root:not([data-theme="light"]) .ng-fig-dark { display: block; }
 }
 
+/* Frame for media in posts: the card's 1px line and square corners, so plots
+   (ng_figure), markdown images and videos all share one edge. Applied to every
+   figure's img/video by default; .site-frame puts it on anything else. */
+.site-main :is(figure.ng-fig, .quarto-figure) :is(img, video),
+.site-frame {
+  box-sizing: border-box;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-0);
+}
+
+/* Looping video figure (a post's script picks the light or dark source); the
+   pause button is the field's focus-only .ng-field__toggle. */
+.site-loop { position: relative; }
+.site-loop video { display: block; width: 100%; height: auto; cursor: pointer; }
+
 /* Inline SVG diagrams: colours and type come from tokens, so they follow the theme with no second image.
    Each diagram has a wide and a narrow (stacked) drawing; only one is ever displayed. */
 .site-diagram { display: block; width: 100%; height: auto; font-family: var(--font-mono); }
@@ -353,7 +368,7 @@ body {
 .site-diagram__panel { fill: var(--surface-raised); stroke: var(--line); }
 .site-diagram__hub { fill: var(--ink); }
 .site-diagram__band { fill: var(--series); }
-.site-diagram__stem { stroke: var(--series); stroke-width: 2; stroke-linecap: square; }
+.site-diagram__stem { stroke: var(--ink); stroke-width: 2; stroke-linecap: square; }
 .site-diagram__link { stroke: var(--ink); stroke-width: 2; stroke-linecap: square; }
 .site-diagram__series-1 { --series: var(--chart-2); }
 .site-diagram__series-2 { --series: var(--chart-3); }
