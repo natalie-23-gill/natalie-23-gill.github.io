@@ -37,15 +37,18 @@ resources: [dna-spin-*]     # the loop's sources are chosen by script, so Quarto
       '<source src="' + name + '.webm" type=\'video/webm; codecs="av01.0.05M.08"\'>' +
       '<source src="' + name + '.mp4" type="video/mp4">';
     btn.hidden = still.matches;
+    btn.textContent = "Play";          /* becomes "Pause" only once it really plays */
     v.load();
     if (!still.matches && !paused) v.play().catch(function () {});
   }
+  /* Follows the video's real state, so a browser that blocked autoplay starts it on the first click. */
   function toggle() {
     if (still.matches) return;
-    paused = !paused;
-    if (paused) v.pause(); else v.play().catch(function () {});
-    btn.textContent = paused ? "Play" : "Pause";
+    if (v.paused) { paused = false; v.play().catch(function () {}); }
+    else { paused = true; v.pause(); }
   }
+  v.addEventListener("play", function () { btn.textContent = "Pause"; });
+  v.addEventListener("pause", function () { btn.textContent = "Play"; });
   v.addEventListener("click", toggle);
   btn.addEventListener("click", toggle);
   new MutationObserver(load).observe(root, { attributes: true, attributeFilter: ["data-theme"] });

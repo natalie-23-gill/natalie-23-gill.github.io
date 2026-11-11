@@ -11,6 +11,16 @@ description: "A selection of projects I've worked on."
 ```{=html}
 <div class="site-cards">
   <article class="ng-card">
+    <p class="ng-card__eyebrow">Python package</p>
+    <h3 class="ng-card__title">streamlit-cytoscape</h3>
+    <p class="ng-card__body">A flexible, customizable Streamlit component for interactive graph visualization using Cytoscape.js.</p>
+    <div class="ng-card__footer">
+      <span class="ng-tag">Python</span>
+      <span class="ng-tag">Streamlit</span>
+      <a class="ng-button ng-button--ghost ng-button--small" href="https://github.com/natalie-23-gill/streamlit-cytoscape" target="_blank" rel="noopener">View on GitHub →<span class="visually-hidden"> (opens in a new tab)</span></a>
+    </div>
+  </article>
+  <article class="ng-card">
     <p class="ng-card__eyebrow">R package · ISMB/ECCB 2025</p>
     <h3 class="ng-card__title">clustOpt</h3>
     <p class="ng-card__body">R package for optimizing Seurat clustering resolution via cross-validation and random forests.</p>
