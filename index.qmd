@@ -16,7 +16,7 @@ listing:
 ---
 
 ```{=html}
-<div class="ng-field site-hero" data-field="live"><canvas aria-hidden="true"></canvas><div class="ng-field__panel"><h1 class="ng-field__name">Natalie Gill</h1><p class="site-hero__pronouns t-caption">(she/her)</p><p class="ng-field__tag">Bioinformatics · AI engineering · Machine learning for biology</p></div></div>
+<div class="ng-field site-hero" data-field="live"><canvas aria-hidden="true"></canvas><div class="ng-field__panel"><h1 class="ng-field__name">Natalie Gill</h1><p class="site-hero__pronouns t-caption">(she/her)</p><p class="ng-field__tag">Bioinformatics | AI engineering | Machine learning for biology</p></div></div>
 ```
 
 ::: {.t-lead}
