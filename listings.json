@@ -1,0 +1,20 @@
+[
+  {
+    "listing": "/writing/index.html",
+    "items": [
+      "/writing/2026-11-what-is-bioinformatics/index.html",
+      "/writing/2025-06-welcome/index.html"
+    ]
+  },
+  {
+    "listing": "/index.html",
+    "items": [
+      "/writing/2026-11-what-is-bioinformatics/index.html",
+      "/writing/2025-06-welcome/index.html"
+    ]
+  },
+  {
+    "listing": "/publications/index.html",
+    "items": []
+  }
+]

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="quarto-1.6.39">
+<meta name="author" content="Natalie Gill">
+<meta name="description" content="My view of what bioinformatics is, how it came to be, and why judgment about how the data were generated matters more than ever in the age of AI.">
+<title>What is bioinformatics? · Natalie Gill</title>
+
+<!-- Natalie Gill site head. Included on every page through
+     format.html.include-in-header in _quarto.yml (a raw file include: no pandoc
+     template syntax here). Paths are absolute from the site root because the site
+     is served at https://www.nataliegill.io/. -->
+<link rel="preload" href="../../assets/fonts/FiraMono-Medium.woff2" as="font" type="font/woff2" crossorigin="">
+<link rel="preload" href="../../assets/fonts/FiraMono-Regular.woff2" as="font" type="font/woff2" crossorigin="">
+<link rel="preload" href="../../assets/fonts/FiraSans-Regular.woff2" as="font" type="font/woff2" crossorigin="">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../../assets/logo/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../assets/logo/favicon-180.png">
+<link rel="alternate" type="application/rss+xml" title="Natalie Gill · Writing" href="../../writing/index.xml">
+<script>
+(function () {
+  var root = document.documentElement;
+  var media = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+  function stored() {
+    try { var v = localStorage.getItem("theme"); return v === "dark" || v === "light" ? v : null; }
+    catch (e) { return null; }
+  }
+  function system() { return media && media.matches ? "dark" : "light"; }
+  /* The toggle shows the theme it switches to; its accessible name says the same word. */
+  function label() {
+    var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    var bs = document.querySelectorAll("[data-theme-toggle]");
+    for (var i = 0; i < bs.length; i++) { bs[i].setAttribute("aria-label", "Switch to " + next + " theme"); bs[i].setAttribute("title", "Switch to " + next + " theme"); }
+  }
+  function apply(mode) { root.setAttribute("data-theme", mode === "dark" ? "dark" : "light"); label(); }
+  window.ngSetTheme = function (mode) {
+    apply(mode);
+    try { localStorage.setItem("theme", root.getAttribute("data-theme")); } catch (e) {}
+  };
+  apply(stored() || system());
+  if (media) {
+    var follow = function () { if (!stored()) apply(system()); };
+    if (media.addEventListener) media.addEventListener("change", follow);
+    else if (media.addListener) media.addListener(follow);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", label);
+  document.addEventListener("click", function (e) {
+    var t = e.target && e.target.closest ? e.target.closest("[data-theme-toggle]") : null;
+    if (t) window.ngSetTheme(root.getAttribute("data-theme") === "dark" ? "light" : "dark");
+  });
+})();
+</script>
+<script src="../../assets/field-config.js" defer=""></script>
+<script src="../../assets/field.js" defer=""></script>
+<link rel="stylesheet" href="../../assets/tokens.css">
+<link rel="stylesheet" href="../../assets/bundle.css">
+<link rel="stylesheet" href="../../assets/site.css">
+
+<meta property="og:title" content="What is bioinformatics? – Natalie Gill">
+<meta property="og:description" content="My view of what bioinformatics is, how it came to be, and why judgment about how the data were generated matters more than ever in the age of AI.">
+<meta property="og:image" content="https://www.nataliegill.io/writing/2026-11-what-is-bioinformatics/dna-to-numbers-card.png">
+<meta property="og:site_name" content="Natalie Gill">
+<meta property="og:image:height" content="630">
+<meta property="og:image:width" content="1200">
+<meta name="twitter:title" content="What is bioinformatics? – Natalie Gill">
+<meta name="twitter:description" content="My view of what bioinformatics is, how it came to be, and why judgment about how the data were generated matters more than ever in the age of AI.">
+<meta name="twitter:image" content="https://www.nataliegill.io/writing/2026-11-what-is-bioinformatics/dna-to-numbers-card.png">
+<meta name="twitter:image-height" content="630">
+<meta name="twitter:image-width" content="1200">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<!-- Template partial (pandoc syntax): a literal dollar sign must be written $$.
+     Quarto rewrites the root-absolute hrefs below to relative ones per page, so the
+     active-link script compares resolved a.pathname values, not href text. -->
+<header class="site-header">
+<div class="site-header__inner">
+<a class="site-name" href="../../"><svg class="site-mark" viewbox="0 0 18 8" aria-hidden="true" focusable="false"><path d="M12,5.5 A0.5,0.5 0 0 0 12.5,6 L16,6 L16,4 L18,4 L18,8 L12,8 L12,6.5 A0.5,0.5 0 0 0 11.5,6 L10,6 L10,2 L11.5,2 A0.5,0.5 0 0 0 12,1.5 L12,0 L16,0 L16,2 L12.5,2 A0.5,0.5 0 0 0 12,2.5 Z M0,5 L0,0 L6,0 L6,1.5 A0.5,0.5 0 0 0 6.5,2 L8,2 L8,8 L6,8 L6,2.5 A0.5,0.5 0 0 0 5.5,2 L2,2 L2,8 L0,8 Z" fill="currentColor"></path></svg><span class="visually-hidden">Natalie Gill</span></a>
+<nav class="site-nav" aria-label="Main">
+<a href="../../writing/">Writing</a>
+<a href="../../projects/">Projects</a>
+<a href="../../publications/">Publications</a>
+<a href="../../presentations/">Presentations</a>
+</nav>
+<button type="button" class="site-theme-toggle" data-theme-toggle="" aria-label="Switch color theme" title="Switch color theme"><span aria-hidden="true">◐</span><span class="site-theme-toggle__dark" aria-hidden="true">Dark</span><span class="site-theme-toggle__light" aria-hidden="true">Light</span></button>
+</div>
+</header>
+<script>
+(function () {
+  var p = location.pathname.replace(/index\.html$/, "");
+  var links = document.querySelectorAll(".site-nav a");
+  for (var i = 0; i < links.length; i++) {
+    var h = links[i].pathname.replace(/\.html$/, "");
+    if (p.indexOf(h) === 0) links[i].setAttribute("aria-current", "page");
+  }
+})();
+</script><div id="quarto-content" class="site-content">
+<main class="site-main content" id="quarto-document-content">
+<header id="title-block-header" class="quarto-title-block site-title-block">
+<h1 class="title site-title">What is bioinformatics?</h1>
+<p class="site-meta"><time>Nov 11, 2026</time> · <span class="site-reading-time">9 min read</span></p>
+<p class="site-tags"><span class="ng-tag">bioinformatics</span> <span class="ng-tag">history</span></p>
+<div class="site-description">My view of what bioinformatics is, how it came to be, and why judgment about how the data were generated matters more than ever in the age of AI.</div>
+</header><figure class="ng-fig site-loop" id="dna-spin">
+  <video width="1200" height="630" muted="" loop="" playsinline="" preload="none" aria-label="A DNA helix turning as it breaks into base letters, then ones and zeros"></video>
+  <button type="button" class="ng-field__toggle">Pause</button>
+  <noscript>
+    <img class="ng-fig-light" src="dna-spin-light-poster.webp" alt="A DNA helix turning as it breaks into base letters, then ones and zeros">
+    <img class="ng-fig-dark" src="dna-spin-dark-poster.webp" alt="A DNA helix turning as it breaks into base letters, then ones and zeros">
+  </noscript>
+</figure>
+<script>
+/* Plays the light or dark loop to match the site theme (switching when it changes).
+   Reduced motion: the still poster only, nothing downloaded. Click the loop, or the
+   focus-only button, to pause/play. AV1 WebM first, H.264 MP4 for other browsers. */
+(function () {
+  var fig = document.getElementById("dna-spin");
+  var v = fig.querySelector("video"), btn = fig.querySelector("button");
+  var root = document.documentElement;
+  var still = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var paused = false;
+  v.muted = true;
+  function load() {
+    var name = "dna-spin-" + (root.getAttribute("data-theme") === "dark" ? "dark" : "light");
+    v.poster = name + "-poster.webp";
+    v.innerHTML = still.matches ? "" :
+      '<source src="' + name + '.webm" type=\'video/webm; codecs="av01.0.05M.08"\'>' +
+      '<source src="' + name + '.mp4" type="video/mp4">';
+    btn.hidden = still.matches;
+    btn.textContent = "Play";          /* becomes "Pause" only once it really plays */
+    v.load();
+    if (!still.matches && !paused) v.play().catch(function () {});
+  }
+  /* Follows the video's real state, so a browser that blocked autoplay starts it on the first click. */
+  function toggle() {
+    if (still.matches) return;
+    if (v.paused) { paused = false; v.play().catch(function () {}); }
+    else { paused = true; v.pause(); }
+  }
+  v.addEventListener("play", function () { btn.textContent = "Pause"; });
+  v.addEventListener("pause", function () { btn.textContent = "Play"; });
+  v.addEventListener("click", toggle);
+  btn.addEventListener("click", toggle);
+  new MutationObserver(load).observe(root, { attributes: true, attributeFilter: ["data-theme"] });
+  if (still.addEventListener) still.addEventListener("change", load);
+  load();
+})();
+</script>
+<h2 id="bioinformatics-is">Bioinformatics is…</h2>
+<blockquote>
+<p>An interdisciplinary field that develops computational methods and software tools to analyze and interpret complex biological datasets using biology, computer science, mathematics, and statistics.</p>
+</blockquote>
+<p>When I am asked what I do for a living, I often reach for multiple descriptions that are more familiar to people outside the sciences: “Computational Biology”, “Biology Research”, “Data Science”. None of them are quite right, and in the current age of AI, the question has become harder to answer because it is frequently followed by a second: will the field still exist? Bioinformatics has always been a highly interdisciplinary field, and because of our position at the intersections of those disciplines, communicating what it is has always been difficult. This post is my view of what the field is. The definition above describes it as the development of methods and tools. I think that excludes an important part, which is the judgment about how the data were generated and whether an analysis of them can be trusted. I hope this post is useful to those considering a career in bioinformatics or to bioinformatics professionals considering the impact of AI on the field.</p>
+<!-- Inline SVG so it follows the theme through the tokens; styles are .site-diagram in assets/site.css.
+     Two drawings of the same diagram: a change to one belongs in the other, and in both aria-labels. -->
+<figure class="ng-fig">
+<svg class="site-diagram site-diagram--wide" viewbox="0 0 720 304" role="img" aria-label="Diagram of three fields connecting to a single box labelled bioinformatics. Data science: data visualization, machine learning, statistics, linear algebra, graph theory; Computer science: algorithms, data structures, information theory, distributed computing; Biology: molecular biology, transcriptomics, proteomics, epigenomics, systems biology, genomics." fill="currentColor">
+  <line class="site-diagram__stem site-diagram__series-1" x1="115.333" y1="211" x2="115.333" y2="235" stroke="currentColor"></line>
+  <line class="site-diagram__stem site-diagram__series-2" x1="360" y1="211" x2="360" y2="235" stroke="currentColor"></line>
+  <line class="site-diagram__stem site-diagram__series-3" x1="604.667" y1="211" x2="604.667" y2="235" stroke="currentColor"></line>
+  <line class="site-diagram__link" x1="115.333" y1="235" x2="604.667" y2="235" stroke="currentColor"></line>
+  <line class="site-diagram__link" x1="360" y1="235" x2="360" y2="259" stroke="currentColor"></line>
+  <g class="site-diagram__series-1">
+    <rect class="site-diagram__panel" x="1" y="1" width="228.667" height="210" fill="none" stroke="currentColor"></rect>
+    <rect class="site-diagram__band" x="1" y="1" width="228.667" height="8"></rect>
+    <text class="site-diagram__name" x="15" y="34">Data science</text>
+    <text x="15" y="63">Data visualization</text>
+    <text x="15" y="89">Machine learning</text>
+    <text x="15" y="115">Statistics</text>
+    <text x="15" y="141">Linear algebra</text>
+    <text x="15" y="167">Graph theory</text>
+  </g>
+  <g class="site-diagram__series-2">
+    <rect class="site-diagram__panel" x="245.667" y="1" width="228.667" height="210" fill="none" stroke="currentColor"></rect>
+    <rect class="site-diagram__band" x="245.667" y="1" width="228.667" height="8"></rect>
+    <text class="site-diagram__name" x="259.667" y="34">Computer science</text>
+    <text x="259.667" y="63">Algorithms</text>
+    <text x="259.667" y="89">Data structures</text>
+    <text x="259.667" y="115">Information theory</text>
+    <text x="259.667" y="141">Distributed computing</text>
+  </g>
+  <g class="site-diagram__series-3">
+    <rect class="site-diagram__panel" x="490.333" y="1" width="228.667" height="210" fill="none" stroke="currentColor"></rect>
+    <rect class="site-diagram__band" x="490.333" y="1" width="228.667" height="8"></rect>
+    <text class="site-diagram__name" x="504.333" y="34">Biology</text>
+    <text x="504.333" y="63">Molecular biology</text>
+    <text x="504.333" y="89">Transcriptomics</text>
+    <text x="504.333" y="115">Proteomics</text>
+    <text x="504.333" y="141">Epigenomics</text>
+    <text x="504.333" y="167">Systems biology</text>
+    <text x="504.333" y="193">Genomics</text>
+  </g>
+  <rect class="site-diagram__hub" x="240" y="259" width="240" height="44" fill="none" stroke="currentColor"></rect>
+  <text class="site-diagram__hub-label" x="360" y="287" text-anchor="middle">Bioinformatics</text>
+</svg>
+<svg class="site-diagram site-diagram--narrow" viewbox="0 0 360 646" role="img" aria-label="Diagram of three fields connecting to a single box labelled bioinformatics. Data science: data visualization, machine learning, statistics, linear algebra, graph theory; Computer science: algorithms, data structures, information theory, distributed computing; Biology: molecular biology, transcriptomics, proteomics, epigenomics, systems biology, genomics." fill="currentColor">
+  <line class="site-diagram__stem site-diagram__series-1" x1="9" y1="27" x2="28" y2="27" stroke="currentColor"></line>
+  <line class="site-diagram__stem site-diagram__series-2" x1="9" y1="225" x2="28" y2="225" stroke="currentColor"></line>
+  <line class="site-diagram__stem site-diagram__series-3" x1="9" y1="397" x2="28" y2="397" stroke="currentColor"></line>
+  <line class="site-diagram__link" x1="9" y1="27" x2="9" y2="601" stroke="currentColor"></line>
+  <g class="site-diagram__series-1">
+    <rect class="site-diagram__panel" x="28" y="1" width="331" height="184" fill="none" stroke="currentColor"></rect>
+    <rect class="site-diagram__band" x="28" y="1" width="331" height="8"></rect>
+    <text class="site-diagram__name" x="42" y="34">Data science</text>
+    <text x="42" y="63">Data visualization</text>
+    <text x="42" y="89">Machine learning</text>
+    <text x="42" y="115">Statistics</text>
+    <text x="42" y="141">Linear algebra</text>
+    <text x="42" y="167">Graph theory</text>
+  </g>
+  <g class="site-diagram__series-2">
+    <rect class="site-diagram__panel" x="28" y="199" width="331" height="158" fill="none" stroke="currentColor"></rect>
+    <rect class="site-diagram__band" x="28" y="199" width="331" height="8"></rect>
+    <text class="site-diagram__name" x="42" y="232">Computer science</text>
+    <text x="42" y="261">Algorithms</text>
+    <text x="42" y="287">Data structures</text>
+    <text x="42" y="313">Information theory</text>
+    <text x="42" y="339">Distributed computing</text>
+  </g>
+  <g class="site-diagram__series-3">
+    <rect class="site-diagram__panel" x="28" y="371" width="331" height="210" fill="none" stroke="currentColor"></rect>
+    <rect class="site-diagram__band" x="28" y="371" width="331" height="8"></rect>
+    <text class="site-diagram__name" x="42" y="404">Biology</text>
+    <text x="42" y="433">Molecular biology</text>
+    <text x="42" y="459">Transcriptomics</text>
+    <text x="42" y="485">Proteomics</text>
+    <text x="42" y="511">Epigenomics</text>
+    <text x="42" y="537">Systems biology</text>
+    <text x="42" y="563">Genomics</text>
+  </g>
+  <rect class="site-diagram__hub" x="1" y="601" width="358" height="44" fill="none" stroke="currentColor"></rect>
+  <text class="site-diagram__hub-label" x="180" y="629" text-anchor="middle">Bioinformatics</text>
+</svg>
+  <figcaption>The relationship of biology, data science and computer science to bioinformatics.</figcaption>
+</figure>
+<h2 id="was-biology-late-to-the-computation-party">Was biology late to the computation party?</h2>
+<p>Mathematics and physics were the first fields to adopt computation, and perhaps that is why those fields do not have such a strong separation between researchers who use computer programming and those that do not. This could imply that eventually there will be no such separation in the biological sciences. Another factor is that our understanding of biological systems lagged behind the development of computers. ENIAC (1945) was the first general-purpose electronic computer and was created to perform physics calculations for the U.S. military. It would be another 7 years before DNA was confirmed to be the genetic material <span class="citation" data-cites="hershey1952">(<a href="#ref-hershey1952" role="doc-biblioref">Hershey and Chase 1952</a>)</span>, and another 6 after that before the first bioinformatics software was written <span class="citation" data-cites="gauthier2019">(<a href="#ref-gauthier2019" role="doc-biblioref">Gauthier et al. 2019</a>)</span>.</p>
+<p>Margaret Dayhoff and Robert Ledley wrote COMPROTEIN in 1958 to solve a specific problem with our ability to measure the full sequence of proteins. Edman peptide sequencing could read out the sequence of 50-60 amino acid pieces of a protein, and solving the full sequence required overlapping those pieces essentially by hand <span class="citation" data-cites="gauthier2019">(<a href="#ref-gauthier2019" role="doc-biblioref">Gauthier et al. 2019</a>)</span>. Dayhoff and Ledley both saw the promise of computational approaches in biochemistry and created the first <em>de novo</em> sequence assembly algorithm in FORTRAN <span class="citation" data-cites="dayhoff1962">(<a href="#ref-dayhoff1962" role="doc-biblioref">Dayhoff and Ledley 1962</a>)</span>. The protein sequences themselves could now be the subject of research questions, and this resulted in an entirely new discipline (paleogenetics) dedicated to understanding the temporal and species divergence of these sequences <span class="citation" data-cites="pauling1963">(<a href="#ref-pauling1963" role="doc-biblioref">Pauling and Zuckerkandl 1963</a>)</span>. Paleogenetics itself then required the development of more algorithms and software to handle the unique challenges imposed by the size and diversity of protein sequences and, later on, DNA.</p>
+<p>So was biology late to the party? Perhaps a little, but it is more accurate to say that our ability to measure biological systems in the same systematic way that we measured physical systems did not keep pace with the developments in computer technology. As we developed new ways of measuring biology, we required an increasing number of researchers dedicated to computational analysis of those measurements. Computational analysis, after all, requires a firm understanding of the data generation process, and the data generation process in the field of biology is arguably the most complex one humanity has ever observed.</p>
+<h2 id="the-sequence-data-explosion">The sequence data explosion</h2>
+<p>In the 1990s the Human Genome Project spent $2.7 billion (in 1991 dollars) to sequence the entire human genome <span class="citation" data-cites="gauthier2019 nhgri-cost">(<a href="#ref-gauthier2019" role="doc-biblioref">Gauthier et al. 2019</a>; <a href="#ref-nhgri-cost" role="doc-biblioref">National Human Genome Research Institute n.d.</a>)</span>, driven by the promise of genomic medicine. Its biggest supporters did overpromise. Instead of the direct links between genes and common diseases that were expected to set off the mass development of gene-based therapies, we discovered the complexity of genetic interactions <span class="citation" data-cites="ruffo2025">(<a href="#ref-ruffo2025" role="doc-biblioref">Ruffo, Traynor, and Conforti 2025</a>)</span>. Nonetheless, genomics has made a considerable impact on human health. Genomics is now routinely used in healthcare to analyze tumor genomes (which has enabled the development of targeted therapeutics), to screen pregnancies noninvasively, and to test for pediatric conditions and rare disorders <span class="citation" data-cites="green2020">(<a href="#ref-green2020" role="doc-biblioref">Green et al. 2020</a>)</span>. Screening cell-free DNA in maternal blood can detect more than 99% of fetuses with trisomy 21 <span class="citation" data-cites="gil2017">(<a href="#ref-gil2017" role="doc-biblioref">Gil et al. 2017</a>)</span>, and a pilot of genome sequencing in the U.K. health care system made genetic diagnoses in 25% of probands with undiagnosed rare diseases <span class="citation" data-cites="genomes100k2021">(<a href="#ref-genomes100k2021" role="doc-biblioref">100,000 Genomes Project Pilot Investigators et al. 2021</a>)</span>.</p>
+<p>In 2001 <span class="citation" data-cites="lander2001 venter2001">(<a href="#ref-lander2001" role="doc-biblioref">Lander et al. 2001</a>; <a href="#ref-venter2001" role="doc-biblioref">Venter et al. 2001</a>)</span>, the Human Genome Project was completed <span class="citation" data-cites="nurk2022">(kind of—see: <a href="#ref-nurk2022" role="doc-biblioref">Nurk et al. 2022</a>)</span>, and just 18 years later the cost to sequence a human genome dropped to $1,000 <span class="citation" data-cites="wetterstrand2023">(<a href="#ref-wetterstrand2023" role="doc-biblioref">Wetterstrand 2023</a>)</span>, which quickly led to an exponential increase in the amount of sequencing data.</p>
+<figure class="ng-fig">
+  <img class="ng-fig-light" src="sra_growth-light.png" alt="Line chart of data stored in the NCBI Sequence Read Archive from 2007 to 2024. Both lines stay near zero until about 2013, then rise steeply: all data reaches 31.4 petabytes and publicly available data 21.8 petabytes by February 2024, passing the 21 petabyte Library of Congress digital collection. A point marks February 2019, when whole genome sequencing fell below $1,000.">
+  <img class="ng-fig-dark" src="sra_growth-dark.png" alt="Line chart of data stored in the NCBI Sequence Read Archive from 2007 to 2024. Both lines stay near zero until about 2013, then rise steeply: all data reaches 31.4 petabytes and publicly available data 21.8 petabytes by February 2024, passing the 21 petabyte Library of Congress digital collection. A point marks February 2019, when whole genome sequencing fell below $1,000.">
+  <figcaption>NCBI Sequence Read Archive storage, n = 5,520 snapshots, Jun 2007 to Feb 2024.</figcaption>
+</figure>
+<p>This increase in just sequencing data alone required the development of new analysis methods, new computational infrastructure, and new statistical methods. It was not technically feasible for biologists to develop the molecular biology needed to produce and contextualize this massive amount of data in addition to the algorithms, software, and statistical methods needed to analyze the data. The diversity of the biological data and research questions required a corresponding diversity of bioinformatics focus areas, which is another big reason it is difficult to use more precise language when trying to define the whole field of bioinformatics.</p>
+<h2 id="strange-new-worlds">Strange new worlds</h2>
+<p>The sequence data explosion is a story about volume, but the bigger change has been in <em>what</em> we can measure rather than <em>how much</em>. In 2016, spatial transcriptomics measured gene expression across the whole tissue section by RNA sequencing and recorded where in the tissue each measurement came from, which made it possible to analyze which genes vary with position in the tissue <span class="citation" data-cites="stahl2016">(<a href="#ref-stahl2016" role="doc-biblioref">Ståhl et al. 2016</a>)</span>. Just one year later, the Cell Atlas integrated transcriptomics and antibody-based microscopy to map 12,003 human proteins to 30 subcellular structures and found that about half of those proteins localize to multiple compartments of the cell <span class="citation" data-cites="thul2017">(<a href="#ref-thul2017" role="doc-biblioref">Thul et al. 2017</a>)</span>. One year after that, a new light-sheet microscope captured the mouse embryo from gastrulation to the early formation of organs at the cellular level, but the microscope alone was not enough. Following those cells across the entire embryo required a new computational framework <span class="citation" data-cites="mcdole2018">(<a href="#ref-mcdole2018" role="doc-biblioref">McDole et al. 2018</a>)</span>.</p>
+<p>From a compartment of a cell to an entire embryo, these measurements sound like science fiction, and it is why I believe we are in the golden age of biological research. Each of these advances in biological assays also required people who could connect the analysis to how the data was generated. As our ability to measure biological systems at multiple levels of granularity increases, so does the need for bioinformaticians who can translate those measurements into biologically meaningful claims that expand our understanding of biology and human health. These technologies are also creating new fields of biology and new specializations within bioinformatics. Spatial biology, for example, is a rapidly growing field with its own analysis methods and software <span class="citation" data-cites="dries2021 palla2022">(<a href="#ref-dries2021" role="doc-biblioref">Dries et al. 2021</a>; <a href="#ref-palla2022" role="doc-biblioref">Palla et al. 2022</a>)</span> and there are bioinformaticians who specialize in it.</p>
+<h2 id="is-this-the-end">Is this the end?</h2>
+<p>Lately, the most common question I am asked by people interested in studying bioinformatics is whether LLMs are making the field obsolete. This is not the first time the question has come up. It was once thought that biology would integrate computational analysis so heavily that the two fields would no longer have a meaningful separation <span class="citation" data-cites="brown2014 stevens2013">(<a href="#ref-brown2014" role="doc-biblioref">Brown 2014</a>; <a href="#ref-stevens2013" role="doc-biblioref">Stevens 2013</a>)</span>. That did not happen, because bioinformatics has never been just about running routine pipelines. Many biologists do run standardized pipelines, but our ability to perform multimodal, high-dimensional measurements is increasing at such a pace that many newer assays have no standardized pipeline at all. Those that do still rely on default settings that assume things about the experiment, such as normalization methods that assume most genes do not change between conditions, and someone has to recognize when a particular experiment breaks those assumptions.</p>
+<p>The number of assays and the types of mathematics needed to analyze them continues to grow, which is a challenge for bioinformaticians who would typically rely on existing methods. It is especially challenging if they rely on AI for method development, since that might restrict the space of scientific exploration and bias new methods toward approaches that are already well established <span class="citation" data-cites="messeri2024 hao2026">(<a href="#ref-messeri2024" role="doc-biblioref">Messeri and Crockett 2024</a>; <a href="#ref-hao2026" role="doc-biblioref">Hao et al. 2026</a>)</span>.</p>
+<p>LLMs change how quickly the code gets written; they do not change how we know whether the result is right. A mathematical proof can be verified by a machine, so a system can generate thousands of attempts and keep the one that passes. An analysis of biological data has no such check. Its correctness depends on assumptions about how the data were generated: how the samples were collected, what the assay captures and what it misses, and which sources of variation are biological versus technical. Nothing in the code or the data records whether those assumptions hold. A script will run without error and return a p-value regardless of whether the treatment groups were processed in separate batches <span class="citation" data-cites="leek2010">(<a href="#ref-leek2010" role="doc-biblioref">Leek et al. 2010</a>)</span>.</p>
+<p>Unlike attempting to solve mathematical proofs, generating more attempts at analyzing biological data does not guarantee that the correct analysis will be identified. Trying many analyses and keeping the one that gives a significant result inflates false positives <span class="citation" data-cites="simmons2011">(<a href="#ref-simmons2011" role="doc-biblioref">Simmons, Nelson, and Simonsohn 2011</a>)</span>, and AI tools lower the cost of doing this. There is an exception: problems with a known correct answer can be solved by generating candidate methods and scoring them, for example, protein structure prediction <span class="citation" data-cites="jumper2021">(<a href="#ref-jumper2021" role="doc-biblioref">Jumper et al. 2021</a>)</span>. However, most of what we do is inference, where no correct answer exists to compare against.</p>
+<p>None of this is an argument against using AI. Coding assistants have removed many of the barriers to developing and maintaining bioinformatics software that follows software engineering best practices, and I expect that to leave more time for developing methods that support rigorous, reproducible claims. The definition at the top of this post describes bioinformatics as the development of methods and tools. I would add that it is also the judgment about how the data were generated, which is what makes those methods and tools trustworthy. Developing, expanding, and sustaining that judgment is the central challenge for bioinformaticians in the age of AI. If this is the golden age of biological research, the people who can tell a real discovery from an artifact of the data or of a misspecified model have never been more important.</p>
+<h2 id="references">References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-genomes100k2021" class="csl-entry" role="listitem">
+100,000 Genomes Project Pilot Investigators, Damian Smedley, Katherine R. Smith, et al. 2021. <span>“100,000 Genomes Pilot on Rare-Disease Diagnosis in Health Care: Preliminary Report.”</span> <em>New England Journal of Medicine</em> 385 (20): 1868–80. <a href="https://doi.org/10.1056/NEJMoa2035790">https://doi.org/10.1056/NEJMoa2035790</a>.
+</div>
+<div id="ref-brown2014" class="csl-entry" role="listitem">
+Brown, C. Titus. 2014. <span>“A History of Bioinformatics (in the Year 2039).”</span> Talk at the 15th Annual Bioinformatics Open Source Conference, Boston, MA.
+</div>
+<div id="ref-dayhoff1962" class="csl-entry" role="listitem">
+Dayhoff, Margaret O., and Robert S. Ledley. 1962. <span>“Comprotein: A Computer Program to Aid Primary Protein Structure Determination.”</span> In <em>Proceedings of the December 4–6, 1962, Fall Joint Computer Conference</em>, 262–74. New York, NY: ACM. <a href="https://doi.org/10.1145/1461518.1461546">https://doi.org/10.1145/1461518.1461546</a>.
+</div>
+<div id="ref-dries2021" class="csl-entry" role="listitem">
+Dries, Ruben, Jiaji Chen, Natalie Del Rossi, et al. 2021. <span>“Advances in Spatial Transcriptomic Data Analysis.”</span> <em>Genome Research</em> 31 (10): 1706–18. <a href="https://doi.org/10.1101/gr.275224.121">https://doi.org/10.1101/gr.275224.121</a>.
+</div>
+<div id="ref-gauthier2019" class="csl-entry" role="listitem">
+Gauthier, Jeff, Antony T. Vincent, Steve J. Charette, and Nicolas Derome. 2019. <span>“A Brief History of Bioinformatics.”</span> <em>Briefings in Bioinformatics</em> 20 (6): 1981–96. <a href="https://doi.org/10.1093/bib/bby063">https://doi.org/10.1093/bib/bby063</a>.
+</div>
+<div id="ref-gil2017" class="csl-entry" role="listitem">
+Gil, M. M., V. Accurti, B. Santacruz, et al. 2017. <span>“Analysis of Cell-Free <span>DNA</span> in Maternal Blood in Screening for Aneuploidies: Updated Meta-Analysis.”</span> <em>Ultrasound in Obstetrics &amp; Gynecology</em> 50 (3): 302–14. <a href="https://doi.org/10.1002/uog.17484">https://doi.org/10.1002/uog.17484</a>.
+</div>
+<div id="ref-green2020" class="csl-entry" role="listitem">
+Green, Eric D., Chris Gunter, Leslie G. Biesecker, et al. 2020. <span>“Strategic Vision for Improving Human Health at the Forefront of Genomics.”</span> <em>Nature</em> 586 (7831): 683–92. <a href="https://doi.org/10.1038/s41586-020-2817-4">https://doi.org/10.1038/s41586-020-2817-4</a>.
+</div>
+<div id="ref-hao2026" class="csl-entry" role="listitem">
+Hao, Qianyue, Fengli Xu, Yong Li, and James Evans. 2026. <span>“Artificial Intelligence Tools Expand Scientists’ Impact but Contract Science’s Focus.”</span> <em>Nature</em> 649 (8099): 1237–43. <a href="https://doi.org/10.1038/s41586-025-09922-y">https://doi.org/10.1038/s41586-025-09922-y</a>.
+</div>
+<div id="ref-hershey1952" class="csl-entry" role="listitem">
+Hershey, A. D., and Martha Chase. 1952. <span>“Independent Functions of Viral Protein and Nucleic Acid in Growth of Bacteriophage.”</span> <em>Journal of General Physiology</em> 36 (1): 39–56. <a href="https://doi.org/10.1085/jgp.36.1.39">https://doi.org/10.1085/jgp.36.1.39</a>.
+</div>
+<div id="ref-jumper2021" class="csl-entry" role="listitem">
+Jumper, John, Richard Evans, Alexander Pritzel, et al. 2021. <span>“Highly Accurate Protein Structure Prediction with <span>AlphaFold</span>.”</span> <em>Nature</em> 596 (7873): 583–89. <a href="https://doi.org/10.1038/s41586-021-03819-2">https://doi.org/10.1038/s41586-021-03819-2</a>.
+</div>
+<div id="ref-lander2001" class="csl-entry" role="listitem">
+Lander, Eric S., Lauren M. Linton, Bruce Birren, et al. 2001. <span>“Initial Sequencing and Analysis of the Human Genome.”</span> <em>Nature</em> 409 (6822): 860–921. <a href="https://doi.org/10.1038/35057062">https://doi.org/10.1038/35057062</a>.
+</div>
+<div id="ref-leek2010" class="csl-entry" role="listitem">
+Leek, Jeffrey T., Robert B. Scharpf, Héctor Corrada Bravo, et al. 2010. <span>“Tackling the Widespread and Critical Impact of Batch Effects in High-Throughput Data.”</span> <em>Nature Reviews Genetics</em> 11 (10): 733–39. <a href="https://doi.org/10.1038/nrg2825">https://doi.org/10.1038/nrg2825</a>.
+</div>
+<div id="ref-mcdole2018" class="csl-entry" role="listitem">
+McDole, Katie, Léo Guignard, Fernando Amat, et al. 2018. <span>“In Toto Imaging and Reconstruction of Post-Implantation Mouse Development at the Single-Cell Level.”</span> <em>Cell</em> 175 (3): 859–876.e33. <a href="https://doi.org/10.1016/j.cell.2018.09.031">https://doi.org/10.1016/j.cell.2018.09.031</a>.
+</div>
+<div id="ref-messeri2024" class="csl-entry" role="listitem">
+Messeri, Lisa, and M. J. Crockett. 2024. <span>“Artificial Intelligence and Illusions of Understanding in Scientific Research.”</span> <em>Nature</em> 627 (8002): 49–58. <a href="https://doi.org/10.1038/s41586-024-07146-0">https://doi.org/10.1038/s41586-024-07146-0</a>.
+</div>
+<div id="ref-nhgri-cost" class="csl-entry" role="listitem">
+National Human Genome Research Institute. n.d. <span>“The Cost of Sequencing a Human Genome.”</span> Accessed November 5, 2026. <a href="https://www.genome.gov/about-genomics/fact-sheets/Sequencing-Human-Genome-cost">https://www.genome.gov/about-genomics/fact-sheets/Sequencing-Human-Genome-cost</a>.
+</div>
+<div id="ref-nurk2022" class="csl-entry" role="listitem">
+Nurk, Sergey, Sergey Koren, Arang Rhie, et al. 2022. <span>“The Complete Sequence of a Human Genome.”</span> <em>Science</em> 376 (6588): 44–53. <a href="https://doi.org/10.1126/science.abj6987">https://doi.org/10.1126/science.abj6987</a>.
+</div>
+<div id="ref-palla2022" class="csl-entry" role="listitem">
+Palla, Giovanni, David S. Fischer, Aviv Regev, and Fabian J. Theis. 2022. <span>“Spatial Components of Molecular Tissue Biology.”</span> <em>Nature Biotechnology</em> 40 (3): 308–18. <a href="https://doi.org/10.1038/s41587-021-01182-1">https://doi.org/10.1038/s41587-021-01182-1</a>.
+</div>
+<div id="ref-pauling1963" class="csl-entry" role="listitem">
+Pauling, Linus, and Emile Zuckerkandl. 1963. <span>“Chemical Paleogenetics: Molecular "Restoration Studies" of Extinct Forms of Life.”</span> <em>Acta Chemica Scandinavica</em> 17: S9–16. <a href="https://doi.org/10.3891/acta.chem.scand.17s-0009">https://doi.org/10.3891/acta.chem.scand.17s-0009</a>.
+</div>
+<div id="ref-ruffo2025" class="csl-entry" role="listitem">
+Ruffo, Paola, Bryan J. Traynor, and Francesca Luisa Conforti. 2025. <span>“Unveiling the Regulatory Potential of the Non-Coding Genome: Insights from the Human Genome Project to Precision Medicine.”</span> <em>Genes &amp; Diseases</em> 12 (6): 101652. <a href="https://doi.org/10.1016/j.gendis.2025.101652">https://doi.org/10.1016/j.gendis.2025.101652</a>.
+</div>
+<div id="ref-simmons2011" class="csl-entry" role="listitem">
+Simmons, Joseph P., Leif D. Nelson, and Uri Simonsohn. 2011. <span>“False-Positive Psychology: Undisclosed Flexibility in Data Collection and Analysis Allows Presenting Anything as Significant.”</span> <em>Psychological Science</em> 22 (11): 1359–66. <a href="https://doi.org/10.1177/0956797611417632">https://doi.org/10.1177/0956797611417632</a>.
+</div>
+<div id="ref-stahl2016" class="csl-entry" role="listitem">
+Ståhl, Patrik L., Fredrik Salmén, Sanja Vickovic, et al. 2016. <span>“Visualization and Analysis of Gene Expression in Tissue Sections by Spatial Transcriptomics.”</span> <em>Science</em> 353 (6294): 78–82. <a href="https://doi.org/10.1126/science.aaf2403">https://doi.org/10.1126/science.aaf2403</a>.
+</div>
+<div id="ref-stevens2013" class="csl-entry" role="listitem">
+Stevens, Hallam. 2013. <em>Life Out of Sequence: A Data-Driven History of Bioinformatics</em>. Chicago: University of Chicago Press. <a href="https://doi.org/10.7208/chicago/9780226080345.001.0001">https://doi.org/10.7208/chicago/9780226080345.001.0001</a>.
+</div>
+<div id="ref-thul2017" class="csl-entry" role="listitem">
+Thul, Peter J., Lovisa Åkesson, Mikaela Wiking, et al. 2017. <span>“A Subcellular Map of the Human Proteome.”</span> <em>Science</em> 356 (6340): eaal3321. <a href="https://doi.org/10.1126/science.aal3321">https://doi.org/10.1126/science.aal3321</a>.
+</div>
+<div id="ref-venter2001" class="csl-entry" role="listitem">
+Venter, J. Craig, Mark D. Adams, Eugene W. Myers, et al. 2001. <span>“The Sequence of the Human Genome.”</span> <em>Science</em> 291 (5507): 1304–51. <a href="https://doi.org/10.1126/science.1058040">https://doi.org/10.1126/science.1058040</a>.
+</div>
+<div id="ref-wetterstrand2023" class="csl-entry" role="listitem">
+Wetterstrand, Kris A. 2023. <span>“DNA Sequencing Costs: Data from the NHGRI Genome Sequencing Program (GSP).”</span> <a href="https://www.genome.gov/sequencingcostsdata">https://www.genome.gov/sequencingcostsdata</a>.
+</div>
+</div>
+
+<nav class="site-postnav" aria-label="More writing">
+<div class="site-postnav__prev">
+<span class="site-postnav__dir">← Previous</span><a href="../../writing/2025-06-welcome/index.html">Welcome To My Blog</a>
+</div>
+</nav>
+</main>
+</div>
+<footer class="site-footer">
+<div class="site-footer__inner">
+<span>Natalie Gill · <span data-year="">2026</span></span>
+<a href="../../writing/index.xml">RSS</a>
+</div>
+<div class="site-strip" aria-hidden="true"></div>
+</footer>
+<script>
+(function () {
+  var y = document.querySelector(".site-footer [data-year]");
+  if (y) y.textContent = String(new Date().getFullYear());
+})();
+</script>
+
+</body></html>

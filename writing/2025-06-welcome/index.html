@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="quarto-1.6.39">
+<meta name="author" content="Natalie Gill">
+<meta name="description" content="The first post in my new Quarto blog, where I will be sharing bioinformatics content.">
+<title>Welcome To My Blog · Natalie Gill</title>
+
+<!-- Natalie Gill site head. Included on every page through
+     format.html.include-in-header in _quarto.yml (a raw file include: no pandoc
+     template syntax here). Paths are absolute from the site root because the site
+     is served at https://www.nataliegill.io/. -->
+<link rel="preload" href="../../assets/fonts/FiraMono-Medium.woff2" as="font" type="font/woff2" crossorigin="">
+<link rel="preload" href="../../assets/fonts/FiraMono-Regular.woff2" as="font" type="font/woff2" crossorigin="">
+<link rel="preload" href="../../assets/fonts/FiraSans-Regular.woff2" as="font" type="font/woff2" crossorigin="">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../../assets/logo/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../assets/logo/favicon-180.png">
+<link rel="alternate" type="application/rss+xml" title="Natalie Gill · Writing" href="../../writing/index.xml">
+<script>
+(function () {
+  var root = document.documentElement;
+  var media = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+  function stored() {
+    try { var v = localStorage.getItem("theme"); return v === "dark" || v === "light" ? v : null; }
+    catch (e) { return null; }
+  }
+  function system() { return media && media.matches ? "dark" : "light"; }
+  /* The toggle shows the theme it switches to; its accessible name says the same word. */
+  function label() {
+    var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    var bs = document.querySelectorAll("[data-theme-toggle]");
+    for (var i = 0; i < bs.length; i++) { bs[i].setAttribute("aria-label", "Switch to " + next + " theme"); bs[i].setAttribute("title", "Switch to " + next + " theme"); }
+  }
+  function apply(mode) { root.setAttribute("data-theme", mode === "dark" ? "dark" : "light"); label(); }
+  window.ngSetTheme = function (mode) {
+    apply(mode);
+    try { localStorage.setItem("theme", root.getAttribute("data-theme")); } catch (e) {}
+  };
+  apply(stored() || system());
+  if (media) {
+    var follow = function () { if (!stored()) apply(system()); };
+    if (media.addEventListener) media.addEventListener("change", follow);
+    else if (media.addListener) media.addListener(follow);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", label);
+  document.addEventListener("click", function (e) {
+    var t = e.target && e.target.closest ? e.target.closest("[data-theme-toggle]") : null;
+    if (t) window.ngSetTheme(root.getAttribute("data-theme") === "dark" ? "light" : "dark");
+  });
+})();
+</script>
+<script src="../../assets/field-config.js" defer=""></script>
+<script src="../../assets/field.js" defer=""></script>
+<link rel="stylesheet" href="../../assets/tokens.css">
+<link rel="stylesheet" href="../../assets/bundle.css">
+<link rel="stylesheet" href="../../assets/site.css">
+
+<meta property="og:title" content="Welcome To My Blog – Natalie Gill">
+<meta property="og:description" content="The first post in my new Quarto blog, where I will be sharing bioinformatics content.">
+<meta property="og:image" content="https://www.nataliegill.io/assets/social.png">
+<meta property="og:site_name" content="Natalie Gill">
+<meta property="og:image:height" content="630">
+<meta property="og:image:width" content="1200">
+<meta name="twitter:title" content="Welcome To My Blog – Natalie Gill">
+<meta name="twitter:description" content="The first post in my new Quarto blog, where I will be sharing bioinformatics content.">
+<meta name="twitter:image" content="https://www.nataliegill.io/assets/social.png">
+<meta name="twitter:image-height" content="630">
+<meta name="twitter:image-width" content="1200">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<!-- Template partial (pandoc syntax): a literal dollar sign must be written $$.
+     Quarto rewrites the root-absolute hrefs below to relative ones per page, so the
+     active-link script compares resolved a.pathname values, not href text. -->
+<header class="site-header">
+<div class="site-header__inner">
+<a class="site-name" href="../../"><svg class="site-mark" viewbox="0 0 18 8" aria-hidden="true" focusable="false"><path d="M12,5.5 A0.5,0.5 0 0 0 12.5,6 L16,6 L16,4 L18,4 L18,8 L12,8 L12,6.5 A0.5,0.5 0 0 0 11.5,6 L10,6 L10,2 L11.5,2 A0.5,0.5 0 0 0 12,1.5 L12,0 L16,0 L16,2 L12.5,2 A0.5,0.5 0 0 0 12,2.5 Z M0,5 L0,0 L6,0 L6,1.5 A0.5,0.5 0 0 0 6.5,2 L8,2 L8,8 L6,8 L6,2.5 A0.5,0.5 0 0 0 5.5,2 L2,2 L2,8 L0,8 Z" fill="currentColor"></path></svg><span class="visually-hidden">Natalie Gill</span></a>
+<nav class="site-nav" aria-label="Main">
+<a href="../../writing/">Writing</a>
+<a href="../../projects/">Projects</a>
+<a href="../../publications/">Publications</a>
+<a href="../../presentations/">Presentations</a>
+</nav>
+<button type="button" class="site-theme-toggle" data-theme-toggle="" aria-label="Switch color theme" title="Switch color theme"><span aria-hidden="true">◐</span><span class="site-theme-toggle__dark" aria-hidden="true">Dark</span><span class="site-theme-toggle__light" aria-hidden="true">Light</span></button>
+</div>
+</header>
+<script>
+(function () {
+  var p = location.pathname.replace(/index\.html$/, "");
+  var links = document.querySelectorAll(".site-nav a");
+  for (var i = 0; i < links.length; i++) {
+    var h = links[i].pathname.replace(/\.html$/, "");
+    if (p.indexOf(h) === 0) links[i].setAttribute("aria-current", "page");
+  }
+})();
+</script><div id="quarto-content" class="site-content">
+<main class="site-main content" id="quarto-document-content">
+<header id="title-block-header" class="quarto-title-block site-title-block">
+<h1 class="title site-title">Welcome To My Blog</h1>
+<p class="site-meta"><time>Jun 7, 2025</time> · <span class="site-reading-time">1 min read</span></p>
+<p class="site-tags"><span class="ng-tag">news</span> <span class="ng-tag">bioinformatics</span></p>
+<div class="site-description">The first post in my new Quarto blog, where I will be sharing bioinformatics content.</div>
+</header><p>Welcome! This is the first post in my new Quarto blog. I will be sharing bioinformatics content here, my goal is to make the tutorials and content I share as approachable as possible with an emphasis on developing practical skills.</p>
+<p><img src="cell_and_code.png" class="img-fluid" alt="Image of cancer cells with code in the background."></p>
+
+<nav class="site-postnav" aria-label="More writing">
+<div class="site-postnav__next">
+<span class="site-postnav__dir">Next →</span><a href="../../writing/2026-11-what-is-bioinformatics/index.html">What is bioinformatics?</a>
+</div>
+</nav>
+</main>
+</div>
+<footer class="site-footer">
+<div class="site-footer__inner">
+<span>Natalie Gill · <span data-year="">2026</span></span>
+<a href="../../writing/index.xml">RSS</a>
+</div>
+<div class="site-strip" aria-hidden="true"></div>
+</footer>
+<script>
+(function () {
+  var y = document.querySelector(".site-footer [data-year]");
+  if (y) y.textContent = String(new Date().getFullYear());
+})();
+</script>
+
+</body></html>

@@ -1,0 +1,612 @@
+/* Natalie Gill — site layout and the mapping of Quarto's output onto the design
+   system. Every color is a token from tokens.css; there are no color values in
+   this file. Type sizes are the --t-<style>-* properties that gen_tokens.py writes
+   from tokens.json (the .t-* classes cover markup we write; the rules here cover
+   markup Quarto writes), so a type token change reaches both.
+   Prose rules are wrapped in :where() so they carry no specificity and the
+   component classes from bundle.css always win inside cards, buttons and tags. */
+
+/* ---------- Base ---------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+:root {
+  --site-gutter: var(--space-4);
+  --site-measure: 720px;
+  --site-main-top: var(--space-8);
+}
+@media (min-width: 768px) {
+  :root { --site-gutter: var(--space-12); --site-main-top: var(--space-12); }
+}
+
+html {
+  background: var(--surface);
+  color: var(--ink);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: var(--t-body-size); line-height: var(--t-body-line); font-weight: var(--t-body-weight); letter-spacing: var(--t-body-tracking);
+  overflow-x: hidden;
+  overflow-x: clip;
+  overflow-wrap: break-word;
+}
+::selection { background: var(--surface-selected); color: var(--ink); }
+
+:where(a) {
+  color: var(--link);
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+:where(a:hover) { text-decoration-thickness: 2px; }
+:where(a:visited) { color: var(--link); }
+:focus { outline: none; }
+:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
+
+:where(img, svg, video, canvas) { max-width: 100%; height: auto; }
+:where(img) { display: block; border-radius: var(--radius-0); }
+
+[hidden], .hidden { display: none !important; }
+/* Quarto's listing emits a Bootstrap-classed "No matching items" div; keep it hidden. */
+.d-none, .listing-no-matching.d-none { display: none !important; }
+.visually-hidden, .sr-only {
+  position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* ---------- Header ---------- */
+
+.site-header { border-bottom: 1px solid var(--line); background: var(--surface); }
+.site-header__inner {
+  max-width: calc(var(--site-measure) + 2 * var(--site-gutter));
+  margin: 0 auto;
+  padding: var(--space-3) var(--site-gutter);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: var(--space-6);
+  row-gap: var(--space-1);
+}
+.site-name {
+  font-family: var(--font-mono);
+  font-size: var(--t-heading-3-size); line-height: var(--t-heading-3-line); font-weight: var(--t-heading-3-weight); letter-spacing: var(--t-heading-3-tracking);
+  color: var(--ink);
+  text-decoration: none;
+  margin-right: auto;
+  padding: var(--space-1) 0;
+}
+/* The monogram stands alone in the header (the name is visually hidden, read by screen readers),
+   so the home hero is the only place the name is set. 24px tall, ink only. */
+.site-name { display: inline-flex; align-items: center; }
+.site-mark { height: 24px; width: 54px; flex: none; fill: currentColor; align-self: baseline; }
+.site-nav { display: flex; flex-wrap: wrap; column-gap: var(--space-4); row-gap: 0; }
+.site-nav a {
+  font-family: var(--font-mono);
+  font-size: var(--t-label-size); line-height: var(--t-label-line); font-weight: var(--t-label-weight); letter-spacing: var(--t-label-tracking);
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  text-decoration: none;
+  padding: var(--space-2) 0;
+}
+.site-nav a:hover { color: var(--ink); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.site-nav a[aria-current="page"] { color: var(--ink); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+
+.site-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  min-width: 10ch;               /* fits "Light" as well as "Dark", so the nav does not shift on toggle */
+  font-family: var(--font-mono);
+  font-size: var(--t-label-size); line-height: var(--t-label-line); font-weight: var(--t-label-weight); letter-spacing: var(--t-label-tracking);
+  text-transform: uppercase;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-1);
+  padding: var(--space-1) var(--space-2);
+  min-height: 32px;
+  cursor: pointer;
+}
+.site-theme-toggle:hover { background: var(--surface-hover); }
+/* The button shows the theme it switches to. Without JS there is no
+   data-theme attribute and nothing to switch, so it is hidden. */
+:root:not([data-theme]) .site-theme-toggle { visibility: hidden; }
+.site-theme-toggle__light { display: none; }
+[data-theme="dark"] .site-theme-toggle__dark { display: none; }
+[data-theme="dark"] .site-theme-toggle__light { display: inline; }
+
+/* Phones: the name and the toggle share the first row, the nav wraps under. */
+@media (max-width: 599.98px) {
+  .site-name { order: 1; }
+  .site-theme-toggle { order: 2; }
+  .site-nav { order: 3; flex-basis: 100%; }
+}
+
+/* ---------- Main column ---------- */
+
+.site-content { flex: 1 0 auto; width: 100%; }
+.site-main {
+  width: 100%;
+  max-width: calc(var(--site-measure) + 2 * var(--site-gutter));
+  margin: 0 auto;
+  padding: var(--site-main-top) var(--site-gutter) var(--space-16);
+}
+
+/* ---------- Title block ---------- */
+
+.site-title-block {
+  margin: 0 0 var(--space-8);
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--line);
+}
+.site-title {
+  font-family: var(--font-mono);
+  font-size: var(--t-display-size); line-height: var(--t-display-line); font-weight: var(--t-display-weight); letter-spacing: var(--t-display-tracking);
+  color: var(--ink);
+  margin: 0;
+}
+@media (max-width: 599.98px) {
+  .site-title { font-size: var(--t-heading-1-size); line-height: var(--t-heading-1-line); font-weight: var(--t-heading-1-weight); letter-spacing: var(--t-heading-1-tracking); }
+}
+.site-subtitle,
+.site-description,
+.site-description p {
+  font-family: var(--font-sans);
+  font-size: var(--t-lead-size); line-height: var(--t-lead-line); font-weight: var(--t-lead-weight); letter-spacing: var(--t-lead-tracking);
+  color: var(--ink);
+  margin: var(--space-3) 0 0;
+}
+.site-description p:first-child { margin-top: 0; }
+.site-meta {
+  font-family: var(--font-mono);
+  font-size: var(--t-caption-size); line-height: var(--t-caption-line); font-weight: var(--t-caption-weight); letter-spacing: var(--t-caption-tracking);
+  color: var(--ink-muted);
+  margin: var(--space-3) 0 0;
+}
+.site-tags { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: var(--space-3) 0 0; }
+
+/* ---------- Prose: Quarto output mapped to the system ---------- */
+
+:where(.site-main) :where(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  color: var(--ink);
+  margin: var(--space-6) 0 var(--space-2);
+}
+:where(.site-main) :where(h1) { font-size: var(--t-heading-1-size); line-height: var(--t-heading-1-line); font-weight: var(--t-heading-1-weight); letter-spacing: var(--t-heading-1-tracking); }
+:where(.site-main) :where(h2) { font-size: var(--t-heading-2-size); line-height: var(--t-heading-2-line); font-weight: var(--t-heading-2-weight); letter-spacing: var(--t-heading-2-tracking); }
+:where(.site-main) :where(h3) { font-size: var(--t-heading-3-size); line-height: var(--t-heading-3-line); font-weight: var(--t-heading-3-weight); letter-spacing: var(--t-heading-3-tracking); }
+:where(.site-main) :where(h4, h5, h6) {
+  font-size: var(--t-label-size); line-height: var(--t-label-line); font-weight: var(--t-label-weight); letter-spacing: var(--t-label-tracking); text-transform: uppercase;
+}
+:where(.site-main) :where(h1, h2, h3, h4, h5, h6) + :where(*) { margin-top: 0; }
+
+:where(.site-main) :where(p) { margin: 0 0 var(--space-4); }
+:where(.site-main) :where(ul, ol) { margin: 0 0 var(--space-4); padding-left: var(--space-6); }
+:where(.site-main) :where(li) { margin: 0 0 var(--space-1); }
+:where(.site-main) :where(li > ul, li > ol) { margin: var(--space-1) 0 0; }
+:where(.site-main) :where(li > p) { margin-bottom: var(--space-2); }
+:where(.site-main) :where(dt) { font-weight: 500; }
+:where(.site-main) :where(dd) { margin: 0 0 var(--space-4) var(--space-6); }
+:where(strong, b) { font-weight: 500; }
+:where(em, i, cite) { font-style: italic; }
+
+/* Lead: the first paragraph of a page or post, or anything marked .lead / .t-lead. */
+:where(.site-main) :where(.site-title-block + p),
+:where(.site-main) :where(p.lead, .lead > p, p.t-lead) {
+  font-size: var(--t-lead-size); line-height: var(--t-lead-line); font-weight: var(--t-lead-weight); letter-spacing: var(--t-lead-tracking);
+}
+
+/* Sections: space-12 above, no rule and never a background change. Every `##` section
+   of a page (a top-level h2 of the main column) opens with it, except directly under
+   the title block, which already ends in a rule. */
+.site-section,
+:where(.site-main > h2) { margin-top: var(--space-12); }
+:where(.site-main > .site-title-block + h2) { margin-top: 0; }
+:where(.site-main) :where(hr) {
+  border: 0;
+  border-top: 1px solid var(--line);
+  height: 0;
+  margin: var(--space-12) 0;
+}
+
+/* Blockquote: lead size, 1px line-strong rule, no italics. */
+:where(.site-main) :where(blockquote) {
+  margin: var(--space-6) 0;
+  padding: 0 0 0 var(--space-4);
+  border-left: 1px solid var(--line-strong);
+  font-size: var(--t-lead-size); line-height: var(--t-lead-line); font-weight: var(--t-lead-weight); letter-spacing: var(--t-lead-tracking);
+  font-style: normal;
+  color: var(--ink);
+}
+:where(.site-main) :where(blockquote p:last-child) { margin-bottom: 0; }
+
+/* References (Pandoc citeproc): body-small with a hanging indent. */
+:where(.site-main) :where(.csl-entry) {
+  font-size: var(--t-body-small-size); line-height: var(--t-body-small-line); font-weight: var(--t-body-small-weight); letter-spacing: var(--t-body-small-tracking);
+  margin: 0 0 var(--space-3);
+  padding-left: var(--space-6);
+  text-indent: calc(-1 * var(--space-6));
+  overflow-wrap: anywhere;
+}
+
+/* ---------- Code: the CodeBlock look ---------- */
+
+:where(code, kbd, samp) {
+  font-family: var(--font-mono);
+  font-size: var(--t-code-size); line-height: var(--t-code-line); font-weight: var(--t-code-weight); letter-spacing: var(--t-code-tracking);
+}
+:where(.site-main) :where(:not(pre) > code) {
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-0);
+  padding: 0 var(--space-1);
+  color: var(--ink);
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+:where(.site-main) :where(pre) {
+  margin: var(--space-6) 0;
+  padding: var(--space-3);
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-0);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: var(--t-code-size); line-height: var(--t-code-line); font-weight: var(--t-code-weight); letter-spacing: var(--t-code-tracking);
+  white-space: pre;
+  overflow-x: auto;
+  max-width: 100%;
+}
+/* Pandoc's highlighting CSS sets .sourceCode { overflow: visible } and a
+   line-height on each code line; these restore the CodeBlock behaviour. */
+.site-main div.sourceCode { margin: var(--space-6) 0; overflow: visible; background: transparent; }
+.site-main div.sourceCode > pre.sourceCode { margin: 0; }
+.site-main pre.sourceCode { overflow-x: auto; }
+.site-main pre code,
+.site-main pre > code.sourceCode {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: inherit;
+  line-height: inherit;
+  white-space: pre;
+  color: inherit;
+  overflow-wrap: normal;
+}
+.site-main pre > code.sourceCode > span { line-height: inherit; }
+.site-main pre > code.sourceCode > span:empty { height: var(--t-code-line); }
+.site-main pre > code.sourceCode > span > a:first-child::before { text-decoration: none; }
+
+/* Cell output sits on the ground with a line edge, so it reads as output, not code. */
+.site-main .cell-output pre,
+.site-main .cell-output-stdout pre,
+.site-main .cell-output-stderr pre {
+  background: var(--surface);
+  margin-top: var(--space-2);
+}
+:where(.site-main) :where(.cell) { margin: var(--space-6) 0; }
+:where(.site-main) :where(.cell > .sourceCode:first-child) { margin-top: 0; }
+:where(.site-main) :where(.cell-output-display) { margin: var(--space-4) 0; }
+
+/* Syntax colors. The highlight theme file carries the light values; these
+   rules use the tokens so both themes are right (they outrank pandoc's
+   "code span.xx" rules). Keywords chart-2, strings chart-3, comments ink-muted,
+   everything else ink. No bold, no italics. */
+.sourceCode span.kw, .sourceCode span.cf, .sourceCode span.im, .sourceCode span.pp { color: var(--chart-2); font-weight: inherit; font-style: normal; }
+.sourceCode span.st, .sourceCode span.ch, .sourceCode span.vs, .sourceCode span.ss, .sourceCode span.sc { color: var(--chart-3); font-weight: inherit; font-style: normal; }
+.sourceCode span.co, .sourceCode span.do, .sourceCode span.an, .sourceCode span.cv, .sourceCode span.in { color: var(--ink-muted); font-weight: inherit; font-style: normal; }
+.sourceCode span.dt, .sourceCode span.dv, .sourceCode span.bn, .sourceCode span.fl, .sourceCode span.cn,
+.sourceCode span.fu, .sourceCode span.va, .sourceCode span.op, .sourceCode span.bu, .sourceCode span.ex,
+.sourceCode span.at, .sourceCode span.ot, .sourceCode span.al, .sourceCode span.er, .sourceCode span.wa,
+.sourceCode span.ln { color: var(--ink); font-weight: inherit; font-style: normal; text-decoration: none; background: none; }
+
+/* ---------- Figures ---------- */
+
+:where(.site-main) :where(figure) { margin: var(--space-8) 0; }
+:where(.site-main) :where(.quarto-figure) { margin: var(--space-8) 0; }
+:where(.site-main) :where(.quarto-figure figure) { margin: 0; }
+:where(.site-main) :where(figure > p) { margin: 0; }
+:where(.site-main) :where(figure img, .quarto-figure img) { width: 100%; height: auto; margin: 0 auto; }
+:where(.site-main) :where(figcaption, .figure-caption) {
+  font-family: var(--font-mono);
+  font-size: var(--t-caption-size); line-height: var(--t-caption-line); font-weight: var(--t-caption-weight); letter-spacing: var(--t-caption-tracking);
+  color: var(--ink-muted);
+  margin-top: var(--space-2);
+  text-align: left;
+}
+/* Figures sit in the text column, so their labels stay smaller than the body text, with a section's space around them. */
+.site-main > figure.ng-fig,
+.site-main > .quarto-figure { margin-block: var(--space-12); }
+
+/* Dual-theme figures (ng_figure) and the footer strip: show the image that
+   matches the active theme, including the no-JS prefers-color-scheme case. */
+.ng-fig-dark { display: none; }
+[data-theme="dark"] .ng-fig-light { display: none; }
+[data-theme="dark"] .ng-fig-dark { display: block; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .ng-fig-light { display: none; }
+  :root:not([data-theme="light"]) .ng-fig-dark { display: block; }
+}
+
+/* Frame for media in posts: the card's 1px line and square corners, so plots
+   (ng_figure), markdown images and videos all share one edge. Applied to every
+   figure's img/video by default; .site-frame puts it on anything else. */
+.site-main :is(figure.ng-fig, .quarto-figure) :is(img, video),
+.site-frame {
+  box-sizing: border-box;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-0);
+}
+
+/* Looping video figure (a post's script picks the light or dark source); the
+   pause button is the field's focus-only .ng-field__toggle. */
+.site-loop { position: relative; }
+.site-loop video { display: block; width: 100%; height: auto; cursor: pointer; }
+
+/* Inline SVG diagrams: colours and type come from tokens, so they follow the theme with no second image.
+   Each diagram has a wide and a narrow (stacked) drawing; only one is ever displayed. */
+.site-diagram { display: block; width: 100%; height: auto; font-family: var(--font-mono); }
+.site-diagram--wide { display: none; }
+.site-diagram--narrow { max-width: 480px; margin-inline: auto; }
+@media (min-width: 768px) {
+  .site-diagram--wide { display: block; }
+  .site-diagram--narrow { display: none; }
+}
+.site-diagram text { fill: var(--ink); font-size: var(--t-code-size); font-weight: var(--t-code-weight); }
+.site-diagram .site-diagram__name { font-size: var(--t-heading-3-size); font-weight: var(--t-heading-3-weight); }
+.site-diagram .site-diagram__hub-label { fill: var(--surface); font-size: var(--t-heading-3-size); font-weight: var(--t-heading-3-weight); }
+.site-diagram__panel { fill: var(--surface-raised); stroke: var(--line); }
+.site-diagram__hub { fill: var(--ink); }
+.site-diagram__band { fill: var(--series); }
+.site-diagram__stem { stroke: var(--ink); stroke-width: 2; stroke-linecap: square; }
+.site-diagram__link { stroke: var(--ink); stroke-width: 2; stroke-linecap: square; }
+.site-diagram__series-1 { --series: var(--chart-2); }
+.site-diagram__series-2 { --series: var(--chart-3); }
+.site-diagram__series-3 { --series: var(--chart-4); }
+
+/* ---------- Tables ---------- */
+
+:where(.site-main) :where(table) {
+  display: block;
+  width: max-content;
+  min-width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  margin: var(--space-6) 0;
+  font-family: var(--font-sans);
+  font-size: var(--t-body-small-size); line-height: var(--t-body-small-line); font-weight: var(--t-body-small-weight); letter-spacing: var(--t-body-small-tracking);
+  font-variant-numeric: tabular-nums;
+}
+:where(.site-main) :where(th, td) {
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+:where(.site-main) :where(th) {
+  font-family: var(--font-mono);
+  font-size: var(--t-label-size); line-height: var(--t-label-line); font-weight: var(--t-label-weight); letter-spacing: var(--t-label-tracking);
+  text-transform: uppercase;
+  color: var(--ink);
+  border-bottom-color: var(--line-strong);
+  vertical-align: bottom;
+}
+:where(.site-main) :where(tbody th) { border-bottom-color: var(--line); vertical-align: top; }
+:where(.site-main) :where(caption) {
+  caption-side: top;
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: var(--t-caption-size); line-height: var(--t-caption-line); font-weight: var(--t-caption-weight); letter-spacing: var(--t-caption-tracking);
+  color: var(--ink-muted);
+  padding-bottom: var(--space-2);
+}
+
+/* ---------- Footnotes ---------- */
+
+:where(.site-main) :where(.footnote-ref, sup, sub) { font-size: var(--t-caption-size); line-height: 0; }
+:where(.site-main) :where(.footnotes, section.footnotes) {
+  font-size: var(--t-body-small-size);
+  line-height: var(--t-body-small-line);
+  border-top: 1px solid var(--line);
+  margin-top: var(--space-12);
+  padding-top: var(--space-6);
+}
+:where(.site-main) :where(.footnotes > hr) { display: none; }
+:where(.site-main) :where(.footnotes p) { margin-bottom: var(--space-2); }
+:where(.site-main) :where(.footnote-back) { text-decoration: none; }
+
+/* ---------- Callouts (kept minimal: a line edge, a label title, no icon) ---------- */
+
+:where(.site-main) :where(.callout) {
+  margin: var(--space-6) 0;
+  padding: var(--space-3) var(--space-4);
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
+  border-left-color: var(--line-strong);
+}
+:where(.site-main) :where(.callout-header, .callout-title, .callout-title-container) {
+  font-family: var(--font-mono);
+  font-size: var(--t-label-size); line-height: var(--t-label-line); font-weight: var(--t-label-weight); letter-spacing: var(--t-label-tracking);
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: var(--space-2);
+}
+:where(.site-main) :where(.callout-icon, .callout-icon-container, .callout-btn-toggle) { display: none; }
+:where(.site-main) :where(.callout-body > :last-child, .callout-body-container > :last-child) { margin-bottom: 0; }
+
+/* ---------- Pandoc utility classes (normally in its default stylesheet) ---------- */
+
+span.smallcaps { font-variant: small-caps; }
+div.columns { display: flex; gap: var(--space-6); flex-wrap: wrap; }
+div.column { flex: 1 1 0; min-width: 0; overflow-x: auto; }
+ul.task-list { list-style: none; padding-left: var(--space-2); }
+ul.task-list li input[type="checkbox"] { margin: 0 var(--space-2) 0 0; vertical-align: middle; accent-color: var(--ink); }
+.display.math { display: block; text-align: center; margin: var(--space-2) 0; overflow-x: auto; }
+
+/* ---------- Home hero: the live field, full bleed ---------- */
+
+.site-hero {
+  width: 100vw;
+  /* Half the window, between 320px and 480px (40 and 60 cells), so the field never crowds out
+     the bio on tall screens. */
+  height: clamp(320px, 50vh, 480px);
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  margin-top: calc(-1 * var(--site-main-top));
+  margin-bottom: var(--space-12);
+}
+/* A live field pauses and resumes on click. The button does the same for keyboard users;
+   it stays out of sight until it has focus. */
+.ng-field.is-live canvas { cursor: pointer; }
+.ng-field__toggle {
+  position: absolute; top: var(--space-4); right: var(--space-4);
+  font-family: var(--font-mono); font-size: var(--t-label-size); line-height: var(--t-label-line); font-weight: var(--t-label-weight); letter-spacing: var(--t-label-tracking); text-transform: uppercase;
+  color: var(--ink); background: var(--surface); border: 1px solid var(--line-strong); border-radius: var(--radius-1);
+  padding: var(--space-1) var(--space-2); cursor: pointer;
+  opacity: 0; pointer-events: none;
+}
+.ng-field__toggle:focus-visible { opacity: 1; pointer-events: auto; outline: 2px solid var(--link); outline-offset: 2px; }
+.site-hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.site-hero .ng-field__panel {
+  left: max(var(--space-4), calc(50vw - var(--site-measure) / 2));
+  right: auto;
+  bottom: var(--space-6);
+  max-width: calc(100vw - 2 * var(--space-4));
+  cursor: auto;
+}
+.site-hero .ng-field__name { font-size: var(--t-display-size); line-height: var(--t-display-line); font-weight: var(--t-display-weight); letter-spacing: var(--t-display-tracking); margin: 0; }
+.site-hero .ng-field__tag { margin: var(--space-1) 0 0; }
+/* Pronouns sit tight under the name (pulled into the name's line-height); the space goes after them. */
+.site-hero .site-hero__pronouns { color: var(--ink-muted); margin: calc(-1 * var(--space-1)) 0 0; }
+.site-hero .site-hero__pronouns + .ng-field__tag { margin-top: var(--space-3); }
+@media (max-width: 599.98px) {
+  .site-hero .ng-field__name { font-size: var(--t-heading-1-size); line-height: var(--t-heading-1-line); font-weight: var(--t-heading-1-weight); letter-spacing: var(--t-heading-1-tracking); }
+}
+/* 404: a still field with a bare patch (assets/field-404.js) and the panel centred in it. */
+.site-hero--404 .ng-field__tag { margin: 0 0 var(--space-1); }
+.site-hero--404 .site-hero__note { color: var(--ink-muted); margin: var(--space-2) 0 0; }
+.site-hero--center .ng-field__panel { left: 50%; top: 50%; bottom: auto; transform: translate(-50%, -50%); }
+/* A still frame of the field (404, about): the canvas fills a fixed box. */
+.site-field-still { width: 100%; height: 240px; margin: var(--space-8) 0; }
+.site-field-still canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+/* ---------- Post footer: reading time, previous / next by date ---------- */
+
+.site-postnav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-4) var(--space-6);
+  border-top: 1px solid var(--line);
+  margin-top: var(--space-12);
+  padding-top: var(--space-6);
+  font-family: var(--font-mono);
+  font-size: var(--t-caption-size);
+  line-height: var(--t-caption-line);
+  font-weight: var(--t-caption-weight);
+}
+.site-postnav > div { margin: 0; max-width: 100%; }
+.site-postnav p { margin: 0; }
+.site-postnav .site-postnav__next { margin-left: auto; text-align: right; }
+.site-postnav__dir { display: block; color: var(--ink-muted); margin-bottom: var(--space-1); }
+
+/* ---------- Cards, stats, buttons ---------- */
+
+.site-cards {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-6);
+  margin: var(--space-6) 0;
+}
+@media (min-width: 768px) {
+  .site-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .site-cards--list { grid-template-columns: minmax(0, 1fr); }
+}
+.site-cards .ng-card p { margin: 0; }
+/* Listing date: caption style (metadata, sentence case), not the uppercase eyebrow. */
+.site-card__date { color: var(--ink-muted); }
+.site-card .ng-card__footer .ng-button { margin-left: auto; }
+/* Quarto wraps a listing in .quarto-listing; it brings no styles of its own. */
+:where(.site-main) :where(.quarto-listing) { margin: var(--space-6) 0; }
+:where(.site-main) :where(.quarto-listing .site-cards) { margin: 0; }
+
+.site-stats {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--space-6) var(--space-12);
+  margin: var(--space-6) 0;
+}
+.site-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin: var(--space-6) 0;
+}
+.site-buttons .ng-button, .site-cards .ng-button { text-decoration: none; }
+/* bundle.css's `.ng-card a` outranks `.ng-button`; give card buttons their own colors back. */
+.ng-card a.ng-button { color: var(--on-primary); text-decoration: none; }
+.ng-card a.ng-button--ghost { color: var(--ink); }
+
+/* Listing pagination (only emitted past the listing's page size). */
+:where(.site-main) :where(.pagination) {
+  display: flex; flex-wrap: wrap; gap: var(--space-2); list-style: none; padding: 0;
+  font-family: var(--font-mono); font-size: var(--t-caption-size); line-height: var(--t-caption-line);
+}
+:where(.site-main) :where(.pagination .active a) { color: var(--ink); text-decoration-thickness: 2px; }
+
+/* ---------- Footer ---------- */
+
+.site-footer { border-top: 1px solid var(--line); }
+.site-footer__inner {
+  max-width: calc(var(--site-measure) + 2 * var(--site-gutter));
+  margin: 0 auto;
+  padding: var(--space-4) var(--site-gutter);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-6);
+  font-family: var(--font-mono);
+  font-size: var(--t-caption-size); line-height: var(--t-caption-line); font-weight: var(--t-caption-weight); letter-spacing: var(--t-caption-tracking);
+  color: var(--ink-muted);
+}
+.site-footer__inner a { color: var(--link); }
+/* The strip: a frozen 960x24 frame at 8px cells, 120 cells wide = the full torus,
+   so repeating it across the page joins without a seam and the cells stay 8px. */
+.site-strip {
+  height: var(--space-6);
+  background: var(--surface) url("footer-strip.png") repeat-x 0 0 / 960px 24px;
+  image-rendering: pixelated;
+}
+[data-theme="dark"] .site-strip { background-image: url("footer-strip-dark.png"); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .site-strip { background-image: url("footer-strip-dark.png"); }
+}
+
+/* ---------- Motion ---------- */
+/* Nothing on the site animates except the field, which honours
+   prefers-reduced-motion itself. This guards against anything added later. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- Print ---------- */
+@media print {
+  .site-header, .site-footer, .site-hero { display: none; }
+  .site-main { max-width: none; padding: 0; }
+}
