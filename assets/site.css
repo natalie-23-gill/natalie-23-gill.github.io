@@ -582,6 +582,7 @@ ul.task-list li input[type="checkbox"] { margin: 0 var(--space-2) 0 0; vertical-
   color: var(--ink-muted);
 }
 .site-footer__inner a { color: var(--link); }
+.site-footer__note { flex-basis: 100%; margin: 0; }
 /* The strip: a frozen 960x24 frame at 8px cells, 120 cells wide = the full torus,
    so repeating it across the page joins without a seam and the cells stay 8px. */
 .site-strip {
