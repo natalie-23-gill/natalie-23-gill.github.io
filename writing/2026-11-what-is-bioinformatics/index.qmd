@@ -1,6 +1,6 @@
 ---
 title: "What is bioinformatics?"
-description: "My view of what bioinformatics is and how it came to be."
+description: "My view of what bioinformatics is, how it came to be, and why judgement about the data is central to the field's future."
 date: 2026-11-11            
 categories: [bioinformatics, history]
 image: dna-to-numbers-card.png
