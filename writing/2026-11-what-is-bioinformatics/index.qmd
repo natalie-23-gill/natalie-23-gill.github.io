@@ -1,6 +1,6 @@
 ---
 title: "What is bioinformatics?"
-description: "My view of what bioinformatics is, how it came to be, and why judgment about how the data were generated matters more than ever in the age of AI."
+description: "My view of what bioinformatics is and how it came to be."
 date: 2026-11-11            
 categories: [bioinformatics, history]
 image: dna-to-numbers-card.png
