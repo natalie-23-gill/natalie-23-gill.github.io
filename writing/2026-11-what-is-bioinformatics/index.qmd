@@ -109,6 +109,10 @@ Unlike attempting to solve mathematical proofs, generating more attempts at anal
 
 None of this is an argument against using AI. Coding assistants have removed many of the barriers to developing and maintaining bioinformatics software that follows software engineering best practices, and I expect that to leave more time for developing methods that support rigorous, reproducible claims. The definition at the top of this post describes bioinformatics as the development of methods and tools. I would add that it is also the judgment about how the data were generated, which is what makes those methods and tools trustworthy. Developing, expanding, and sustaining that judgment is the central challenge for bioinformaticians in the age of AI. If this is the golden age of biological research, the people who can tell a real discovery from an artifact of the data or of a misspecified model have never been more important.
 
+## AI use disclosure
+
+*I wrote this post. I used Claude (Anthropic) to help outline it, suggest and edit prose, find and check sources, format citations, and build the figures; I chose the sources, rewrote all of the text, and checked every claim against the original papers.*
+
 ## References
 
 ::: {#refs}
