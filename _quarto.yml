@@ -8,6 +8,7 @@ project:
   resources:
     - /assets/
     - /CNAME                            # GitHub Pages custom domain; must land at _site/CNAME
+    - /robots.txt                       # hand-written; stops Quarto generating its own
 
 website:
   title: "Natalie Gill"
